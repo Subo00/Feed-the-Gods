@@ -7,12 +7,22 @@ public class ThirdPersonMovement : MonoBehaviour
     public CharacterController controller;
     public float speed = 6f;
     public float turnSmoothTime = 0.1f;
+   
     private float turnSmoothVelocity;
 
+    public CameraControl camera;
+    private bool isUIActive = false;
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
+        if(Input.GetButtonDown("Inventory"))
+        {
+            isUIActive = !isUIActive;
+            camera.ToggleInventory(isUIActive);
+        }
+        if (isUIActive) return;
+
         //takes input from keyboard 
         float horiznotal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
@@ -29,4 +39,20 @@ public class ThirdPersonMovement : MonoBehaviour
         }
 
     }
+
+    public Vector3 GetPosition()
+    {
+        return transform.position;
+    }
+
+    public Quaternion GetRotation()
+    {
+        return transform.rotation;
+    }
+
+    public Vector3 GetForward()
+    {
+        return transform.forward;
+    }
 }
+
