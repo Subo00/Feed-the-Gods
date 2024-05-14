@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f922f92d5c5c0c54ebeee31bdeb4cd95, type: 3}
-  m_Name: StrawBerryVineRecepie
+  m_Script: {fileID: 11500000, guid: cd0384bb41f47334da65ced7dcdc170b, type: 3}
+  m_Name: StrawberryWine
   m_EditorClassIdentifier: 
-  craftingResult:
-    item: {fileID: 0}
-    quantity: 0
-  resources: []
-  buildingRequired: 2
+  id: 1
+  name: StrawberryWine
+  description: 'Sweet and fruty '
+  sprite: {fileID: 21300000, guid: 17eed5c66afc240adb201899c4537b06, type: 3}
+  maxStack: 6
