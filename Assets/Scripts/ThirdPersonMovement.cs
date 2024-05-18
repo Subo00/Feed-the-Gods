@@ -40,19 +40,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
     }
 
-    public Vector3 GetPosition()
     {
-        return transform.position;
-    }
-
-    public Quaternion GetRotation()
-    {
-        return transform.rotation;
-    }
-
-    public Vector3 GetForward()
-    {
-        return transform.forward;
     }
 }
 
