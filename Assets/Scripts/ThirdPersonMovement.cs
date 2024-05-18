@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class ThirdPersonMovement : MonoBehaviour
 {
@@ -13,7 +14,13 @@ public class ThirdPersonMovement : MonoBehaviour
     public CameraControl camera;
     private bool isUIActive = false;
 
-    // Update is called once per frame
+    private ItemManager itemManager;
+
+    private void Start()
+    {
+        itemManager = ItemManager.Instance;
+    }
+
     void Update()
     {
         if(Input.GetButtonDown("Inventory"))
@@ -40,7 +47,16 @@ public class ThirdPersonMovement : MonoBehaviour
 
     }
 
+    public void DropItemFromPlayerPos(uint itemID)
     {
+        //Dropt it from player's position 
+        Vector3 playerPos = transform.position + transform.forward * 3; //magic number 3
+        Quaternion playerRot = transform.rotation;
+
+        //Add Instantiate 
+        GameObject itemToDrop = itemManager.GetGameObject(itemID);
+        GameObject drop = Instantiate(itemToDrop, playerPos, playerRot);
+        drop.GetComponent<ItemPickUp>().LaunchInDirection(transform.forward + transform.up, 5f); //magic number 5
     }
 }
 
