@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: StrawberryWine
   m_EditorClassIdentifier: 
   id: 1
-  name: StrawberryWine
+  name: Strawberry wine
   description: 'Sweet and fruty '
   sprite: {fileID: 21300000, guid: 17eed5c66afc240adb201899c4537b06, type: 3}
   maxStack: 6
