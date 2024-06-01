@@ -28,6 +28,11 @@ public class ThirdPersonMovement : MonoBehaviour
             isUIActive = !isUIActive;
             camera.ToggleInventory(isUIActive);
         }
+        if(Input.GetButtonDown("Crafting"))
+        {
+            isUIActive = !isUIActive;
+            camera.ToggleCrafting(isUIActive);
+        }
         if (isUIActive) return;
 
         //takes input from keyboard 

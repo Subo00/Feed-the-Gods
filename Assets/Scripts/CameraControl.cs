@@ -6,11 +6,13 @@ public class CameraControl : MonoBehaviour
 {
     private Camera mainCamera;
     private LayerMask inventoryLayer;
+    private LayerMask craftingLayer;
 
     private void Start()
     {
         mainCamera = GetComponent<Camera>();
         inventoryLayer = LayerMask.GetMask("Inventory");
+        craftingLayer = LayerMask.GetMask("Crafting");
         ToggleCursor(false);
     }
 
@@ -26,6 +28,19 @@ public class CameraControl : MonoBehaviour
         else
         {
             mainCamera.cullingMask &= ~inventoryLayer;
+        }
+    }
+
+    public void ToggleCrafting(bool showCrafting)
+    {
+        ToggleCursor(showCrafting);
+        if (showCrafting)
+        {
+            mainCamera.cullingMask |= craftingLayer;
+        }
+        else
+        {
+            mainCamera.cullingMask &= ~craftingLayer;
         }
     }
 
