@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cd0384bb41f47334da65ced7dcdc170b, type: 3}
-  m_Name: StrawberryVine
+  m_Name: StrawberryWine
   m_EditorClassIdentifier: 
-  id: 0
-  name: 
-  description: 
-  sprite: {fileID: 0}
-  maxStack: 0
+  id: 1
+  name: Strawberry wine
+  description: 'Sweet and fruty '
+  sprite: {fileID: 21300000, guid: 17eed5c66afc240adb201899c4537b06, type: 3}
+  maxStack: 6

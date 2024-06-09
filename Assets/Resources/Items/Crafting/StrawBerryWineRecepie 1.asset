@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f922f92d5c5c0c54ebeee31bdeb4cd95, type: 3}
-  m_Name: StrawBerryVineRecepie
+  m_Name: StrawBerryWineRecepie 1
   m_EditorClassIdentifier: 
   craftingResult:
-    item: {fileID: 0}
-    quantity: 0
-  resources: []
-  buildingRequired: 2
+    item: {fileID: 11400000, guid: 1cb9b833b44b32747a698f4f7cc20ac5, type: 2}
+    quantity: 1
+  ingredients:
+  - item: {fileID: 11400000, guid: 5eacf16088e407747bf56f81b9ffcbed, type: 2}
+    quantity: 10
+  buildingRequired: 1

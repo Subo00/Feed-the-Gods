@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading;
 
 public class SourceBase : MonoBehaviour, IInteractable, IMyUpdate
 {
@@ -62,14 +63,23 @@ public class SourceBase : MonoBehaviour, IInteractable, IMyUpdate
     }
     public void DropResource()
     {
+        float randNum = Random.Range(0.01f, 1f);
+        Debug.Log("Random number is " + randNum);
+
         foreach(var resource in resourceDrops)
         {
+            if (resource.dropChance < randNum) continue; 
+
             GameObject itemToDrop = itemManager.GetGameObject(resource.item.id);
-            GameObject drop = Instantiate(itemToDrop, transform.position, Quaternion.identity);
-
-            Vector3 rotation = new Vector3(Random.Range(-1f, 1f),0 , Random.Range(-1f, 1f));
-
-            drop.GetComponent<ItemPickUp>().LaunchInDirection(rotation);
+            
+            for(uint i = 0; i < resource.value; i++)
+            {
+                GameObject drop = Instantiate(itemToDrop, transform.position, Quaternion.identity);
+                Vector3 rotation = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));
+                drop.GetComponent<ItemPickUp>().LaunchInDirection(rotation);
+                Thread.Sleep(50);
+            }
+            
         }
     }
 }
