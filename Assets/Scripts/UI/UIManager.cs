@@ -1,10 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager Instance;
+
     private InventoryUI inventoryUI;
     private CraftingUI craftingUI;
     private ThirdPersonMovement player;
@@ -18,6 +21,13 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+
         controls = new UIControls();
 
         controls.ToggleUI.Inventory.performed += ctx => ToggleInventory();
