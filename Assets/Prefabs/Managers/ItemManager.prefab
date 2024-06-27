@@ -48,3 +48,5 @@ MonoBehaviour:
     items:
     - id: 0
       itemGameObject: {fileID: 3494101568239455851, guid: 40619b718bf2b8e43a2da98df1c5e9d0, type: 3}
+    - id: 1
+      itemGameObject: {fileID: 5260136790387662841, guid: 4daf9c0f074dad049b363f5c2eea3eab, type: 3}
