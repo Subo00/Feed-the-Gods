@@ -14,7 +14,7 @@ public class UIManager : MonoBehaviour
     private UIControls controls;
 
     private bool isInventoryOpen = false;
-    private bool isCraftingOpen = false;
+    public bool isCraftingOpen = false;
     //private bool isMenuOpen = false;
 
     private enum UIType { None, Inventory, Crafting, Menu };
@@ -53,7 +53,7 @@ public class UIManager : MonoBehaviour
     {
         controls.ToggleUI.Disable();
     }
-    private void ToggleCrafting()
+    public void ToggleCrafting()
     {
         isCraftingOpen = !isCraftingOpen;
         
