@@ -11,7 +11,6 @@ public class ThirdPersonMovement : MonoBehaviour
    
     private float turnSmoothVelocity;
 
-    public CameraControl camera;
     private bool isUIActive = false;
 
     private ItemManager itemManager;
@@ -23,16 +22,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetButtonDown("Inventory"))
-        {
-            isUIActive = !isUIActive;
-            camera.ToggleInventory(isUIActive);
-        }
-        if(Input.GetButtonDown("Crafting"))
-        {
-            isUIActive = !isUIActive;
-            camera.ToggleCrafting(isUIActive);
-        }
+      
         if (isUIActive) return;
 
         //takes input from keyboard 
@@ -62,6 +52,11 @@ public class ThirdPersonMovement : MonoBehaviour
         GameObject itemToDrop = itemManager.GetGameObject(itemID);
         GameObject drop = Instantiate(itemToDrop, playerPos, playerRot);
         drop.GetComponent<ItemPickUp>().LaunchInDirection(transform.forward + transform.up, 5f); //magic number 5
+    }
+
+    public void ToggleUI(bool isActive)
+    {
+        isUIActive = isActive;
     }
 }
 
