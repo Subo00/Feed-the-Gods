@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Threading;
 
-public class SourceBase : MonoBehaviour, IInteractable, IMyUpdate
+public class SourceBase : MonoBehaviour,  IMyUpdate
 {
     [System.Serializable]
     public struct ResourceDrop
@@ -29,9 +29,6 @@ public class SourceBase : MonoBehaviour, IInteractable, IMyUpdate
         itemManager = ItemManager.Instance;
     }
 
-    void IInteractable.StartInteraction() { }
-    void IInteractable.DisruptInteraction() { }
-    void IInteractable.EndInteraction() { }
     void IMyUpdate.MyUpdate()
     {
         if(Input.GetButtonDown("Interact") )

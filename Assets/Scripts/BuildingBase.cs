@@ -3,13 +3,10 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
-public class BuildingBase : MonoBehaviour, IInteractable, IMyUpdate
+public class BuildingBase : MonoBehaviour,  IMyUpdate
 {
     [SerializeField] private CraftingRecipe.BuildingType buildingType;
    
-    void IInteractable.StartInteraction() { }
-    void IInteractable.DisruptInteraction() { }
-    void IInteractable.EndInteraction() { }
     void IMyUpdate.MyUpdate()
     {
         if (Input.GetButtonDown("Interact"))
