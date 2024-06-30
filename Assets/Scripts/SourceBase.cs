@@ -21,6 +21,8 @@ public class SourceBase : MonoBehaviour,  IMyUpdate
     private float lastInteractionTime;
     public float interactionCooldown = 6f;
 
+    [SerializeField] private MinigameManager.MinigameType minigameType;
+
     private ItemManager itemManager;
 
     private void Start()
@@ -33,10 +35,12 @@ public class SourceBase : MonoBehaviour,  IMyUpdate
     {
         if(Input.GetButtonDown("Interact") )
         {
-            if(Time.time - lastInteractionTime > interactionCooldown)
-            {
-                lastInteractionTime = Time.time;
-                DropResource();
+            Debug.Log("HERE");
+
+            if (Time.time - lastInteractionTime > interactionCooldown)
+            { 
+                MinigameManager.Instance.SetOnFinishMinigame(DropResource);
+                MinigameManager.Instance.StartMinigame(minigameType);
             }
         }
     }
@@ -58,10 +62,9 @@ public class SourceBase : MonoBehaviour,  IMyUpdate
             UpdateManager.Instance.RemoveUpdatable(this);
         }
     }
-    public void DropResource()
+    public void DropResource(float dummy)
     {
         float randNum = Random.Range(0.01f, 1f);
-        Debug.Log("Random number is " + randNum);
 
         foreach(var resource in resourceDrops)
         {
@@ -78,5 +81,8 @@ public class SourceBase : MonoBehaviour,  IMyUpdate
             }
             
         }
+
+        //set a cooldown 
+        lastInteractionTime = Time.time;
     }
 }
