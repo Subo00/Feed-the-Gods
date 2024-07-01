@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading;
+using System.Runtime.CompilerServices;
 
 public class SourceBase : MonoBehaviour,  IMyUpdate
 {
@@ -22,6 +23,7 @@ public class SourceBase : MonoBehaviour,  IMyUpdate
     public float interactionCooldown = 6f;
 
     [SerializeField] private MinigameManager.MinigameType minigameType;
+    [SerializeField] private GameObject dropPoint; 
 
     private ItemManager itemManager;
 
@@ -35,8 +37,6 @@ public class SourceBase : MonoBehaviour,  IMyUpdate
     {
         if(Input.GetButtonDown("Interact") )
         {
-            Debug.Log("HERE");
-
             if (Time.time - lastInteractionTime > interactionCooldown)
             { 
                 MinigameManager.Instance.SetOnFinishMinigame(DropResource);
@@ -72,9 +72,10 @@ public class SourceBase : MonoBehaviour,  IMyUpdate
 
             GameObject itemToDrop = itemManager.GetGameObject(resource.item.id);
             
+           
             for(uint i = 0; i < resource.value; i++)
             {
-                GameObject drop = Instantiate(itemToDrop, transform.position, Quaternion.identity);
+                GameObject drop = Instantiate(itemToDrop, dropPoint.transform.position, Quaternion.identity);
                 Vector3 rotation = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));
                 drop.GetComponent<ItemPickUp>().LaunchInDirection(rotation);
                 Thread.Sleep(50);
