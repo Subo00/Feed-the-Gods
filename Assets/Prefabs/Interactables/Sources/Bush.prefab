@@ -169,7 +169,7 @@ MonoBehaviour:
     dropChance: 0.264
   interactionCooldown: 6
   minigameType: 2
-  dropPoint: {fileID: 2798571753499311286}
+  dropPoint: {fileID: 5986272187160458376}
 --- !u!65 &7867790940997973724
 BoxCollider:
   m_ObjectHideFlags: 0
