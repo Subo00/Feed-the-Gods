@@ -25,7 +25,7 @@ public abstract class Interactable : MonoBehaviour, IMyUpdate
         }
     }
 
-    void Start()
+    protected virtual void Start()
     {
         //Make sure that the gameObject dropPoint is a child of the GO
         //that this script is attached to
