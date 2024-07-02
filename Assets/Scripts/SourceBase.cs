@@ -24,24 +24,38 @@ public class SourceBase : MonoBehaviour,  IMyUpdate
 
     [SerializeField] private MinigameManager.MinigameType minigameType;
     [SerializeField] private Transform dropPoint;
+    private bool inMinigame = false;
 
     private ItemManager itemManager;
+    private UIManager uiManager;
 
     private void Start()
     {
         lastInteractionTime = -interactionCooldown;
         itemManager = ItemManager.Instance;
+        uiManager = UIManager.Instance;
     }
 
     void IMyUpdate.MyUpdate()
     {
-        if(Input.GetButtonDown("Interact") )
+        if(Time.time - lastInteractionTime < interactionCooldown)
         {
-            if (Time.time - lastInteractionTime > interactionCooldown)
-            { 
-                MinigameManager.Instance.SetOnFinishMinigame(DropResource);
-                MinigameManager.Instance.StartMinigame(minigameType);
-            }
+            float difference = interactionCooldown - (Time.time - lastInteractionTime);
+            uiManager.ShowTimeOnObject(dropPoint, Mathf.Round(difference * 10) / 10);
+        }
+        else if(Input.GetButtonDown("Interact"))
+        {
+            MinigameManager.Instance.SetOnFinishMinigame(DropResource);
+            MinigameManager.Instance.StartMinigame(minigameType);
+            inMinigame = true;
+        }
+        else if(inMinigame)
+        {
+            uiManager.HideInteraction();
+        }
+        else
+        {
+            uiManager.ShowInteractionOnObject(dropPoint);
         }
     }
 
@@ -57,8 +71,9 @@ public class SourceBase : MonoBehaviour,  IMyUpdate
     private void OnTriggerExit(Collider other)
     {
         if(other.CompareTag("PlayerInteraction"))
-        { 
+        {
             //Remove UI 
+            UIManager.Instance.HideInteraction();
             UpdateManager.Instance.RemoveUpdatable(this);
         }
     }
@@ -85,5 +100,6 @@ public class SourceBase : MonoBehaviour,  IMyUpdate
 
         //set a cooldown 
         lastInteractionTime = Time.time;
+        inMinigame = false;
     }
 }
