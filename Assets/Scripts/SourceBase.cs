@@ -23,7 +23,7 @@ public class SourceBase : MonoBehaviour,  IMyUpdate
     public float interactionCooldown = 6f;
 
     [SerializeField] private MinigameManager.MinigameType minigameType;
-    [SerializeField] private GameObject dropPoint; 
+    [SerializeField] private Transform dropPoint;
 
     private ItemManager itemManager;
 
@@ -75,7 +75,7 @@ public class SourceBase : MonoBehaviour,  IMyUpdate
            
             for(uint i = 0; i < resource.value; i++)
             {
-                GameObject drop = Instantiate(itemToDrop, dropPoint.transform.position, Quaternion.identity);
+                GameObject drop = Instantiate(itemToDrop, dropPoint.position, Quaternion.identity);
                 Vector3 rotation = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));
                 drop.GetComponent<ItemPickUp>().LaunchInDirection(rotation);
                 Thread.Sleep(50);
