@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
-public class BuildingBase : MonoBehaviour,  IMyUpdate
+public class BuildingBase : Interactable
 {
     [SerializeField] private CraftingRecipe.BuildingType buildingType;
-   
-    void IMyUpdate.MyUpdate()
+
+    protected override void OnUpdate()
     {
+        inUse = UIManager.Instance.isCraftingOpen;
+
         if (Input.GetButtonDown("Interact"))
         {
             UIManager.Instance.ToggleCrafting();
+
             if (UIManager.Instance.isCraftingOpen)
             {
                 CraftingUI.Instance.UpdateRecipeList(buildingType);
@@ -21,24 +24,8 @@ public class BuildingBase : MonoBehaviour,  IMyUpdate
                 CraftingUI.Instance.UpdateRecipeList(CraftingRecipe.BuildingType.None);
             }
         }
-    }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("PlayerInteraction"))
-        {
-            //Add UI
-            UpdateManager.Instance.AddUpdatable(this);
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("PlayerInteraction"))
-        {
-            //Remove UI 
-            UpdateManager.Instance.RemoveUpdatable(this);
-        }
+        CommonLogic();
     }
    
 }
