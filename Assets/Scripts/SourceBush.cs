@@ -27,8 +27,6 @@ public class SourceBush : SourceBase
 
         }
 
-        //set a cooldown 
-        lastInteractionTime = Time.time;
-        inUse = false;
+        base.DropResource(dummy);
     }
 }

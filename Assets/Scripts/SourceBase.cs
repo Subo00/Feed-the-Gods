@@ -55,6 +55,8 @@ public class SourceBase : Interactable
 
     public virtual void DropResource(float dummy)
     {
-       
+        //set a cooldown 
+        lastInteractionTime = Time.time;
+        inUse = false;
     }
 }
