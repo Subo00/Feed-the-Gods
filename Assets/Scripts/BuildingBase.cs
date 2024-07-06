@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BuildingBase : Interactable
 {
-    [SerializeField] private CraftingRecipe.BuildingType buildingType;
+    [SerializeField] private BuildingType buildingType;
 
     protected override void OnUpdate()
     {
@@ -21,7 +21,7 @@ public class BuildingBase : Interactable
             }
             else
             {
-                CraftingUI.Instance.UpdateRecipeList(CraftingRecipe.BuildingType.None);
+                CraftingUI.Instance.UpdateRecipeList(BuildingType.None);
             }
         }
 
