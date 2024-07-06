@@ -44,6 +44,7 @@ public abstract class Interactable : MonoBehaviour, IMyUpdate
         if (other.CompareTag("PlayerInteraction"))
         {
             UpdateManager.Instance.AddUpdatable(this);
+            inUse = false;
         }
     }
 
