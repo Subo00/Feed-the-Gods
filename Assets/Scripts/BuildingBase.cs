@@ -9,7 +9,7 @@ public class BuildingBase : Interactable
 
     protected override void OnUpdate()
     {
-        inUse = UIManager.Instance.isCraftingOpen;
+        inUse = UIManager.Instance.isCraftingOpen || UIManager.Instance.isMinigameOpen;
 
         if (Input.GetButtonDown("Interact"))
         {
