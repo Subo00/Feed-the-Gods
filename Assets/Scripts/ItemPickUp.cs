@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemPickUp : MonoBehaviour
 {
-    [SerializeField] ItemData item;
+    public ItemData item;
 
     public void OnTriggerEnter(Collider other)
     {
@@ -25,7 +25,6 @@ public class ItemPickUp : MonoBehaviour
         {
             // Apply force in the specified direction
             rb.AddForce(direction.normalized * launchForce, ForceMode.Impulse);
-            Debug.Log("Launched");
         }
         else
         {
