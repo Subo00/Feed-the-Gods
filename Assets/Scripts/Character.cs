@@ -10,10 +10,17 @@ public class Character : Interactable
     private DialogManager dialogManager;
     private uint index = 0;
     private bool isFirstTime = true;
+    private CharacterCollector collector;
 
     protected override void Start()
     {
         dialogManager = DialogManager.Instance;
+        collector = gameObject.GetComponentInChildren<CharacterCollector>();
+        if(collector == null)
+        {
+            Debug.LogError("Attach CharacterCollector as a child of the " + name); 
+        }
+
         base.Start();
     }
 
