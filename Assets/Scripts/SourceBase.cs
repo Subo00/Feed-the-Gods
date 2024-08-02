@@ -39,7 +39,7 @@ public class SourceBase : Interactable
         if (Time.time - lastInteractionTime < interactionCooldown)
         {
             float difference = interactionCooldown - (Time.time - lastInteractionTime);
-            uiManager.ShowTimeOnObject(dropPoint, Mathf.Round(difference * 10) / 10);
+            uiManager.ShowTimeOnObject(dropPoint, difference);
         }
         else if (Input.GetButtonDown("Interact"))
         {
