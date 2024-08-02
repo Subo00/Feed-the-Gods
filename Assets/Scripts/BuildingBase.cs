@@ -11,18 +11,10 @@ public class BuildingBase : Interactable
     {
         inUse = UIManager.Instance.isCraftingOpen || UIManager.Instance.isMinigameOpen;
 
-        if (Input.GetButtonDown("Interact"))
+        if (Input.GetButtonDown("Interact") & !inUse)
         {
+            CraftingUI.Instance.UpdateRecipeList(buildingType);
             UIManager.Instance.ToggleCrafting();
-
-            if (UIManager.Instance.isCraftingOpen)
-            {
-                CraftingUI.Instance.UpdateRecipeList(buildingType);
-            }
-            else
-            {
-                CraftingUI.Instance.UpdateRecipeList(BuildingType.None);
-            }
         }
 
         CommonLogic();
