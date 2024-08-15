@@ -21,24 +21,31 @@ public class SourceBase : Interactable
     //Interaction variables
     protected float lastInteractionTime;
     [SerializeField] protected float interactionCooldown = 6f;
-
     [SerializeField] private MinigameManager.MinigameType minigameType;
 
+    //Managers
     protected ItemManager itemManager;
+    protected TimeManager timeManager;
+
+    private string savepath;
 
     protected override void Start()
     {
-        lastInteractionTime = -interactionCooldown;
+        savepath = "Test/" + SceneController.Instance.GetCurrentSceneName() + ".es3";
+
+        LoadTime();
+
         itemManager = ItemManager.Instance;
-        
+        timeManager = TimeManager.Instance;
+
         base.Start();
     }
 
     protected override void OnUpdate()
     {
-        if (Time.time - lastInteractionTime < interactionCooldown)
+        if (timeManager.GetTime() - lastInteractionTime < interactionCooldown)
         {
-            float difference = interactionCooldown - (Time.time - lastInteractionTime);
+            float difference = interactionCooldown - (timeManager.GetTime() - lastInteractionTime);
             uiManager.ShowTimeOnObject(dropPoint, difference);
         }
         else if (Input.GetButtonDown("Interact"))
@@ -56,7 +63,29 @@ public class SourceBase : Interactable
     public virtual void DropResource(float dummy)
     {
         //set a cooldown 
-        lastInteractionTime = Time.time;
+        lastInteractionTime = timeManager.GetTime();
         inUse = false;
+    }
+
+    private void OnDisable()
+    {
+        SaveTime();
+    }
+
+    private void LoadTime()
+    {
+        if(ES3.KeyExists(name, savepath))
+        {
+            lastInteractionTime = ES3.Load<float>(name, savepath);
+        }else
+        {
+            lastInteractionTime = -interactionCooldown;
+            SaveTime();
+        }
+    }
+
+    private void SaveTime()
+    {
+        ES3.Save(name, lastInteractionTime, savepath);
     }
 }
