@@ -12,7 +12,7 @@ public class Character : Interactable, DialogUser
     [SerializeField] private Quest[] quests;
     
     private DialogManager dialogManager;
-    private uint index = 0;
+    private uint questIndex = 0; 
     private bool isFirstTime = true;
     private QuestManager questManager;
     private Quest currentQuest;
@@ -51,15 +51,15 @@ public class Character : Interactable, DialogUser
                 if(isFirstTime)
                 {
                     isFirstTime = false;
-                    dialogManager.StartDialog(dialogFirst[index]);
-                    currentQuest = Instantiate(quests[index]);
+                    dialogManager.StartDialog(dialogFirst[questIndex]);
                     dialogManager.LoadDialog(dialogOther[otherIndex]);
+                    currentQuest = Instantiate(quests[questIndex]);
                     currentQuest.onQuestComplete = IncrementIndex;
                     questManager.AddToActive(currentQuest);
                 }
                 else
                 {
-                    dialogManager.StartDialog(dialogSecond[index]);
+                    dialogManager.StartDialog(dialogSecond[questIndex]);
                     dialogManager.LoadDialog(dialogOther[otherIndex]);
                 }
             }
@@ -77,9 +77,10 @@ public class Character : Interactable, DialogUser
     public void IncrementIndex()
     {
         Debug.Log("QUEST COMPLETED"); return;
-        questManager.AddToCompleted(quests[index]);
+        questManager.AddToCompleted(quests[questIndex]);
+        questIndex++;
         isFirstTime = true;
-        index++;
+        return;
     }
 
     public void OnCheckQuest()
