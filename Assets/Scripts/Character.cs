@@ -18,7 +18,7 @@ public class Character : Interactable, DialogUser
     private Quest currentQuest;
     private bool choicesOpen = false;
     private string prefix = "Offer ";
-    private uint indexOther = 0;
+    private uint otherIndex = 0; //used when traversing dialog menus 
     
 
     protected override void Start()
@@ -52,15 +52,15 @@ public class Character : Interactable, DialogUser
                 {
                     isFirstTime = false;
                     dialogManager.StartDialog(dialogFirst[index]);
-                    dialogManager.LoadDialog(dialogOther[indexOther]);
                     currentQuest = Instantiate(quests[index]);
+                    dialogManager.LoadDialog(dialogOther[otherIndex]);
                     currentQuest.onQuestComplete = IncrementIndex;
                     questManager.AddToActive(currentQuest);
                 }
                 else
                 {
                     dialogManager.StartDialog(dialogSecond[index]);
-                    dialogManager.LoadDialog(dialogOther[indexOther]);
+                    dialogManager.LoadDialog(dialogOther[otherIndex]);
                 }
             }
             else
@@ -89,13 +89,13 @@ public class Character : Interactable, DialogUser
         DialogResponse tmpResponse = new DialogResponse();
 
         currentQuest.CheckProgress();
-        indexOther = 1;
 
         if (currentQuest.isCompleted)
         {
             tmpDialogLine.line = "Thank you";
             checkQuestDialog.lines.Add(tmpDialogLine);
             //IncrementIndex and load new conversation
+            otherIndex = 0;
         }
         else
         {
@@ -116,6 +116,7 @@ public class Character : Interactable, DialogUser
                     checkQuestDialog.responses.Add(tmpResponse);
                 }
             }
+            otherIndex = 1;
         }
         
         //Add a back responses
@@ -146,14 +147,14 @@ public class Character : Interactable, DialogUser
 
     public void OnBack()
     {
-        if (indexOther == 0)
+        if (otherIndex == 0)
         {
             dialogManager.EndDialog();
             return;
         }
 
-        indexOther = 0;
-        dialogManager.LoadDialog(dialogOther[indexOther]);
+        otherIndex = 0;
+        dialogManager.LoadDialog(dialogOther[otherIndex]);
     }
 
     public void OnName(string name)
