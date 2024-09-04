@@ -17,7 +17,6 @@ public class Character : Interactable, DialogUser
     private QuestManager questManager;
     private bool choicesOpen = false;
     private string prefix = "Offer ";
-    private DialogData checkQuestDialog;
     private uint indexOther = 0;
     
 
@@ -35,7 +34,6 @@ public class Character : Interactable, DialogUser
         dialogFirst = Resources.LoadAll<DialogData>("Dialog/" + name + "/First");
         dialogSecond = Resources.LoadAll<DialogData>("Dialog/" + name + "/Second");
         dialogOther = Resources.LoadAll<DialogData>("Dialog/" + name + "/Other");
-        checkQuestDialog = new DialogData();
     }
 
     protected override void OnUpdate()
@@ -84,7 +82,7 @@ public class Character : Interactable, DialogUser
 
     public void OnCheckQuest()
     {
-        checkQuestDialog = new DialogData();
+        DialogData checkQuestDialog = new DialogData();
         DialogLine tmpDialogLine = new DialogLine();
         DialogResponse tmpResponse = new DialogResponse();
 
