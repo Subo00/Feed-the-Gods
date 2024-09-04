@@ -14,7 +14,6 @@ public class Character : Interactable, DialogUser
     private DialogManager dialogManager;
     private uint index = 0;
     private bool isFirstTime = true;
-    private CharacterCollector collector;
     private QuestManager questManager;
     private bool choicesOpen = false;
     private string prefix = "Offer ";
@@ -26,13 +25,6 @@ public class Character : Interactable, DialogUser
     {
         dialogManager = DialogManager.Instance;
         questManager = QuestManager.Instance;
-
-        collector = gameObject.GetComponentInChildren<CharacterCollector>();
-        if(collector == null)
-        {
-            Debug.LogError("Attach CharacterCollector as a child of the " + name); 
-        }
-
         foreach(Quest quest in quests)
         {
             quest.onQuestComplete = IncrementIndex;
@@ -64,7 +56,6 @@ public class Character : Interactable, DialogUser
                     dialogManager.StartDialog(dialogFirst[index]);
                     dialogManager.LoadDialog(dialogOther[indexOther]);
                     questManager.AddToActive(quests[index]);
-                    collector.SetCurrentQuest(quests[index]);
                 }
                 else
                 {
@@ -93,7 +84,6 @@ public class Character : Interactable, DialogUser
 
     public void OnCheckQuest()
     {
-        Quest currentQuest = collector.currentQuest;
         checkQuestDialog = new DialogData();
         DialogLine tmpDialogLine = new DialogLine();
         DialogResponse tmpResponse = new DialogResponse();
