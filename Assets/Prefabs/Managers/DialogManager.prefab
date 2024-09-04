@@ -49,3 +49,6 @@ MonoBehaviour:
   textSpeed: 0
   name: {fileID: 0}
   dialogArea: {fileID: 0}
+  buttonPrefab: {fileID: 3764567698395753948, guid: 8008f1c1d2c4ca8439f899b23bdfa8ad, type: 3}
+  panelTransform: {fileID: 0}
+  responsePanel: {fileID: 0}
