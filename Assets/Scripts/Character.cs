@@ -149,6 +149,7 @@ public class Character : Interactable, DialogUser
         if (otherIndex == 0)
         {
             dialogManager.EndDialog();
+            inUse = false;
             return;
         }
 
