@@ -15,6 +15,7 @@ public class Character : Interactable, DialogUser
     private uint index = 0;
     private bool isFirstTime = true;
     private QuestManager questManager;
+    private Quest currentQuest;
     private bool choicesOpen = false;
     private string prefix = "Offer ";
     private uint indexOther = 0;
@@ -24,16 +25,15 @@ public class Character : Interactable, DialogUser
     {
         dialogManager = DialogManager.Instance;
         questManager = QuestManager.Instance;
-        foreach(Quest quest in quests)
-        {
-            quest.onQuestComplete = IncrementIndex;
-        }
+        currentQuest = null;
 
         base.Start();
 
         dialogFirst = Resources.LoadAll<DialogData>("Dialog/" + name + "/First");
         dialogSecond = Resources.LoadAll<DialogData>("Dialog/" + name + "/Second");
         dialogOther = Resources.LoadAll<DialogData>("Dialog/" + name + "/Other");
+
+        quests = Resources.LoadAll<Quest>("Quests/" + name);
     }
 
     protected override void OnUpdate()
@@ -53,7 +53,9 @@ public class Character : Interactable, DialogUser
                     isFirstTime = false;
                     dialogManager.StartDialog(dialogFirst[index]);
                     dialogManager.LoadDialog(dialogOther[indexOther]);
-                    questManager.AddToActive(quests[index]);
+                    currentQuest = Instantiate(quests[index]);
+                    currentQuest.onQuestComplete = IncrementIndex;
+                    questManager.AddToActive(currentQuest);
                 }
                 else
                 {
@@ -180,8 +182,9 @@ public class Character : Interactable, DialogUser
             }
         }
 
-        int currentItemCount = InventoryManager.Instance.CurrentItemCount(currentSubQuest.collectData);
-        int neededCount = currentSubQuest.requiredValue - currentSubQuest.currentValue;
+        //Remove the item from inventory depending on the SubQuest's count
+        uint currentItemCount = InventoryManager.Instance.CurrentItemCount(currentSubQuest.collectData);
+        uint neededCount = currentSubQuest.requiredValue - currentSubQuest.currentValue;
 
         if (currentItemCount > 0) 
         {
