@@ -5,10 +5,10 @@ using UnityEngine;
 public class Character : Interactable, DialogUser
 {
     [SerializeField] private DialogSettings dialogSettings;
+    [SerializeField] private string name;
     [SerializeField] private DialogData[] dialogFirst;
     [SerializeField] private DialogData[] dialogSecond;
     [SerializeField] private DialogData[] dialogOther;
-    [SerializeField] private string name;
     [SerializeField] private Quest[] quests;
     
     private DialogManager dialogManager;
@@ -76,7 +76,6 @@ public class Character : Interactable, DialogUser
 
     public void IncrementIndex()
     {
-        Debug.Log("QUEST COMPLETED"); return;
         questManager.AddToCompleted(quests[questIndex]);
         questIndex++;
         isFirstTime = true;
@@ -95,7 +94,6 @@ public class Character : Interactable, DialogUser
         {
             tmpDialogLine.line = "Thank you";
             checkQuestDialog.lines.Add(tmpDialogLine);
-            //IncrementIndex and load new conversation
             otherIndex = 0;
         }
         else
@@ -119,7 +117,7 @@ public class Character : Interactable, DialogUser
             }
             otherIndex = 1;
         }
-        
+
         //Add a back responses
         tmpResponse.responseText = "Back";
         tmpResponse.choice = DialogChoice.Back;
@@ -170,12 +168,11 @@ public class Character : Interactable, DialogUser
 
     public void OnSubQuest(string item)
     {
+        //get itemData via name
         item = item.Substring(prefix.Length);
-        //Remove the item from inventory depending on the SubQuest's requiredCount
 
-        //gets itemData via name
         SubQuest currentSubQuest = new SubQuest();
-        foreach(SubQuest subQuest in collector.currentQuest.subQuests)
+        foreach(SubQuest subQuest in currentQuest.subQuests)
         {
             if(subQuest.collectData.name == item)
             {
