@@ -45,6 +45,7 @@ public abstract class Interactable : MonoBehaviour, IMyUpdate
         {
             UpdateManager.Instance.AddUpdatable(this);
             inUse = false;
+            uiManager.SetInteractPoint(dropPoint);
         }
     }
 
@@ -52,7 +53,8 @@ public abstract class Interactable : MonoBehaviour, IMyUpdate
     {
         if (other.CompareTag("PlayerInteraction"))
         {
-            UIManager.Instance.HideInteraction();
+            uiManager.SetInteractPoint();
+            uiManager.HideInteraction();
             UpdateManager.Instance.RemoveUpdatable(this);
         }
     }
