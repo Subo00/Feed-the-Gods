@@ -1,3 +1,4 @@
+using SmallHedge.SoundManager;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -20,9 +21,11 @@ public class SourceBush : SourceBase
             for (uint i = 0; i < resource.value; i++)
             {
                 GameObject drop = Instantiate(itemToDrop, dropPoint.position, Quaternion.identity);
-                Vector3 rotation = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));
-                drop.GetComponent<ItemPickUp>().LaunchInDirection(rotation);
-                Thread.Sleep(50);
+                Vector3 rotation = new Vector3(Random.Range(-1f, 1f), 0.5f, Random.Range(-1f, 1f));
+                drop.GetComponent<ItemPickUp>().LaunchInDirection(rotation, 5f);
+
+               // SoundManager.PlaySound(SoundType.DropApple);
+                yield return new WaitForSeconds(0.3f);
             }
 
         }
