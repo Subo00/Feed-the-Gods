@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6843155988458007033
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5663305948631605945}
+  m_Layer: 0
+  m_Name: SpawnItemPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5663305948631605945
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6843155988458007033}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.869, y: 1.31, z: 1.077}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7588488562994620584}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4268761313515472854
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -59,8 +90,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8542130808384747405, guid: ce83ca772324d2a4ba5467ef9a2df73b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6919941967406476909}
   m_SourcePrefab: {fileID: 100100000, guid: ce83ca772324d2a4ba5467ef9a2df73b, type: 3}
+--- !u!1 &5599682404273123419 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8542130808384747405, guid: ce83ca772324d2a4ba5467ef9a2df73b, type: 3}
+  m_PrefabInstance: {fileID: 4268761313515472854}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6919941967406476909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5599682404273123419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e64bea92d22bb6448befc25bad66e63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6465012680176489469 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7099354216301712427, guid: ce83ca772324d2a4ba5467ef9a2df73b, type: 3}
@@ -118,6 +169,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7059466668734793019, guid: 342b63d7d3749d04ea85bf0c93b51b2a, type: 3}
+      propertyPath: playerSpawnItemPoint
+      value: 
+      objectReference: {fileID: 5663305948631605945}
     m_RemovedComponents:
     - {fileID: -8084312866486236147, guid: 342b63d7d3749d04ea85bf0c93b51b2a, type: 3}
     - {fileID: 5754550565220232205, guid: 342b63d7d3749d04ea85bf0c93b51b2a, type: 3}
@@ -127,6 +182,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6238918930170002341, guid: 342b63d7d3749d04ea85bf0c93b51b2a, type: 3}
       insertIndex: 0
       addedObject: {fileID: 6465012680176489469}
+    - targetCorrespondingSourceObject: {fileID: 6238918930170002341, guid: 342b63d7d3749d04ea85bf0c93b51b2a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5663305948631605945}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3605055378113576494, guid: 342b63d7d3749d04ea85bf0c93b51b2a, type: 3}
       insertIndex: -1
