@@ -5,11 +5,11 @@ using UnityEngine;
 public class Character : Interactable, DialogUser
 {
     [SerializeField] private DialogSettings dialogSettings;
-    [SerializeField] private string name;
     [SerializeField] private DialogData[] dialogFirst;
     [SerializeField] private DialogData[] dialogSecond;
     [SerializeField] private DialogData[] dialogOther;
     [SerializeField] private Quest[] quests;
+    private string characterName;
     
     private DialogManager dialogManager;
     private uint questIndex = 0; 
@@ -26,14 +26,15 @@ public class Character : Interactable, DialogUser
         dialogManager = DialogManager.Instance;
         questManager = QuestManager.Instance;
         currentQuest = null;
+        characterName = gameObject.name;
 
         base.Start();
 
-        dialogFirst = Resources.LoadAll<DialogData>("Dialog/" + name + "/First");
-        dialogSecond = Resources.LoadAll<DialogData>("Dialog/" + name + "/Second");
-        dialogOther = Resources.LoadAll<DialogData>("Dialog/" + name + "/Other");
+        dialogFirst = Resources.LoadAll<DialogData>("Dialog/" + characterName + "/First");
+        dialogSecond = Resources.LoadAll<DialogData>("Dialog/" + characterName + "/Second");
+        dialogOther = Resources.LoadAll<DialogData>("Dialog/" + characterName + "/Other");
 
-        quests = Resources.LoadAll<Quest>("Quests/" + name);
+        quests = Resources.LoadAll<Quest>("Quests/" + characterName);
     }
 
     protected override void OnUpdate()
@@ -44,7 +45,7 @@ public class Character : Interactable, DialogUser
             {
                 //Sets self as a current user in dialogManger
                 inUse = true;
-                dialogManager.ChangeDialogSettings(dialogSettings, name);
+                dialogManager.ChangeDialogSettings(dialogSettings, characterName);
                 dialogManager.SetCurrentUser(this);
                 
                 //Starts dialog
