@@ -5,18 +5,19 @@ using UnityEngine;
 public class Character : Interactable, DialogUser
 {
     [SerializeField] private DialogSettings dialogSettings;
-    [SerializeField] private DialogData[] dialogFirst;
-    [SerializeField] private DialogData[] dialogSecond;
-    [SerializeField] private DialogData[] dialogOther;
-    [SerializeField] private Quest[] quests;
     private string characterName;
     
     private DialogManager dialogManager;
-    private uint questIndex = 0; 
-    private bool isFirstTime = true;
+    private DialogData[] dialogFirst;
+    private DialogData[] dialogSecond;
+    private DialogData[] dialogOther;
+    
     private QuestManager questManager;
+    private Quest[] quests;
     private Quest currentQuest;
-    private bool choicesOpen = false;
+
+    private uint questIndex = 0;
+    private bool isFirstTime = true; private bool choicesOpen = false;
     private string prefix = "Offer ";
     private uint otherIndex = 0; //used when traversing dialog menus 
     
