@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: Collect
-    volume: 0.358
+    volume: 0.156
     mixer: {fileID: 0}
     sounds:
     - {fileID: 8300000, guid: 2bea119c13624384ea85e7a14801d638, type: 3}
