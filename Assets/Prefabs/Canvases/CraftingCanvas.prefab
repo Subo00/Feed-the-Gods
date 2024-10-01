@@ -1102,6 +1102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f067c57d54bf58748a9949e62099408f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 0}
   itemImage: {fileID: 4649021579953653708}
   countSlot: {fileID: 947237881433294460}
   countText: {fileID: 2906049771978279495}
@@ -1388,6 +1389,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f067c57d54bf58748a9949e62099408f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 0}
   itemImage: {fileID: 4782559198062557627}
   countSlot: {fileID: 6389363387349284185}
   countText: {fileID: 4058214836302081310}
@@ -1526,6 +1528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f067c57d54bf58748a9949e62099408f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 0}
   itemImage: {fileID: 6476832293677790543}
   countSlot: {fileID: 3684144853233203316}
   countText: {fileID: 7330357420711308102}
@@ -1739,6 +1742,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f067c57d54bf58748a9949e62099408f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 0}
   itemImage: {fileID: 1538832598379944102}
   countSlot: {fileID: 5340261746855581459}
   countText: {fileID: 8724902554388381993}
@@ -2365,6 +2369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f067c57d54bf58748a9949e62099408f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 0}
   itemImage: {fileID: 3441057450441684833}
   countSlot: {fileID: 1018971587338074625}
   countText: {fileID: 1170745909451193547}

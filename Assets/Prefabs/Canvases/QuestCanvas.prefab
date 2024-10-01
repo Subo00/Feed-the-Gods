@@ -116,6 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0f35934d5a745b45af937fdd12b7cb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transformObject: {fileID: 0}
   questEmpty: 1
   progressBar: {fileID: 6317502697554838177}
   tmpText: {fileID: 417462872902155970}
@@ -456,6 +457,10 @@ PrefabInstance:
     - target: {fileID: 2714922003615545393, guid: 69e1d6a574a71c84293e927074aa3fee, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4278190080
+      objectReference: {fileID: 0}
+    - target: {fileID: 4539680962352037117, guid: 69e1d6a574a71c84293e927074aa3fee, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 7387050201874408873, guid: 69e1d6a574a71c84293e927074aa3fee, type: 3}
       propertyPath: m_Name
