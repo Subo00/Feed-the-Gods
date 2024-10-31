@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f922f92d5c5c0c54ebeee31bdeb4cd95, type: 3}
+  m_Script: {fileID: 11500000, guid: 64e8a9eb5937a0f4e984faac1436ed5f, type: 3}
   m_Name: StrawBerryWineRecepie
   m_EditorClassIdentifier: 
   craftingResult:
     item: {fileID: 11400000, guid: 1cb9b833b44b32747a698f4f7cc20ac5, type: 2}
-    quantity: 1
+    quantity: 0
   ingredients:
   - item: {fileID: 11400000, guid: 5eacf16088e407747bf56f81b9ffcbed, type: 2}
     quantity: 10
