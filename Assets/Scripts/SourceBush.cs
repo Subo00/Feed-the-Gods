@@ -1,9 +1,6 @@
 using SmallHedge.SoundManager;
 using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
-using static SourceBase;
 
 public class SourceBush : SourceBase
 {
