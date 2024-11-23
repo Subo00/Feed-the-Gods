@@ -1,10 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Threading;
-using System.Runtime.CompilerServices;
 
-public class SourceBase : Interactable
 {
     [System.Serializable]
     public struct ResourceDrop
@@ -28,9 +24,8 @@ public class SourceBase : Interactable
 
     protected override void Start()
     {
-        lastInteractionTime = -interactionCooldown;
         itemManager = ItemManager.Instance;
-        
+        lastInteractionTime = -interactionCooldown;
         base.Start();
     }
 
