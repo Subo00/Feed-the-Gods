@@ -17,10 +17,13 @@ public class Character : Interactable, DialogUser
     private Quest currentQuest;
 
     private uint questIndex = 0;
-    private bool isFirstTime = true; private bool choicesOpen = false;
+    private bool isFirstTime = true; 
+    private bool choicesOpen = false;
     private string prefix = "Offer ";
     private uint otherIndex = 0; //used when traversing dialog menus 
-    
+
+    private float interactionCooldown = 0.5f;
+    private float lastInteractionTime = 0f;
 
     protected override void Start()
     {
@@ -40,8 +43,12 @@ public class Character : Interactable, DialogUser
 
     protected override void OnUpdate()
     {
+        //Disables the re-entering in the conversation 
+        if (Time.time < lastInteractionTime + interactionCooldown) return;
+
         if (Input.GetButtonDown("Interact"))
         {
+
             if (!inUse)
             {
                 //Sets self as a current user in dialogManger
@@ -152,6 +159,8 @@ public class Character : Interactable, DialogUser
         {
             dialogManager.EndDialog();
             inUse = false;
+            lastInteractionTime = Time.time;
+
             return;
         }
 
