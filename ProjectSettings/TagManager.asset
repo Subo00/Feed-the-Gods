@@ -16,8 +16,8 @@ TagManager:
   - Inventory
   - MainMenu
   - Crafting
-  - 
-  - 
+  - PlayerController
+  - Ground
   - 
   - 
   - 
