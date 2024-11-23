@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 01
+  m_Script: {fileID: 11500000, guid: 352e99f4640360b4297c19371aaddb7e, type: 3}
+  m_Name: New Item 1
   m_EditorClassIdentifier: Assembly-CSharp::Quest
-  name: BerriePicker
-  questGiver: Cylinder
-  description: Give Berries to the Cylinder
+  questName: sss
+  questGiver: ssss
+  description: sssss
   subQuests:
-  - collectData: {fileID: 11400000, guid: 5eacf16088e407747bf56f81b9ffcbed, type: 2}
-    requiredValue: 10
+  - collectData: {fileID: 11400000, guid: 1cb9b833b44b32747a698f4f7cc20ac5, type: 2}
+    requiredValue: 2
     currentValue: 0
   isCompleted: 0

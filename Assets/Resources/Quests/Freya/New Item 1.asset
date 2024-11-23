@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 02
+  m_Script: {fileID: 11500000, guid: 352e99f4640360b4297c19371aaddb7e, type: 3}
+  m_Name: New Item 1
   m_EditorClassIdentifier: Assembly-CSharp::Quest
-  name: Gib Vine
-  questGiver: Cylinder
-  description: GIVE THIS CYLINDER 2 WINE
+  questName: sss
+  questGiver: ssss
+  description: sssss
   subQuests:
   - collectData: {fileID: 11400000, guid: 1cb9b833b44b32747a698f4f7cc20ac5, type: 2}
     requiredValue: 2
