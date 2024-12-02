@@ -28,10 +28,10 @@ public class BuildingBase : Interactable, RecipeSpawner
         base.Start();
     }
 
-    public void SpawnRecipe(CraftingRecipe recipe)
+    public void SpawnRecipe(CraftingRecipe recipe, uint numOfSpawnes)
     {
         uint itemID = recipe.craftingResult.item.id;
-        uint quantity = recipe.craftingResult.quantity;
+        uint quantity = recipe.craftingResult.quantity * numOfSpawnes;
 
         //Dropt it from object's position 
         Vector3 objectPos = transform.position + transform.forward * 3; //magic number 3
