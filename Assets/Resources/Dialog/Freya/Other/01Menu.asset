@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 01Menu
   m_EditorClassIdentifier: 
   lines:
-  - line: 'How can I help you? '
+  - line: 'Now, how can I help you? '
   responses:
   - responseText: Quest check
     choice: 0

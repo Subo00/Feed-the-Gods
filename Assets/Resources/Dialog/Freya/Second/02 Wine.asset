@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: 02 Wine
   m_EditorClassIdentifier: 
   lines:
-  - line: '2 Bottles of wine '
-  - line: 'And all will be fine '
+  - line: 2 bottles of wine
+  - line: 'Interact with the barrel with E  '
+  - line: 'Choose which wine and how much of it to craft  '
+  - line: 'Then craft it and bring it here '
   responses: []

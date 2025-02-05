@@ -13,7 +13,11 @@ MonoBehaviour:
   m_Name: 01Berries
   m_EditorClassIdentifier: 
   lines:
-  - line: Hello
-  - line: My name is Cylinder
-  - line: Can you give me 10 Strawberries please
+  - line: Oh hi there, you must be new!
+  - line: 'My name is Freya
+
+'
+  - line: Let's see if your functionalities are online
+  - line: 'See the bushes behind me? '
+  - line: 'Do you mind grabing 25 berries form them and giving them to me? '
   responses: []

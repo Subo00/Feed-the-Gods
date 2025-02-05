@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: 01Berries
   m_EditorClassIdentifier: 
   lines:
-  - line: '10 Berries please '
-  - line: And then we can talk some more
+  - line: 25 strawberries, it shouldn't be that hard
+  - line: You walk up to the bush and press and hold the E button
   responses: []

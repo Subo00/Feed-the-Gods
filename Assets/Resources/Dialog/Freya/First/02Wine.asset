@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 02Wine
   m_EditorClassIdentifier: 
   lines:
-  - line: Okay now I want something to dring
-  - line: Perhaps even get drunk
-  - line: 'We''ll see '
+  - line: Okay, now let's mix things up
+  - line: 'You see that barrel over there in the corner? '
+  - line: Go make me 2 bottles of strawberrie wine
   responses: []
