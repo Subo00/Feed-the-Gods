@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 352e99f4640360b4297c19371aaddb7e, type: 3}
   m_Name: New Item 1
   m_EditorClassIdentifier: Assembly-CSharp::Quest
-  questName: sss
-  questGiver: ssss
+  questName: Wine some more
+  questGiver: Goldilocks
   description: sssss
   subQuests:
   - collectData: {fileID: 11400000, guid: 1cb9b833b44b32747a698f4f7cc20ac5, type: 2}

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 352e99f4640360b4297c19371aaddb7e, type: 3}
   m_Name: New Item
   m_EditorClassIdentifier: Assembly-CSharp::Quest
-  questName: Name
-  questGiver: Your mom
+  questName: Berry picker
+  questGiver: Goldilocks
   description: WHATEVER
   subQuests:
   - collectData: {fileID: 11400000, guid: 5eacf16088e407747bf56f81b9ffcbed, type: 2}
