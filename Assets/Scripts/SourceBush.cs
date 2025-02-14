@@ -2,7 +2,7 @@ using SmallHedge.SoundManager;
 using System.Collections;
 using UnityEngine;
 
-public class SourceBush : SourceBase
+public class SourceBush : Source
 {
     public override void DropResource(float dummy)
     {
