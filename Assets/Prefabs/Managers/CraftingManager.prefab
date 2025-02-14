@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6738984994408580241}
-  - component: {fileID: 6066994913881403190}
+  - component: {fileID: 537100971355931813}
   m_Layer: 0
   m_Name: CraftingManager
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6066994913881403190
+--- !u!114 &537100971355931813
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,6 +41,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 4834817259203231834}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b64ad89406edc847b769f58270e9f0b, type: 3}
+  m_Script: {fileID: 11500000, guid: ec35e7b67af74954789588f2ac532903, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -46,3 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minigameStompingPrefab: {fileID: 3978876692199471002, guid: ab836e7822bb4624cad81634b79b6d24, type: 3}
   minigameGatheringPrefab: {fileID: 2252801622365867646, guid: dfe42ddf2025e77429ef02304a01f64a, type: 3}
+  minigameHeadHitPrefab: {fileID: 2252801622365867646, guid: 0151ff9541b410f408282b6e906bcd07, type: 3}
