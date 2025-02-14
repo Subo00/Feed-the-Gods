@@ -15,7 +15,7 @@ public class MinigameManager : MonoBehaviour
     private Minigame currentMinigame;
     private GameObject currentMinigamePrefab = null;
 
-    private UIManager uiManager;
+    private UIManagerChild uiManagerChild;
     private CraftingManager craftingManager;
     private MinigameUI minigameCanvas;
 
@@ -37,8 +37,8 @@ public class MinigameManager : MonoBehaviour
     private void Start()
     {
         //make sure there is a game object wit the MinigameUI script attached
-        minigameCanvas = GameObject.FindObjectOfType<MinigameUI>(); 
-        uiManager = UIManager.Instance;
+        minigameCanvas = GameObject.FindObjectOfType<MinigameUI>();
+        uiManagerChild = UIManagerChild.Instance;
         craftingManager = CraftingManager.Instance;
     }
 
@@ -74,7 +74,7 @@ public class MinigameManager : MonoBehaviour
         if (currentMinigamePrefab != null)
         {
             currentMinigame = currentMinigamePrefab.GetComponent<Minigame>();
-            uiManager.ToggleMinigame();
+            uiManagerChild.ToggleMinigame();
             currentMinigame.StartMinigame(valueUint);
         }
     }
@@ -82,7 +82,7 @@ public class MinigameManager : MonoBehaviour
     public void EndMinigame(float success)
     {
         currentMinigame.EndMinigame();
-        uiManager.ToggleMinigame();
+        uiManagerChild.ToggleMinigame();
         currentMinigame = null;
 
         Destroy(currentMinigamePrefab);
