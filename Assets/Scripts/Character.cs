@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : Interactable, DialogUser
+public class Character : Interactable, DialogUser, IDataPersistence
 {
     [SerializeField] private DialogSettings dialogSettings;
     private string characterName;
@@ -211,5 +211,24 @@ public class Character : Interactable, DialogUser
         }
         //load OnCheckQuest again to refresh everything
         OnCheckQuest();
+    }
+
+    public void LoadData(GameData data)
+    {
+        /*if (!data.charactersDialog.TryGetValue(name, out questIndex))
+        {
+           questIndex = 0;
+        }
+        */
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        /*if (data.charactersDialog.ContainsKey(name))
+        {
+            data.charactersDialog.Remove(name);
+        }
+        data.charactersDialog.Add( name, questIndex);
+        */
     }
 }
