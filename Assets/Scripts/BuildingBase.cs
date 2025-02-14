@@ -8,14 +8,16 @@ public class BuildingBase : Interactable, RecipeSpawner
 {
     [SerializeField] private BuildingType buildingType;
     protected ItemManager itemManager;
+    private UIManagerChild uiManagerChild;
+
     protected override void OnUpdate()
     {
-        inUse = UIManager.Instance.isCraftingOpen || UIManager.Instance.isMinigameOpen;
+        inUse = uiManagerChild.isCraftingOpen || uiManagerChild.isMinigameOpen;
 
         if (Input.GetButtonDown("Interact") & !inUse)
         {
             CraftingUI.Instance.UpdateRecipeList(buildingType);
-            UIManager.Instance.ToggleCrafting();
+            uiManagerChild.ToggleCrafting();
             MinigameManager.Instance.SetRecipeSpawner(this);
         }
 
@@ -25,6 +27,7 @@ public class BuildingBase : Interactable, RecipeSpawner
     protected override void Start()
     {
         itemManager = ItemManager.Instance;
+        uiManagerChild = UIManagerChild.Instance;
         base.Start();
     }
 
