@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UIManagerChild : UIManager
+public class UIManagerChild : PlayerHUD //delete this script 
 {
     public static UIManagerChild Instance;
 
@@ -44,22 +44,21 @@ public class UIManagerChild : UIManager
         controls.ToggleUI.Inventory.performed += ctx => { if (!IsImportatnTypeOpen()) ToggleInventory(); };
         controls.ToggleUI.Crafting.performed += ctx => { if(!isCraftingOpen) craftingUI.UpdateRecipeList(BuildingType.None); };
         controls.ToggleUI.Crafting.performed += ctx => { if (!IsImportatnTypeOpen()) ToggleCrafting(); };
-        controls.ToggleUI.Menu.performed += ctx =>  ToggleMenu();
+        //controls.ToggleUI.Menu.performed += ctx =>  ToggleMenu();
         controls.ToggleUI.Cancle.performed += ctx => { if (!IsImportatnTypeOpen()) CloseOtherUIs(UIType.None); };
 
         controls.UI.Interact.performed += ctx => OnInteractPressed(); //enables UI interaction with the E button
 
         base.Awake();
 
-        UIManager.Instance = this;
+        //PlayerHUD.Instance = this;
         HideInteraction();
 
         DontDestroyOnLoad(this.gameObject);
     }
 
-    protected override void Start()
+    protected void Start()
     {
-        base.Start();
         inventoryUI = InventoryUI.Instance;
         craftingUI = CraftingUI.Instance;
         minigameUI = MinigameUI.Instance;
@@ -111,7 +110,7 @@ public class UIManagerChild : UIManager
 
    
 
-    public override void ToggleMenu()
+   /* public override void ToggleMenu()
     {
         isMenuOpen = !isMenuOpen;
 
@@ -133,7 +132,7 @@ public class UIManagerChild : UIManager
             Time.timeScale = 1f;
         }
     }
-
+   */
     public void ToggleMinigame()
     {
         isMinigameOpen = !isMinigameOpen;
@@ -215,11 +214,11 @@ public class UIManagerChild : UIManager
             dialogUI.Toggle(isDialogOpen);
         }
 
-        if(currentUI != UIType.Menu)
+       /* if(currentUI != UIType.Menu)
         {
             isMenuOpen = false;
             menuUI.Toggle(isMenuOpen);
-        }
+        }*/
 
         if(currentUI != UIType.Tutorial)
         {
