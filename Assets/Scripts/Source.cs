@@ -3,12 +3,13 @@ using UnityEngine;
 
 public class Source : SourceBase
 {
-    [SerializeField] private MinigameManager.MinigameType minigameType;
+    [SerializeField] private MinigameType minigameType;
 
     protected override void OnInteracted()
     {
-        MinigameManager.Instance.SetOnFinishMinigame(DropResource);
-        MinigameManager.Instance.StartMinigame(minigameType);
+        //base.OnInteracted();
+        interactingPlayer.MinigameManager.SetOnFinishMinigame(DropResource);
+        interactingPlayer.MinigameManager.StartMinigame(minigameType);
         inUse = true;
     }
 }

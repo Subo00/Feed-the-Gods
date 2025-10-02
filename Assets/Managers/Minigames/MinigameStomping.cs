@@ -4,7 +4,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 
-public class MinigameStomping : MonoBehaviour, Minigame
+public class MinigameStomping :  Minigame
 {
     [SerializeField] private float step = 0.15f;
     [SerializeField] private ProgressBar progressBar;
@@ -18,26 +18,26 @@ public class MinigameStomping : MonoBehaviour, Minigame
     private uint counter = 1;
     private float threshold = 0f;
 
-    void Minigame.StartMinigame(uint valueUint) 
+    public override void StartMinigame(uint valueUint, MinigameManager manager = null)
     {
+        base.StartMinigame(valueUint, manager);
         numToSpawn = valueUint;
 
         endGoal = calculateFloat(valueUint);
         threshold = calculateFloat(counter);
         Debug.Log("endGoal: " + endGoal);
 
-        UpdateManager.Instance.AddUpdatable(this);
         PlayerAnimationController.instance.PlayAllLayers(Animations.IDLE);
         PlayerAnimationController.instance.Play(Animations.STOMP, 2, false, false);
     }
-    void Minigame.DisruptMinigame() { }
-    void Minigame.EndMinigame() 
+
+    public override void EndMinigame()
     {
-        UpdateManager.Instance.RemoveUpdatable(this);
+        base.EndMinigame();
         PlayerAnimationController.instance.PlayAllLayers(Animations.NONE);
     }
 
-    void IMyUpdate.MyUpdate() 
+    protected override void OnUpdate()
     {
         // Handle player input and update the progress bar
         if (Input.GetAxisRaw("Horizontal") == -1f && rightLeg)
@@ -53,7 +53,7 @@ public class MinigameStomping : MonoBehaviour, Minigame
 
         if (Input.GetButtonDown("Cancel"))
         {
-            MinigameManager.Instance.EndMinigame(-1f);
+            manager.EndMinigame(-1f);
         }
         
 
@@ -61,11 +61,11 @@ public class MinigameStomping : MonoBehaviour, Minigame
 
         if (progress >= endGoal)
         {
-            MinigameManager.Instance.EndMinigame((float)numToSpawn);
+            manager.EndMinigame((float)numToSpawn);
         }
         else if(progress >= threshold)
         {
-            MinigameManager.Instance.SpawnFromSpawner();
+            manager.SpawnFromSpawner();
             counter++;
             threshold = calculateFloat(counter);
         }

@@ -1,45 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.EventSystems;
 using UnityEngine;
 
 public class MinigameManager : MonoBehaviour
 {
-    public static MinigameManager Instance;
-    public enum MinigameType { None, Stomping, Gathering, HeadHit };
-
-    [SerializeField] private GameObject minigameStompingPrefab;
-    [SerializeField] private GameObject minigameGatheringPrefab;
-    [SerializeField] private GameObject minigameHeadHitPrefab;
-
     private Minigame currentMinigame;
     private GameObject currentMinigamePrefab = null;
-
-    private UIManagerChild uiManagerChild;
-    private CraftingManager craftingManager;
     private MinigameUI minigameCanvas;
+    private Player player;
 
     private System.Action<float> onFinishMinigameSource;
     private CraftingRecipe recipe = null;
     private RecipeSpawner recipeSpawner = null;
     private bool? isSource = null;
 
-    private void Awake()
-    {
-        if (Instance != null)
-        {
-            this.gameObject.SetActive(false);
-            return;
-        }
-        Instance = this;
-    }
 
-    private void Start()
-    {
-        //make sure there is a game object wit the MinigameUI script attached
-        minigameCanvas = GameObject.FindObjectOfType<MinigameUI>();
-        uiManagerChild = UIManagerChild.Instance;
-        craftingManager = CraftingManager.Instance;
+    public void SetPlayer(Player player) 
+    { 
+        this.player = player;
+        minigameCanvas = player.PlayerUI.MinigameUI;
     }
 
     public void SetOnFinishMinigame(System.Action<float> action)
@@ -54,19 +31,19 @@ public class MinigameManager : MonoBehaviour
         isSource = false;
     }
 
-    public void StartMinigame(MinigameType minigameType, uint valueUint = 1)
+    public void StartMinigame(MinigameType minigameType,  uint valueUint = 1)
     {
-        
+        minigameCanvas.Toggle(true);
         switch (minigameType)
         {
             case MinigameType.Stomping:
-                currentMinigamePrefab = Instantiate(minigameStompingPrefab, minigameCanvas.transformObject.transform);
+                currentMinigamePrefab = Instantiate(MinigamePrefabHolder.Instance.GetStomping() , minigameCanvas.transformObject.transform);
                 break;
             case MinigameType.Gathering:
-                currentMinigamePrefab = Instantiate(minigameGatheringPrefab, minigameCanvas.transformObject.transform);
+                currentMinigamePrefab = Instantiate(MinigamePrefabHolder.Instance.GetGathering() , minigameCanvas.transformObject.transform);
                 break;
             case MinigameType.HeadHit:
-                currentMinigamePrefab = Instantiate(minigameHeadHitPrefab, minigameCanvas.transformObject.transform);
+                currentMinigamePrefab = Instantiate(MinigamePrefabHolder.Instance.GetHeadHit() , minigameCanvas.transformObject.transform);
                 break;
                 // Add other minigame types here
         }
@@ -74,19 +51,19 @@ public class MinigameManager : MonoBehaviour
         if (currentMinigamePrefab != null)
         {
             currentMinigame = currentMinigamePrefab.GetComponent<Minigame>();
-            uiManagerChild.ToggleMinigame();
-            currentMinigame.StartMinigame(valueUint);
+            //uiManagerChild.ToggleMinigame();
+            currentMinigame.StartMinigame(valueUint, this);
         }
     }
 
     public void EndMinigame(float success)
     {
         currentMinigame.EndMinigame();
-        uiManagerChild.ToggleMinigame();
+        //uiManagerChild.ToggleMinigame();
         currentMinigame = null;
 
         Destroy(currentMinigamePrefab);
-        currentMinigamePrefab=null;
+        currentMinigamePrefab = null;
 
         //if success then drop reward 
         if(success > 0f)
@@ -107,6 +84,7 @@ public class MinigameManager : MonoBehaviour
 
         isSource = null;
         recipe = null;
+        minigameCanvas.Toggle(false);
     }
 
     public void SetRecipeSpawner(RecipeSpawner spawner)
@@ -117,5 +95,10 @@ public class MinigameManager : MonoBehaviour
     public void SpawnFromSpawner()
     {
         recipeSpawner.SpawnRecipe(recipe);
+    }
+
+    public bool IsInteracting()
+    {
+        return player.IsInteracting;
     }
 }

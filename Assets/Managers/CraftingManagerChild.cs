@@ -8,7 +8,6 @@ public class CraftingManagerChild : CraftingManager
 
     private void Start()
     {
-        minigameManager = MinigameManager.Instance;
         base.Start();
     }
 
@@ -25,19 +24,19 @@ public class CraftingManagerChild : CraftingManager
             UIManagerChild.Instance.ToggleCrafting();
 
             //start minigame 
-            MinigameManager.MinigameType minigameType = GetTypeFromBuilding(recipe.buildingRequired);
-            minigameManager.StartMinigame(minigameType, numToCraft);
-            minigameManager.SetOnFinishMinigame(recipe);
+            MinigameType minigameType = GetTypeFromBuilding(recipe.buildingRequired);
+            //minigameManager.StartMinigame(minigameType, numToCraft);
+            //minigameManager.SetOnFinishMinigame(recipe);
         }
     }
 
-    private MinigameManager.MinigameType GetTypeFromBuilding(BuildingType buildingType)
+    private MinigameType GetTypeFromBuilding(BuildingType buildingType)
     {
         switch (buildingType)
         {
             case BuildingType.Vinery:
-                return MinigameManager.MinigameType.Stomping;
+                return MinigameType.Stomping;
         }
-        return MinigameManager.MinigameType.None;
+        return MinigameType.None;
     }
 }

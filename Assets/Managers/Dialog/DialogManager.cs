@@ -145,7 +145,7 @@ public class DialogManager : MonoBehaviour
             dialogButtons.Add(buttonInstance);
         }
 
-        ManagerHelper.Instance.ConnectButtons(dialogButtons, constraintsCount);
+        ManagerHelper.ConnectButtons(dialogButtons, constraintsCount);
        
         //LayoutRebuilder.ForceRebuildLayoutImmediate(panelTransform.GetComponent<RectTransform>());
         uiManager.ShowDialogResponse(true);

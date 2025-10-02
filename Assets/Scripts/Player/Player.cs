@@ -6,12 +6,16 @@ public class Player : ThirdPersonMovement
 {
     public Inventory Inventory => inventory;
     public PlayerUIManager PlayerUI => playerUIManager;
+    public MinigameManager MinigameManager => minigameManager;
 
     [SerializeField] private Transform playerSpawnItemPoint;
     [SerializeField] private Inventory inventory;
+    [SerializeField] private MinigameManager minigameManager;
     [SerializeField] private PlayerUIManager playerUIManager;
 
     private ItemManager itemManager;
+    private Action<Player> interactAction;
+    public void SetInteract(Action<Player> action) { interactAction = action;  }
     
     /*
     private PlayerInputActions playerControls;
@@ -47,6 +51,7 @@ public class Player : ThirdPersonMovement
         //PlayerInput playerInput = GetComponent<PlayerInput>();
         //playerInput.camera = playerUIManager.GetComponentInParent<Camera>();
 
+        minigameManager.SetPlayer(this);
         base.Start();
     }
 
@@ -84,8 +89,12 @@ public class Player : ThirdPersonMovement
         inventory.RemoveFromEquippedStack();
     }
 
-    public void OnMove(InputAction.CallbackContext context)
+    public void OnMove(InputAction.CallbackContext context) { SetInputVector(context.ReadValue<Vector2>());  }
+
+    public void OnInteract(InputAction.CallbackContext context) 
     {
-        SetInputVector(context.ReadValue<Vector2>());
+        if (context.started) isInteracting = true;
+        if (context.canceled) isInteracting = false;
+        interactAction?.Invoke(this); 
     }
 }

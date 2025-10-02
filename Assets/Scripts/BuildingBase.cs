@@ -10,6 +10,7 @@ public class BuildingBase : Interactable, RecipeSpawner
     protected ItemManager itemManager;
     private UIManagerChild uiManagerChild;
 
+        //MinigameManager.Instance.SetRecipeSpawner(this);
     protected override void OnUpdate()
     {
         inUse = uiManagerChild.isCraftingOpen || uiManagerChild.isMinigameOpen;
@@ -18,7 +19,6 @@ public class BuildingBase : Interactable, RecipeSpawner
         {
             CraftingUI.Instance.UpdateRecipeList(buildingType);
             uiManagerChild.ToggleCrafting();
-            MinigameManager.Instance.SetRecipeSpawner(this);
         }
 
         CommonLogic();

@@ -1,10 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public interface Minigame : IMyUpdate
+public class Minigame : MonoBehaviour, IMyUpdate
 {
-    void StartMinigame(uint uintValue = 0);
-    void EndMinigame();
-    void DisruptMinigame();
+    protected MinigameManager manager;
+    public virtual void StartMinigame(uint uintValue = 0, MinigameManager manager = null)
+    {
+        this.manager = manager;
+        UpdateManager.Instance.AddUpdatable(this);
+    }
+    public virtual void EndMinigame()
+    {
+        UpdateManager.Instance.RemoveUpdatable(this);
+    }
+    public virtual void DisruptMinigame() { }
+
+    protected virtual void OnUpdate() { }
+    void IMyUpdate.MyUpdate()
+    {
+        OnUpdate();
+    }
 }

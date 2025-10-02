@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class MinigameHeadHit : MonoBehaviour, Minigame
+public class MinigameHeadHit : Minigame
 {
     [SerializeField] private RectTransform indicator;
     [SerializeField] private float speed = 30f;
@@ -13,21 +10,8 @@ public class MinigameHeadHit : MonoBehaviour, Minigame
 
     private bool goingDown = false;
 
-    void Minigame.DisruptMinigame()
-    {
-    }
 
-    void Minigame.EndMinigame()
-    {
-        UpdateManager.Instance.AddUpdatable(this);
-    }
-
-    void Minigame.StartMinigame(uint uintValue)
-    {
-        UpdateManager.Instance.AddUpdatable(this);
-    }
-
-    void IMyUpdate.MyUpdate()
+    protected override void OnUpdate()
     {
         //MOVING
         if (goingDown)

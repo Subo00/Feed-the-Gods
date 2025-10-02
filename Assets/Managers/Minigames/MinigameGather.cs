@@ -3,40 +3,41 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MinigameGather : MonoBehaviour, Minigame
+public class MinigameGather :  Minigame
 {
     private float progress = 0f;
     [SerializeField] private float step = 0.01f;
     [SerializeField] private ProgressBar progressBar;
 
-    void Minigame.StartMinigame(uint valueUint)
+
+    public override void StartMinigame(uint valueUint, MinigameManager manager = null)
     {
-        UpdateManager.Instance.AddUpdatable(this);
-        PlayerAnimationController.instance.PlayAllLayers(Animations.GATHER);
-        SoundManager.PlaySound(SoundType.Rustle);
+        base.StartMinigame(valueUint, manager);
+        //PlayerAnimationController.instance.PlayAllLayers(Animations.GATHER);
+        //SoundManager.PlaySound(SoundType.Rustle);
     }
-    void Minigame.DisruptMinigame() { }
-    void Minigame.EndMinigame()
+    public override void DisruptMinigame() { }
+    public override void EndMinigame()
     {
-        UpdateManager.Instance.RemoveUpdatable(this);
+        base.EndMinigame();
     }
 
-    void IMyUpdate.MyUpdate()
+    protected override void OnUpdate()
     {
-        if(Input.GetButton("Interact"))
+        if(manager.IsInteracting())
         {
             progress += step;
             progressBar.SetFillAmount(progress);
 
             if (progress >= 1.0f)
             {
-                MinigameManager.Instance.EndMinigame(1f);
+                manager.EndMinigame(1f);
                 return;
             }
         }
         else
         {
-            MinigameManager.Instance.EndMinigame(-1f);
+            manager.EndMinigame(-1f);
         }
     }
 }
