@@ -912,6 +912,51 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.0000009536743, y: 0.1520453, z: -0.039741993}
     m_Extent: {x: 0.26237544, y: 0.2270983, z: 0.13230327}
   m_DirtyAABB: 0
+--- !u!1 &2776300576874360338
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 438440340830898517}
+  - component: {fileID: 734743787096512874}
+  m_Layer: 0
+  m_Name: MinigameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &438440340830898517
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2776300576874360338}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2166478355169847055}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &734743787096512874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2776300576874360338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b75a8782aef86204c8f49d902d0e2ce7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minigameCanvas: {fileID: 0}
 --- !u!1 &2993537796156607934
 GameObject:
   m_ObjectHideFlags: 0
@@ -1689,6 +1734,7 @@ Transform:
   - {fileID: 469435043076144137}
   - {fileID: 8919143412061959299}
   - {fileID: 4722648351904809209}
+  - {fileID: 438440340830898517}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &8453326188650531123
@@ -1733,6 +1779,7 @@ MonoBehaviour:
   turnSmoothTime: 0.1
   playerSpawnItemPoint: {fileID: 8919143412061959299}
   inventory: {fileID: 318181249260564451}
+  minigameManager: {fileID: 734743787096512874}
   playerUIManager: {fileID: 0}
 --- !u!114 &5203842045307950816
 MonoBehaviour:
@@ -1789,10 +1836,6 @@ MonoBehaviour:
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: aab569c2-28cb-4fcd-889e-4f1a4159d54f
-    m_ActionName: Player/Look
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: 9239fb16-2347-463b-8490-089c9940fd81
     m_ActionName: Player/Fire
   - m_PersistentCalls:
@@ -1835,6 +1878,26 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 74de28eb-cdcb-41c5-a627-85f49eafdec4
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2056110169714612495}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: OnInteract
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 32fd58b1-b6ab-446b-bd99-dddbf030b4ec
+    m_ActionName: Player/Interact[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 38d457f9-bf11-499a-80c8-47a3c416671a
+    m_ActionName: Player/Join[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

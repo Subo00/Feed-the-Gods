@@ -1,12 +1,13 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEngine.InputSystem.InputAction;
 
 public class Player : ThirdPersonMovement
 {
     public Inventory Inventory => inventory;
     public PlayerUIManager PlayerUI => playerUIManager;
     public MinigameManager MinigameManager => minigameManager;
+    public bool IsInteracting => isInteracting;
 
     [SerializeField] private Transform playerSpawnItemPoint;
     [SerializeField] private Inventory inventory;
@@ -15,7 +16,10 @@ public class Player : ThirdPersonMovement
 
     private ItemManager itemManager;
     private Action<Player> interactAction;
+    private bool isInteracting = false;
+
     public void SetInteract(Action<Player> action) { interactAction = action;  }
+    public void ClearInteract() {  interactAction = null; }
     
     /*
     private PlayerInputActions playerControls;
@@ -45,13 +49,17 @@ public class Player : ThirdPersonMovement
 
         //playerUIManager = CameraManager.Instance.CreatePlayerUI(this.transform);
         //playerUIManager.HideInteraction();
-        
+
         //playerUIManager.InventoryUI.Bind(this);
 
         //PlayerInput playerInput = GetComponent<PlayerInput>();
         //playerInput.camera = playerUIManager.GetComponentInParent<Camera>();
+        playerUIManager.SetPlayer(this);
+        inventory.SetInevntoryUI(PlayerUI.InventoryUI);
+        inventory.SetEquippedItemUI(PlayerUI.EquippedItemUI);
 
         minigameManager.SetPlayer(this);
+        ClearInteract();
         base.Start();
     }
 

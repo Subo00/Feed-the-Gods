@@ -25,7 +25,12 @@ public class Character : Interactable, DialogUser, IDataPersistence
     private float interactionCooldown = 0.5f;
     private float lastInteractionTime = 0f;
 
+    public override void OnInteract(Player player)   
+    {
+        if (inUse) return;
+        interactingPlayer = player;
 
+    }
     protected override void Start()
     {
         dialogManager = DialogManager.Instance;
@@ -195,7 +200,7 @@ public class Character : Interactable, DialogUser, IDataPersistence
         }
 
         //Remove the item from inventory depending on the SubQuest's count
-        uint currentItemCount = Inventory.Instance.CurrentItemCount(currentSubQuest.collectData);
+        /*uint currentItemCount = Inventory.Instance.CurrentItemCount(currentSubQuest.collectData);
         uint neededCount = currentSubQuest.requiredValue - currentSubQuest.currentValue;
 
         if (currentItemCount > 0) 
@@ -209,7 +214,7 @@ public class Character : Interactable, DialogUser, IDataPersistence
                 Inventory.Instance.RemoveItemQuantity(currentSubQuest.collectData, currentItemCount);
                 currentSubQuest.currentValue += currentItemCount;
             }
-        }
+        }*/
         //load OnCheckQuest again to refresh everything
         OnCheckQuest();
     }

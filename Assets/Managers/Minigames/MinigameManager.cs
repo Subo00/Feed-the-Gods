@@ -8,6 +8,7 @@ public class MinigameManager : MonoBehaviour
     private Player player;
 
     private System.Action<float> onFinishMinigameSource;
+    private System.Action onFailMinigameSource;
     private CraftingRecipe recipe = null;
     private RecipeSpawner recipeSpawner = null;
     private bool? isSource = null;
@@ -23,6 +24,11 @@ public class MinigameManager : MonoBehaviour
     {
         onFinishMinigameSource = action;
         isSource = true;
+    }
+
+    public void SetOnFailMinigame(System.Action action)
+    {
+        onFailMinigameSource = action;
     }
 
     public void SetOnFinishMinigame(CraftingRecipe recipe)
@@ -79,7 +85,10 @@ public class MinigameManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Minigame failed");
+            if(onFailMinigameSource != null)
+            {
+                onFailMinigameSource();
+            }
         }
 
         isSource = null;
