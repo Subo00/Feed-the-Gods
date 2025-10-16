@@ -9,7 +9,6 @@ using UnityEngine.UI;
 
 public class DialogManager : MonoBehaviour
 {
-    public static DialogManager Instance;
     
     //Variables for text
     [SerializeField] private Image characterImage;
@@ -25,25 +24,20 @@ public class DialogManager : MonoBehaviour
     [SerializeField] private ScrollRect scrollRect;
 
     private Queue<DialogLine> lines;
-    private UIManagerChild uiManager;
+    private PlayerUIManager uiManager;
     private bool endOfLine = true;
     private DialogLine currentLine;
     private DialogUser currentUser;
-    private int constraintsCount;
+    private int constraintsCount = 4;
     public Queue<DialogResponse> responses;
 
-    private void Awake()
+    public void SetPlayer(PlayerUIManager playerUI)
     {
-        if(Instance != null)
-        {
-            Destroy(this);
-        }
-        Instance = this;
+        uiManager = playerUI;
     }
 
     private void Start()
     {
-        uiManager = UIManagerChild.Instance;
         lines = new Queue<DialogLine>();
         responses = new Queue<DialogResponse>();
         constraintsCount = panelTransform.GetComponent<GridLayoutGroup>().constraintCount;
@@ -147,7 +141,7 @@ public class DialogManager : MonoBehaviour
 
         ManagerHelper.ConnectButtons(dialogButtons, constraintsCount);
        
-        //LayoutRebuilder.ForceRebuildLayoutImmediate(panelTransform.GetComponent<RectTransform>());
+        LayoutRebuilder.ForceRebuildLayoutImmediate(panelTransform.GetComponent<RectTransform>());
         uiManager.ShowDialogResponse(true);
         currentUser.DialogActive(true);
     }

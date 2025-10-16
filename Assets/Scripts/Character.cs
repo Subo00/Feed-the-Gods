@@ -29,11 +29,46 @@ public class Character : Interactable, DialogUser, IDataPersistence
     {
         if (inUse) return;
         interactingPlayer = player;
+        dialogManager = interactingPlayer.DialogManager;
+        interactingPlayer.ClearInteract();
+        interactingPlayer.SetInteract(OnInteracted);
+        OnInteracted();
+    }
 
+    private void OnInteracted()
+    {
+        if (Time.time < lastInteractionTime + interactionCooldown) return;
+        if (interactingPlayer.IsInteracting) return;
+        if (!inUse)
+        {
+            //Sets self as a current user in dialogManger
+            inUse = true;
+            dialogManager.ChangeDialogSettings(dialogSettings, characterName);
+            dialogManager.SetCurrentUser(this);
+
+            //Starts dialog
+            if (isFirstTime)
+            {
+                isFirstTime = false;
+                dialogManager.StartDialog(dialogFirst[questIndex]);
+                dialogManager.LoadDialog(dialogOther[otherIndex]);
+                currentQuest = Instantiate(quests[questIndex]);
+                currentQuest.onQuestComplete = IncrementIndex;
+                questManager.AddToActive(currentQuest);
+            }
+            else
+            {
+                dialogManager.StartDialog(dialogSecond[questIndex]);
+                dialogManager.LoadDialog(dialogOther[otherIndex]);
+            }
+        }
+        else
+        {
+            if (!choicesOpen) dialogManager.DisplayNextDialogueLine();
+        }
     }
     protected override void Start()
     {
-        dialogManager = DialogManager.Instance;
         questManager = QuestManager.Instance;
         currentQuest = null;
         characterName = gameObject.name;
@@ -51,7 +86,7 @@ public class Character : Interactable, DialogUser, IDataPersistence
     {
         //Disables the re-entering in the conversation 
         if (Time.time < lastInteractionTime + interactionCooldown) return;
-
+        /*
         if (Input.GetButtonDown("Interact"))
         {
 
@@ -85,8 +120,9 @@ public class Character : Interactable, DialogUser, IDataPersistence
         }
         else
         {
-            CommonLogic();
+            */CommonLogic();/*
         }
+        */
     }
 
     public void IncrementIndex()
@@ -200,21 +236,21 @@ public class Character : Interactable, DialogUser, IDataPersistence
         }
 
         //Remove the item from inventory depending on the SubQuest's count
-        /*uint currentItemCount = Inventory.Instance.CurrentItemCount(currentSubQuest.collectData);
+        uint currentItemCount = interactingPlayer.Inventory.CurrentItemCount(currentSubQuest.collectData);
         uint neededCount = currentSubQuest.requiredValue - currentSubQuest.currentValue;
 
         if (currentItemCount > 0) 
         {
             if(currentItemCount >= neededCount)
             {
-                Inventory.Instance.RemoveItemQuantity(currentSubQuest.collectData, neededCount);
+                interactingPlayer.Inventory.RemoveItemQuantity(currentSubQuest.collectData, neededCount);
                 currentSubQuest.currentValue += neededCount;
             }else
             {
-                Inventory.Instance.RemoveItemQuantity(currentSubQuest.collectData, currentItemCount);
+                interactingPlayer.Inventory.RemoveItemQuantity(currentSubQuest.collectData, currentItemCount);
                 currentSubQuest.currentValue += currentItemCount;
             }
-        }*/
+        }
         //load OnCheckQuest again to refresh everything
         OnCheckQuest();
     }

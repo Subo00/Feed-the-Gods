@@ -59,11 +59,12 @@ public class UIManagerChild : PlayerHUD //delete this script
 
     protected void Start()
     {
+        /*
         inventoryUI = InventoryUI.Instance;
         craftingUI = CraftingUI.Instance;
         minigameUI = MinigameUI.Instance;
         dialogUI = DialogUI.Instance;
-        questUI = QuestUI.Instance;
+        questUI = QuestUI.Instance;*/
         //tutorialUI = TutorialUI.Instance;
 
         playerMovement = GameObject.FindGameObjectWithTag("PlayerController").GetComponent<ThirdPersonMovement>();

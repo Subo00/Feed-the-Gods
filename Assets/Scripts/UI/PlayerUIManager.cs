@@ -7,6 +7,7 @@ public class PlayerUIManager : MonoBehaviour
     public MinigameUI MinigameUI => minigameUI;
     public InventoryUI InventoryUI => inventoryUI;
     public EquippedItemUI EquippedItemUI => equippedItemUI;
+    public CraftingUI CraftingUI => craftingUI; 
     public DialogUI DialogUI => dialogUI;
 
     [SerializeField] private InventoryUI inventoryUI;
@@ -16,9 +17,13 @@ public class PlayerUIManager : MonoBehaviour
     [SerializeField] private PlayerHUD playerHUD;
     [SerializeField] private EquippedItemUI equippedItemUI;
     [SerializeField] private EventSystem eventSystem;
+    [SerializeField] private Camera cam;
 
     private Player player;
     private bool isInventoryOpen = false;
+    private bool isDialogOpen = false;
+    private bool interactionActive = true; //used for DialogManager
+    private bool isCraftingOpen = false;
 
     private enum UIType { None, Inventory, Crafting, Minigame, Menu, Dialog, Tutorial };
     UIType currentType = UIType.None;
@@ -27,10 +32,11 @@ public class PlayerUIManager : MonoBehaviour
 
     void Start()
     {
-        //craftingUI.Toggle(false);
-         minigameUI.Toggle(false);
-        //dialogUI.Toggle(false);
+        craftingUI.Toggle(false);
+        minigameUI.Toggle(false);
+        dialogUI.Toggle(false);
         inventoryUI.Toggle(false);
+        cam = GetComponentInParent<Camera>();
     }
 
     public void SetPlayer(Player player) { this.player = player; }
@@ -58,6 +64,26 @@ public class PlayerUIManager : MonoBehaviour
          }
     }
 
+
+    public void ToggleDialog()
+    {
+        isDialogOpen = !isDialogOpen;
+
+        if (isDialogOpen)
+        {
+            CloseOtherUIs(UIType.Dialog);
+            //SetUIPosition(UIType.Dialog);
+            dialogUI.Toggle(isDialogOpen);
+            SetCurrentUIType(UIType.Dialog);
+            interactionActive = false;
+        }
+        else
+        {
+            CloseOtherUIs(UIType.None);
+            interactionActive = true;
+        }
+    }
+
     private void SetCurrentUIType(UIType type)
     {
         previousType = currentType;
@@ -72,6 +98,13 @@ public class PlayerUIManager : MonoBehaviour
             isInventoryOpen = false;
             inventoryUI.Toggle(isInventoryOpen);
         }
+
+        if (currentUI != UIType.Dialog)
+        {
+            isDialogOpen = false;
+            dialogUI.Toggle(isDialogOpen);
+        }
+
 
         if (currentUI == UIType.None)
         {
@@ -88,5 +121,60 @@ public class PlayerUIManager : MonoBehaviour
         }
     }
 
+    /*private void SetUIPosition(UIType uiType)
+    {
+        // Convert the world point to screen point
+        Vector3 screenPoint = cam.WorldToScreenPoint(lastInteractPoint.position);
 
+        // Check if the point is in front of the camera
+        if (screenPoint.z > 0)
+        {
+            // Convert screen point to canvas space
+            Vector2 canvasPos;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform, screenPoint, canvas.worldCamera, out canvasPos);
+
+            switch (uiType)
+            {
+                case UIType.None:
+                    return;
+                case UIType.Minigame:
+                    minigameUI.transformObject.GetComponent<RectTransform>().anchoredPosition = canvasPos;
+                    return;
+                case UIType.Dialog:
+                    dialogUI.transformObject.GetComponent<RectTransform>().anchoredPosition = canvasPos;
+                    return;
+            }
+        }
+
+    }*/
+
+    public void ShowDialogResponse(bool show)
+    {
+        if (show)
+        {
+            eventSystem.SetSelectedGameObject(dialogUI.GetFirstButton());
+        }
+        else
+        {
+            eventSystem.SetSelectedGameObject(null);
+        }
+        interactionActive = show;
+    }
+
+    public void ToggleCrafting()
+    {
+        isCraftingOpen = !isCraftingOpen;
+
+        if (isCraftingOpen)
+        {
+            CloseOtherUIs(UIType.Crafting);
+            craftingUI.Toggle(isCraftingOpen);
+            SetCurrentUIType(UIType.Crafting);
+            EventSystem.current.SetSelectedGameObject(craftingUI.GetFirstButton());
+        }
+        else
+        {
+            CloseOtherUIs(UIType.None);
+        }
+    }
 }

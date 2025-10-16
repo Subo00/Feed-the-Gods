@@ -7,20 +7,32 @@ public class Player : ThirdPersonMovement
     public Inventory Inventory => inventory;
     public PlayerUIManager PlayerUI => playerUIManager;
     public MinigameManager MinigameManager => minigameManager;
+    public DialogManager DialogManager => dialogManager;
+    public CraftingManager CraftingManager => craftingManager;
     public bool IsInteracting => isInteracting;
 
     [SerializeField] private Transform playerSpawnItemPoint;
     [SerializeField] private Inventory inventory;
     [SerializeField] private MinigameManager minigameManager;
     [SerializeField] private PlayerUIManager playerUIManager;
+    [SerializeField] private DialogManager dialogManager;
+    [SerializeField] private CraftingManager craftingManager;
+
+    private PlayerInput playerInput;
 
     private ItemManager itemManager;
-    private Action<Player> interactAction;
+    private Action<Player> interactActionPlayer;
+    private Action interactAction;
     private bool isInteracting = false;
 
-    public void SetInteract(Action<Player> action) { interactAction = action;  }
-    public void ClearInteract() {  interactAction = null; }
-    
+    public void SetInteract(Action<Player> action) { interactActionPlayer = action;  }
+    public void SetInteract(Action action) { interactAction = action;  }
+    public void ClearInteract()
+    {
+        interactActionPlayer = null;
+        interactAction = null;
+    }
+
     /*
     private PlayerInputActions playerControls;
     private InputAction move;
@@ -43,22 +55,30 @@ public class Player : ThirdPersonMovement
         move.Disable();
     }
     */
+    public override void ToggleUI(bool isActive)
+    {
+        isUIActive = isActive;
+        playerInput.SwitchCurrentActionMap(isActive ? "UI": "Player");
+    }
     protected override void Start()
     {
-        //itemManager = ItemManager.Instance;
+        playerInput = GetComponent<PlayerInput>();
+        if(playerInput == null)
+        {
+            Debug.LogError("no player input on player");
+        }
 
-        //playerUIManager = CameraManager.Instance.CreatePlayerUI(this.transform);
-        //playerUIManager.HideInteraction();
-
-        //playerUIManager.InventoryUI.Bind(this);
-
-        //PlayerInput playerInput = GetComponent<PlayerInput>();
-        //playerInput.camera = playerUIManager.GetComponentInParent<Camera>();
         playerUIManager.SetPlayer(this);
         inventory.SetInevntoryUI(PlayerUI.InventoryUI);
         inventory.SetEquippedItemUI(PlayerUI.EquippedItemUI);
 
         minigameManager.SetPlayer(this);
+        dialogManager.SetPlayer(playerUIManager);
+        craftingManager.SetPlayer(this);
+
+        playerUIManager.CraftingUI.SetPlayer(this);
+
+
         ClearInteract();
         base.Start();
     }
@@ -103,6 +123,12 @@ public class Player : ThirdPersonMovement
     {
         if (context.started) isInteracting = true;
         if (context.canceled) isInteracting = false;
-        interactAction?.Invoke(this); 
+        if(interactActionPlayer != null)
+        {
+            interactActionPlayer?.Invoke(this);
+        }else if(interactAction != null)
+        {
+            interactAction?.Invoke();
+        }
     }
 }

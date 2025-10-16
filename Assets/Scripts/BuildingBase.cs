@@ -1,20 +1,22 @@
 using SmallHedge.SoundManager;
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 
 public class BuildingBase : Interactable, RecipeSpawner
 {
     [SerializeField] private BuildingType buildingType;
     protected ItemManager itemManager;
-    private UIManagerChild uiManagerChild;
 
     public override void OnInteract(Player player)
     {
         if (inUse) return;
+        inUse = true;
 
         Debug.Log("BuildingInteracted");
+
+        interactingPlayer = player;
+        player.PlayerUI.CraftingUI.UpdateRecipeList(buildingType);
+        player.PlayerUI.ToggleCrafting();
+        player.MinigameManager.SetRecipeSpawner(this);
 
         //change all of this
         //CraftingUI.Instance.UpdateRecipeList(buildingType);
@@ -24,7 +26,7 @@ public class BuildingBase : Interactable, RecipeSpawner
 
     protected override void OnUpdate()
     {
-        inUse = uiManagerChild.isCraftingOpen || uiManagerChild.isMinigameOpen;
+        //inUse = uiManagerChild.isCraftingOpen || uiManagerChild.isMinigameOpen;
 
 
         CommonLogic();
@@ -33,7 +35,6 @@ public class BuildingBase : Interactable, RecipeSpawner
     protected override void Start()
     {
         itemManager = ItemManager.Instance;
-        uiManagerChild = UIManagerChild.Instance;
         base.Start();
     }
 
@@ -53,7 +54,7 @@ public class BuildingBase : Interactable, RecipeSpawner
             GameObject itemToDrop = itemManager.GetGameObject(itemID);
             GameObject drop = Instantiate(itemToDrop, objectPos, objectRot);
             drop.GetComponent<ItemPickUp>().LaunchInDirection(transform.forward + transform.up, 5f); //magic number 5
-            SoundManager.PlaySound(SoundType.ItemSpawned);
+            //SoundManager.PlaySound(SoundType.ItemSpawned);
 
             quantity--;
         }

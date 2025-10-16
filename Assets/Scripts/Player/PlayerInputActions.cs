@@ -256,12 +256,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             ""actions"": [
                 {
                     ""name"": ""InventoryToggle"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""0cfe2256-856d-4ab4-ad36-457edc9cc4fa"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""Interact"",
@@ -289,6 +289,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""04a0ad2d-b51d-433b-ac0b-97dd2ed15a6f"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -335,6 +344,72 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""CraftingToggle"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""3319a003-f870-429f-bffa-825e40b77a1f"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""9f7883c8-64db-4dd6-81ce-4aa410ef94cc"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""4736981c-758e-4b41-86a0-b3ea84cc62eb"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""3cea4aae-e435-463d-a402-a8bc8fb564d9"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""2cfb57d9-d293-43ff-8604-7e31e461ed19"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""47adea18-fded-4dbc-a819-51250717f2a4"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -378,6 +453,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_UI_Interact = m_UI.FindAction("Interact", throwIfNotFound: true);
         m_UI_Cancle = m_UI.FindAction("Cancle", throwIfNotFound: true);
         m_UI_CraftingToggle = m_UI.FindAction("CraftingToggle", throwIfNotFound: true);
+        m_UI_Move = m_UI.FindAction("Move", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -529,6 +605,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_Interact;
     private readonly InputAction m_UI_Cancle;
     private readonly InputAction m_UI_CraftingToggle;
+    private readonly InputAction m_UI_Move;
     public struct UIActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -537,6 +614,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_UI_Interact;
         public InputAction @Cancle => m_Wrapper.m_UI_Cancle;
         public InputAction @CraftingToggle => m_Wrapper.m_UI_CraftingToggle;
+        public InputAction @Move => m_Wrapper.m_UI_Move;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -558,6 +636,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @CraftingToggle.started += instance.OnCraftingToggle;
             @CraftingToggle.performed += instance.OnCraftingToggle;
             @CraftingToggle.canceled += instance.OnCraftingToggle;
+            @Move.started += instance.OnMove;
+            @Move.performed += instance.OnMove;
+            @Move.canceled += instance.OnMove;
         }
 
         private void UnregisterCallbacks(IUIActions instance)
@@ -574,6 +655,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @CraftingToggle.started -= instance.OnCraftingToggle;
             @CraftingToggle.performed -= instance.OnCraftingToggle;
             @CraftingToggle.canceled -= instance.OnCraftingToggle;
+            @Move.started -= instance.OnMove;
+            @Move.performed -= instance.OnMove;
+            @Move.canceled -= instance.OnMove;
         }
 
         public void RemoveCallbacks(IUIActions instance)
@@ -624,5 +708,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnCancle(InputAction.CallbackContext context);
         void OnCraftingToggle(InputAction.CallbackContext context);
+        void OnMove(InputAction.CallbackContext context);
     }
 }

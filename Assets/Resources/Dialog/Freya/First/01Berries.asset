@@ -20,4 +20,6 @@ MonoBehaviour:
   - line: Let's see if your functionalities are online
   - line: 'See the bushes behind me? '
   - line: 'Do you mind grabing 25 berries form them and giving them to me? '
-  responses: []
+  responses:
+  - responseText: Something
+    choice: 1
