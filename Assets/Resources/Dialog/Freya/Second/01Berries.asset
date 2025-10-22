@@ -15,6 +15,4 @@ MonoBehaviour:
   lines:
   - line: 25 strawberries, it shouldn't be that hard
   - line: You walk up to the bush and press and hold the E button
-  responses:
-  - responseText: sssss
-    choice: 0
+  responses: []

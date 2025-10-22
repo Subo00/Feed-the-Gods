@@ -4,33 +4,42 @@ using UnityEngine.InputSystem;
 
 public class Player : ThirdPersonMovement
 {
-    public Inventory Inventory => inventory;
+    //Managers - getters
+    public InventoryManager Inventory => inventory;
     public PlayerUIManager PlayerUI => playerUIManager;
     public MinigameManager MinigameManager => minigameManager;
     public DialogManager DialogManager => dialogManager;
     public CraftingManager CraftingManager => craftingManager;
-    public bool IsInteracting => isInteracting;
 
+    //Managers - variables
     [SerializeField] private Transform playerSpawnItemPoint;
-    [SerializeField] private Inventory inventory;
+    [SerializeField] private InventoryManager inventory;
     [SerializeField] private MinigameManager minigameManager;
     [SerializeField] private PlayerUIManager playerUIManager;
     [SerializeField] private DialogManager dialogManager;
     [SerializeField] private CraftingManager craftingManager;
-
-    private PlayerInput playerInput;
-
     private ItemManager itemManager;
+
+    //Interacting - variables
+    private PlayerInput playerInput;
     private Action<Player> interactActionPlayer;
     private Action interactAction;
+    private Action delayedAction; 
+    private Action cancleAction; 
     private bool isInteracting = false;
 
+    //Interacting - functions
+    public bool IsInteracting => isInteracting;
     public void SetInteract(Action<Player> action) { interactActionPlayer = action;  }
     public void SetInteract(Action action) { interactAction = action;  }
+    public void SetDelayedInteract(Action action) {  delayedAction = action; }
+    public void SetCancle(Action action) { cancleAction = action; }
     public void ClearInteract()
     {
         interactActionPlayer = null;
         interactAction = null;
+        delayedAction = null;
+        cancleAction = null;
     }
 
     /*
@@ -58,7 +67,6 @@ public class Player : ThirdPersonMovement
     public override void ToggleUI(bool isActive)
     {
         isUIActive = isActive;
-        playerInput.SwitchCurrentActionMap(isActive ? "UI": "Player");
     }
     protected override void Start()
     {
@@ -85,7 +93,6 @@ public class Player : ThirdPersonMovement
 
     protected override void Update()
     {
-        //SetInputVector(move.ReadValue<Vector2>());
         base.Update();
 
         /*if (Input.GetButtonDown("Fire1") && inventory.equippedItemStack != null && !isUIActive)
@@ -121,14 +128,38 @@ public class Player : ThirdPersonMovement
 
     public void OnInteract(InputAction.CallbackContext context) 
     {
-        if (context.started) isInteracting = true;
-        if (context.canceled) isInteracting = false;
-        if(interactActionPlayer != null)
+        if (context.started)
         {
-            interactActionPlayer?.Invoke(this);
-        }else if(interactAction != null)
+            isInteracting = true;
+
+            //if (!context.started) return;
+            if (interactActionPlayer != null)
+            {
+                interactActionPlayer.Invoke(this);
+            }
+            else if (interactAction != null)
+            {
+                interactAction.Invoke();
+            }
+
+        }
+        else if (context.canceled)
         {
-            interactAction?.Invoke();
+            isInteracting = false;
+            delayedAction?.Invoke();
+        }
+    }
+
+    public void OnCancle(InputAction.CallbackContext context)
+    {
+        if (!context.started) return;
+        if(cancleAction != null)
+        {
+            cancleAction.Invoke();
+        }
+        else
+        {
+            playerUIManager.CraftingUI.CancleCrafting();
         }
     }
 }

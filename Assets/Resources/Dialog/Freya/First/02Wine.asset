@@ -16,6 +16,4 @@ MonoBehaviour:
   - line: Okay, now let's mix things up
   - line: 'You see that barrel over there in the corner? '
   - line: Go make me 2 bottles of strawberrie wine
-  responses:
-  - responseText: AAAA
-    choice: 4
+  responses: []

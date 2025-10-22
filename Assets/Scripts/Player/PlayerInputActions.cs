@@ -80,6 +80,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CancleAction"",
+                    ""type"": ""Button"",
+                    ""id"": ""68e0a07f-f35e-4047-8c16-5e881429cb1f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -247,167 +256,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""CraftingToggle"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
-            ""name"": ""UI"",
-            ""id"": ""56cdd019-2880-4c20-b5e0-6e3d550ff1bf"",
-            ""actions"": [
-                {
-                    ""name"": ""InventoryToggle"",
-                    ""type"": ""Value"",
-                    ""id"": ""0cfe2256-856d-4ab4-ad36-457edc9cc4fa"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Interact"",
-                    ""type"": ""Button"",
-                    ""id"": ""1a9fa1e5-d1be-4adf-b838-0c82f89a00fb"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Cancle"",
-                    ""type"": ""Button"",
-                    ""id"": ""87c47d9f-d39b-4fbe-b548-f134d4acfc7c"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""CraftingToggle"",
-                    ""type"": ""Button"",
-                    ""id"": ""632b6c1f-0159-49c8-b89c-8179ce4aaa05"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Move"",
-                    ""type"": ""Value"",
-                    ""id"": ""04a0ad2d-b51d-433b-ac0b-97dd2ed15a6f"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""a8b772ce-97fd-441f-9175-26e8332b9940"",
-                    ""path"": ""<Keyboard>/1"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""WASD"",
-                    ""action"": ""InventoryToggle"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""dbc0d734-2109-4cc2-acbe-39425a54e3ca"",
-                    ""path"": ""<Keyboard>/e"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""WASD"",
-                    ""action"": ""Interact"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""bc0099a5-4396-41a4-9c0e-7a72652bf75b"",
+                    ""id"": ""e8f52ef7-e761-46c6-802b-b898488555ad"",
                     ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""WASD"",
-                    ""action"": ""Cancle"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""0498e51c-49c1-44dd-b8ce-e738d23407fb"",
-                    ""path"": ""<Keyboard>/2"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""WASD"",
-                    ""action"": ""CraftingToggle"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""WASD"",
-                    ""id"": ""3319a003-f870-429f-bffa-825e40b77a1f"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""9f7883c8-64db-4dd6-81ce-4aa410ef94cc"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""4736981c-758e-4b41-86a0-b3ea84cc62eb"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""3cea4aae-e435-463d-a402-a8bc8fb564d9"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""2cfb57d9-d293-43ff-8604-7e31e461ed19"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""47adea18-fded-4dbc-a819-51250717f2a4"",
-                    ""path"": ""<Gamepad>/leftStick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
+                    ""action"": ""CancleAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -447,13 +304,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_Join = m_Player.FindAction("Join", throwIfNotFound: true);
         m_Player_InventoryToggle = m_Player.FindAction("InventoryToggle", throwIfNotFound: true);
         m_Player_CraftingToggle = m_Player.FindAction("CraftingToggle", throwIfNotFound: true);
-        // UI
-        m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
-        m_UI_InventoryToggle = m_UI.FindAction("InventoryToggle", throwIfNotFound: true);
-        m_UI_Interact = m_UI.FindAction("Interact", throwIfNotFound: true);
-        m_UI_Cancle = m_UI.FindAction("Cancle", throwIfNotFound: true);
-        m_UI_CraftingToggle = m_UI.FindAction("CraftingToggle", throwIfNotFound: true);
-        m_UI_Move = m_UI.FindAction("Move", throwIfNotFound: true);
+        m_Player_CancleAction = m_Player.FindAction("CancleAction", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -521,6 +372,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Join;
     private readonly InputAction m_Player_InventoryToggle;
     private readonly InputAction m_Player_CraftingToggle;
+    private readonly InputAction m_Player_CancleAction;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -531,6 +383,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @Join => m_Wrapper.m_Player_Join;
         public InputAction @InventoryToggle => m_Wrapper.m_Player_InventoryToggle;
         public InputAction @CraftingToggle => m_Wrapper.m_Player_CraftingToggle;
+        public InputAction @CancleAction => m_Wrapper.m_Player_CancleAction;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -558,6 +411,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @CraftingToggle.started += instance.OnCraftingToggle;
             @CraftingToggle.performed += instance.OnCraftingToggle;
             @CraftingToggle.canceled += instance.OnCraftingToggle;
+            @CancleAction.started += instance.OnCancleAction;
+            @CancleAction.performed += instance.OnCancleAction;
+            @CancleAction.canceled += instance.OnCancleAction;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -580,6 +436,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @CraftingToggle.started -= instance.OnCraftingToggle;
             @CraftingToggle.performed -= instance.OnCraftingToggle;
             @CraftingToggle.canceled -= instance.OnCraftingToggle;
+            @CancleAction.started -= instance.OnCancleAction;
+            @CancleAction.performed -= instance.OnCancleAction;
+            @CancleAction.canceled -= instance.OnCancleAction;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -597,84 +456,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
-
-    // UI
-    private readonly InputActionMap m_UI;
-    private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
-    private readonly InputAction m_UI_InventoryToggle;
-    private readonly InputAction m_UI_Interact;
-    private readonly InputAction m_UI_Cancle;
-    private readonly InputAction m_UI_CraftingToggle;
-    private readonly InputAction m_UI_Move;
-    public struct UIActions
-    {
-        private @PlayerInputActions m_Wrapper;
-        public UIActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @InventoryToggle => m_Wrapper.m_UI_InventoryToggle;
-        public InputAction @Interact => m_Wrapper.m_UI_Interact;
-        public InputAction @Cancle => m_Wrapper.m_UI_Cancle;
-        public InputAction @CraftingToggle => m_Wrapper.m_UI_CraftingToggle;
-        public InputAction @Move => m_Wrapper.m_UI_Move;
-        public InputActionMap Get() { return m_Wrapper.m_UI; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(UIActions set) { return set.Get(); }
-        public void AddCallbacks(IUIActions instance)
-        {
-            if (instance == null || m_Wrapper.m_UIActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_UIActionsCallbackInterfaces.Add(instance);
-            @InventoryToggle.started += instance.OnInventoryToggle;
-            @InventoryToggle.performed += instance.OnInventoryToggle;
-            @InventoryToggle.canceled += instance.OnInventoryToggle;
-            @Interact.started += instance.OnInteract;
-            @Interact.performed += instance.OnInteract;
-            @Interact.canceled += instance.OnInteract;
-            @Cancle.started += instance.OnCancle;
-            @Cancle.performed += instance.OnCancle;
-            @Cancle.canceled += instance.OnCancle;
-            @CraftingToggle.started += instance.OnCraftingToggle;
-            @CraftingToggle.performed += instance.OnCraftingToggle;
-            @CraftingToggle.canceled += instance.OnCraftingToggle;
-            @Move.started += instance.OnMove;
-            @Move.performed += instance.OnMove;
-            @Move.canceled += instance.OnMove;
-        }
-
-        private void UnregisterCallbacks(IUIActions instance)
-        {
-            @InventoryToggle.started -= instance.OnInventoryToggle;
-            @InventoryToggle.performed -= instance.OnInventoryToggle;
-            @InventoryToggle.canceled -= instance.OnInventoryToggle;
-            @Interact.started -= instance.OnInteract;
-            @Interact.performed -= instance.OnInteract;
-            @Interact.canceled -= instance.OnInteract;
-            @Cancle.started -= instance.OnCancle;
-            @Cancle.performed -= instance.OnCancle;
-            @Cancle.canceled -= instance.OnCancle;
-            @CraftingToggle.started -= instance.OnCraftingToggle;
-            @CraftingToggle.performed -= instance.OnCraftingToggle;
-            @CraftingToggle.canceled -= instance.OnCraftingToggle;
-            @Move.started -= instance.OnMove;
-            @Move.performed -= instance.OnMove;
-            @Move.canceled -= instance.OnMove;
-        }
-
-        public void RemoveCallbacks(IUIActions instance)
-        {
-            if (m_Wrapper.m_UIActionsCallbackInterfaces.Remove(instance))
-                UnregisterCallbacks(instance);
-        }
-
-        public void SetCallbacks(IUIActions instance)
-        {
-            foreach (var item in m_Wrapper.m_UIActionsCallbackInterfaces)
-                UnregisterCallbacks(item);
-            m_Wrapper.m_UIActionsCallbackInterfaces.Clear();
-            AddCallbacks(instance);
-        }
-    }
-    public UIActions @UI => new UIActions(this);
     private int m_GamepadSchemeIndex = -1;
     public InputControlScheme GamepadScheme
     {
@@ -701,13 +482,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnJoin(InputAction.CallbackContext context);
         void OnInventoryToggle(InputAction.CallbackContext context);
         void OnCraftingToggle(InputAction.CallbackContext context);
-    }
-    public interface IUIActions
-    {
-        void OnInventoryToggle(InputAction.CallbackContext context);
-        void OnInteract(InputAction.CallbackContext context);
-        void OnCancle(InputAction.CallbackContext context);
-        void OnCraftingToggle(InputAction.CallbackContext context);
-        void OnMove(InputAction.CallbackContext context);
+        void OnCancleAction(InputAction.CallbackContext context);
     }
 }

@@ -31,36 +31,17 @@ public class Character : Interactable, DialogUser, IDataPersistence
         interactingPlayer = player;
         dialogManager = interactingPlayer.DialogManager;
         interactingPlayer.ClearInteract();
-        interactingPlayer.SetInteract(OnInteracted);
-        OnInteracted();
+        interactingPlayer.SetDelayedInteract(OnInteracted);
+        //OnInteracted();
     }
 
     private void OnInteracted()
     {
         if (Time.time < lastInteractionTime + interactionCooldown) return;
-        if (interactingPlayer.IsInteracting) return;
+        //if (interactingPlayer.IsInteracting) return;
         if (!inUse)
         {
-            //Sets self as a current user in dialogManger
-            inUse = true;
-            dialogManager.ChangeDialogSettings(dialogSettings, characterName);
-            dialogManager.SetCurrentUser(this);
-
-            //Starts dialog
-            if (isFirstTime)
-            {
-                isFirstTime = false;
-                dialogManager.StartDialog(dialogFirst[questIndex]);
-                dialogManager.LoadDialog(dialogOther[otherIndex]);
-                currentQuest = Instantiate(quests[questIndex]);
-                currentQuest.onQuestComplete = IncrementIndex;
-                questManager.AddToActive(currentQuest);
-            }
-            else
-            {
-                dialogManager.StartDialog(dialogSecond[questIndex]);
-                dialogManager.LoadDialog(dialogOther[otherIndex]);
-            }
+            SetUpTalking();
         }
         else
         {
@@ -86,43 +67,8 @@ public class Character : Interactable, DialogUser, IDataPersistence
     {
         //Disables the re-entering in the conversation 
         if (Time.time < lastInteractionTime + interactionCooldown) return;
-        /*
-        if (Input.GetButtonDown("Interact"))
-        {
-
-            if (!inUse)
-            {
-                //Sets self as a current user in dialogManger
-                inUse = true;
-                dialogManager.ChangeDialogSettings(dialogSettings, characterName);
-                dialogManager.SetCurrentUser(this);
-                
-                //Starts dialog
-                if(isFirstTime)
-                {
-                    isFirstTime = false;
-                    dialogManager.StartDialog(dialogFirst[questIndex]);
-                    dialogManager.LoadDialog(dialogOther[otherIndex]);
-                    currentQuest = Instantiate(quests[questIndex]);
-                    currentQuest.onQuestComplete = IncrementIndex;
-                    questManager.AddToActive(currentQuest);
-                }
-                else
-                {
-                    dialogManager.StartDialog(dialogSecond[questIndex]);
-                    dialogManager.LoadDialog(dialogOther[otherIndex]);
-                }
-            }
-            else
-            {
-                if (!choicesOpen) dialogManager.DisplayNextDialogueLine();
-            }
-        }
-        else
-        {
-            */CommonLogic();/*
-        }
-        */
+        
+       CommonLogic();
     }
 
     public void IncrementIndex()
@@ -272,5 +218,29 @@ public class Character : Interactable, DialogUser, IDataPersistence
         }
         data.charactersDialog.Add( name, questIndex);
         */
+    }
+
+    private void SetUpTalking()
+    {
+        //Sets self as a current user in dialogManger
+        inUse = true;
+        dialogManager.ChangeDialogSettings(dialogSettings, characterName);
+        dialogManager.SetCurrentUser(this);
+
+        //Starts dialog
+        if (isFirstTime)
+        {
+            isFirstTime = false;
+            dialogManager.StartDialog(dialogFirst[questIndex]);
+            dialogManager.LoadDialog(dialogOther[otherIndex]);
+            currentQuest = Instantiate(quests[questIndex]);
+            currentQuest.onQuestComplete = IncrementIndex;
+            questManager.AddToActive(currentQuest);
+        }
+        else
+        {
+            dialogManager.StartDialog(dialogSecond[questIndex]);
+            dialogManager.LoadDialog(dialogOther[otherIndex]);
+        }
     }
 }

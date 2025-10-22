@@ -11,19 +11,24 @@ public class BuildingBase : Interactable, RecipeSpawner
         if (inUse) return;
         inUse = true;
 
-        Debug.Log("BuildingInteracted");
-
         interactingPlayer = player;
-        player.PlayerUI.CraftingUI.UpdateRecipeList(buildingType);
-        player.PlayerUI.ToggleCrafting();
         player.MinigameManager.SetRecipeSpawner(this);
+        player.CraftingManager.SetRecipeSpawner(this);
 
+        player.ClearInteract();
+        player.SetDelayedInteract(OnInteracted);
         //change all of this
         //CraftingUI.Instance.UpdateRecipeList(buildingType);
        //uiManagerChild.ToggleCrafting();
         //MinigameManager.Instance.SetRecipeSpawner(this);
     }
 
+    public void OnInteracted()
+    {
+        interactingPlayer.PlayerUI.CraftingUI.UpdateRecipeList(buildingType);
+        interactingPlayer.PlayerUI.ToggleCrafting();
+        interactingPlayer.ClearInteract();
+    }
     protected override void OnUpdate()
     {
         //inUse = uiManagerChild.isCraftingOpen || uiManagerChild.isMinigameOpen;
