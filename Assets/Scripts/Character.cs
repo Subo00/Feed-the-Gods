@@ -1,23 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Character : Interactable, DialogUser, IDataPersistence
 {
     [SerializeField] private DialogSettings dialogSettings;
     private string characterName;
-    
+
     private DialogManager dialogManager;
     private DialogData[] dialogFirst;
     private DialogData[] dialogSecond;
     private DialogData[] dialogOther;
-    
+
     private QuestManager questManager;
     private Quest[] quests;
     private Quest currentQuest;
 
     private uint questIndex = 0;
-    private bool isFirstTime = true; 
+    private bool isFirstTime = true;
     private bool choicesOpen = false;
     private string prefix = "Offer ";
     private uint otherIndex = 0; //used when traversing dialog menus 
@@ -25,7 +23,7 @@ public class Character : Interactable, DialogUser, IDataPersistence
     private float interactionCooldown = 0.5f;
     private float lastInteractionTime = 0f;
 
-    public override void OnInteract(Player player)   
+    public override void OnInteract(Player player)
     {
         if (inUse) return;
         interactingPlayer = player;
@@ -67,8 +65,8 @@ public class Character : Interactable, DialogUser, IDataPersistence
     {
         //Disables the re-entering in the conversation 
         if (Time.time < lastInteractionTime + interactionCooldown) return;
-        
-       CommonLogic();
+
+        CommonLogic();
     }
 
     public void IncrementIndex()
@@ -158,7 +156,7 @@ public class Character : Interactable, DialogUser, IDataPersistence
 
     public void OnName(string name)
     {
-        Debug.Log(name);    
+        Debug.Log(name);
     }
 
     public void DialogActive(bool active)
@@ -172,9 +170,9 @@ public class Character : Interactable, DialogUser, IDataPersistence
         item = item.Substring(prefix.Length);
 
         SubQuest currentSubQuest = new SubQuest();
-        foreach(SubQuest subQuest in currentQuest.subQuests)
+        foreach (SubQuest subQuest in currentQuest.subQuests)
         {
-            if(subQuest.collectData.name == item)
+            if (subQuest.collectData.name == item)
             {
                 currentSubQuest = subQuest;
                 break;
@@ -185,13 +183,14 @@ public class Character : Interactable, DialogUser, IDataPersistence
         uint currentItemCount = interactingPlayer.Inventory.CurrentItemCount(currentSubQuest.collectData);
         uint neededCount = currentSubQuest.requiredValue - currentSubQuest.currentValue;
 
-        if (currentItemCount > 0) 
+        if (currentItemCount > 0)
         {
-            if(currentItemCount >= neededCount)
+            if (currentItemCount >= neededCount)
             {
                 interactingPlayer.Inventory.RemoveItemQuantity(currentSubQuest.collectData, neededCount);
                 currentSubQuest.currentValue += neededCount;
-            }else
+            }
+            else
             {
                 interactingPlayer.Inventory.RemoveItemQuantity(currentSubQuest.collectData, currentItemCount);
                 currentSubQuest.currentValue += currentItemCount;
