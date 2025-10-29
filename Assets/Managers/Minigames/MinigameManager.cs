@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class MinigameManager : MonoBehaviour
 {
+
+    public Player Player => player;
+
     private Minigame currentMinigame;
     private GameObject currentMinigamePrefab = null;
     private MinigameUI minigameCanvas;
@@ -94,6 +97,7 @@ public class MinigameManager : MonoBehaviour
         isSource = null;
         recipe = null;
         minigameCanvas.Toggle(false);
+        player.ClearInteract();
     }
 
     public void SetRecipeSpawner(RecipeSpawner spawner)
@@ -106,8 +110,4 @@ public class MinigameManager : MonoBehaviour
         recipeSpawner.SpawnRecipe(recipe);
     }
 
-    public bool IsInteracting()
-    {
-        return player.IsInteracting;
-    }
 }

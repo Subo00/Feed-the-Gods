@@ -17,6 +17,7 @@ public class MinigameStomping :  Minigame
     private bool rightLeg = false;
     private uint counter = 1;
     private float threshold = 0f;
+    private Vector2 inputVector;
 
     public override void StartMinigame(uint valueUint, MinigameManager manager = null)
     {
@@ -27,6 +28,9 @@ public class MinigameStomping :  Minigame
         threshold = calculateFloat(counter);
         Debug.Log("endGoal: " + endGoal);
 
+        manager.Player.SetOnMove(MoveAction);
+        manager.Player.SetCancle(() =>  manager.EndMinigame(-1f) );
+
         PlayerAnimationController.instance.PlayAllLayers(Animations.IDLE);
         PlayerAnimationController.instance.Play(Animations.STOMP, 2, false, false);
     }
@@ -36,26 +40,23 @@ public class MinigameStomping :  Minigame
         base.EndMinigame();
         PlayerAnimationController.instance.PlayAllLayers(Animations.NONE);
     }
-
+    public void MoveAction(Vector2 input)
+    {
+        inputVector = input;
+    }
     protected override void OnUpdate()
     {
         // Handle player input and update the progress bar
-        if (Input.GetAxisRaw("Horizontal") == -1f && rightLeg)
+        if (inputVector.x < 0f && rightLeg)
         {
             progress += step;
             rightLeg = !rightLeg;
         }
-        if (Input.GetAxisRaw("Horizontal") == 1f && !rightLeg)
+        if (inputVector.x > 0f && !rightLeg)
         {
             progress += step;
             rightLeg = !rightLeg;
         }
-
-        if (Input.GetButtonDown("Cancel"))
-        {
-            manager.EndMinigame(-1f);
-        }
-        
 
         progressBar.SetFillAmount(progress/endGoal);
 

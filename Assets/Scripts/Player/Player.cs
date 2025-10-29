@@ -25,7 +25,8 @@ public class Player : ThirdPersonMovement
     private Action<Player> interactActionPlayer;
     private Action interactAction;
     private Action delayedAction; 
-    private Action cancleAction; 
+    private Action cancleAction;
+    private Action<Vector2> moveAction;
     private bool isInteracting = false;
 
     //Interacting - functions
@@ -34,12 +35,14 @@ public class Player : ThirdPersonMovement
     public void SetInteract(Action action) { interactAction = action;  }
     public void SetDelayedInteract(Action action) {  delayedAction = action; }
     public void SetCancle(Action action) { cancleAction = action; }
+    public void SetOnMove(Action<Vector2> action) { moveAction = action; }
     public void ClearInteract()
     {
         interactActionPlayer = null;
         interactAction = null;
         delayedAction = null;
         cancleAction = null;
+        moveAction = null;
     }
 
     /*
@@ -124,7 +127,15 @@ public class Player : ThirdPersonMovement
         inventory.RemoveFromEquippedStack();
     }
 
-    public void OnMove(InputAction.CallbackContext context) { SetInputVector(context.ReadValue<Vector2>());  }
+    public void OnMove(InputAction.CallbackContext context) 
+    {
+        if (moveAction != null)
+        {
+            moveAction(context.ReadValue<Vector2>());
+            return;
+        }
+        SetInputVector(context.ReadValue<Vector2>());  
+    }
 
     public void OnInteract(InputAction.CallbackContext context) 
     {

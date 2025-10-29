@@ -10,7 +10,7 @@ public class CraftingManagerChild : CraftingManager
     {
         base.Start();
     }
-
+    /*
     protected override void HandleCrafting(CraftingRecipe recipe, uint numToCraft = 1)
     {
         if (recipe.buildingRequired == BuildingType.None)
@@ -25,18 +25,10 @@ public class CraftingManagerChild : CraftingManager
 
             //start minigame 
             MinigameType minigameType = GetTypeFromBuilding(recipe.buildingRequired);
-            //minigameManager.StartMinigame(minigameType, numToCraft);
-            //minigameManager.SetOnFinishMinigame(recipe);
+            minigameManager.StartMinigame(minigameType, numToCraft);
+            minigameManager.SetOnFinishMinigame(recipe);
         }
     }
-
-    private MinigameType GetTypeFromBuilding(BuildingType buildingType)
-    {
-        switch (buildingType)
-        {
-            case BuildingType.Vinery:
-                return MinigameType.Stomping;
-        }
-        return MinigameType.None;
-    }
+    */
+    
 }
