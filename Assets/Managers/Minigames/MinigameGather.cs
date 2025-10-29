@@ -24,7 +24,7 @@ public class MinigameGather :  Minigame
 
     protected override void OnUpdate()
     {
-        if(manager.IsInteracting())
+        if(manager.Player.IsInteracting)
         {
             progress += step;
             progressBar.SetFillAmount(progress);
