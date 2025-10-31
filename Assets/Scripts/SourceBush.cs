@@ -24,7 +24,7 @@ public class SourceBush : Source
                 GameObject drop = Instantiate(itemToDrop, dropPoint.position, Quaternion.identity);
                 Vector3 rotation = new Vector3(Random.Range(-1f, 1f), 0.5f, Random.Range(-1f, 1f));
                 drop.GetComponent<ItemPickUp>().LaunchInDirection(rotation, 5f);
-                //SoundManager.PlaySound(SoundType.ItemSpawned);
+                SoundManager.PlaySound(SoundType.ItemSpawned);
 
                 yield return new WaitForSeconds(0.3f);
             }

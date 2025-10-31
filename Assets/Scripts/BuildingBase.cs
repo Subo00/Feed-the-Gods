@@ -59,7 +59,7 @@ public class BuildingBase : Interactable, RecipeSpawner
             GameObject itemToDrop = itemManager.GetGameObject(itemID);
             GameObject drop = Instantiate(itemToDrop, objectPos, objectRot);
             drop.GetComponent<ItemPickUp>().LaunchInDirection(transform.forward + transform.up, 5f); //magic number 5
-            //SoundManager.PlaySound(SoundType.ItemSpawned);
+            SoundManager.PlaySound(SoundType.ItemSpawned);
 
             quantity--;
         }
