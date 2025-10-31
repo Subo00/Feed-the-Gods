@@ -10,16 +10,19 @@ public class MinigameGather :  Minigame
     [SerializeField] private ProgressBar progressBar;
 
 
-    public override void StartMinigame(uint valueUint, MinigameManager manager = null)
+    public override void StartMinigame(uint valueUint, MinigameManager minigameManager = null)
     {
-        base.StartMinigame(valueUint, manager);
-        //PlayerAnimationController.instance.PlayAllLayers(Animations.GATHER);
-        //SoundManager.PlaySound(SoundType.Rustle);
+        base.StartMinigame(valueUint, minigameManager);
+        manager.Player.Animator.PlayAllLayers(Animations.GATHER);
+        manager.Player.ToggleUI(true);
+        SoundManager.PlaySound(SoundType.Rustle);
     }
     public override void DisruptMinigame() { }
     public override void EndMinigame()
     {
         base.EndMinigame();
+        manager.Player.Animator.PlayAllLayers(Animations.IDLE);
+        manager.Player.ToggleUI(false);
     }
 
     protected override void OnUpdate()

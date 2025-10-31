@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
-
 
 public class MinigameStomping :  Minigame
 {
@@ -19,9 +15,9 @@ public class MinigameStomping :  Minigame
     private float threshold = 0f;
     private Vector2 inputVector;
 
-    public override void StartMinigame(uint valueUint, MinigameManager manager = null)
+    public override void StartMinigame(uint valueUint, MinigameManager minigameManager = null)
     {
-        base.StartMinigame(valueUint, manager);
+        base.StartMinigame(valueUint, minigameManager);
         numToSpawn = valueUint;
 
         endGoal = calculateFloat(valueUint);
@@ -29,16 +25,15 @@ public class MinigameStomping :  Minigame
         Debug.Log("endGoal: " + endGoal);
 
         manager.Player.SetOnMove(MoveAction);
-        manager.Player.SetCancle(() =>  manager.EndMinigame(-1f) );
-
-        PlayerAnimationController.instance.PlayAllLayers(Animations.IDLE);
-        PlayerAnimationController.instance.Play(Animations.STOMP, 2, false, false);
+        manager.Player.SetCancle(() => manager.EndMinigame(-1f) );
+        manager.Player.Animator.PlayAllLayers(Animations.IDLE);
+        manager.Player.Animator.Play(Animations.STOMP, 2, false, false);
     }
 
     public override void EndMinigame()
     {
         base.EndMinigame();
-        PlayerAnimationController.instance.PlayAllLayers(Animations.NONE);
+        manager.Player.Animator.PlayAllLayers(Animations.NONE);
     }
     public void MoveAction(Vector2 input)
     {

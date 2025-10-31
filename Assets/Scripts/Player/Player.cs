@@ -10,6 +10,7 @@ public class Player : ThirdPersonMovement
     public MinigameManager MinigameManager => minigameManager;
     public DialogManager DialogManager => dialogManager;
     public CraftingManager CraftingManager => craftingManager;
+    public PlayerAnimationController Animator => animationController;
 
     //Managers - variables
     [SerializeField] private Transform playerSpawnItemPoint;
@@ -45,28 +46,7 @@ public class Player : ThirdPersonMovement
         moveAction = null;
     }
 
-    /*
-    private PlayerInputActions playerControls;
-    private InputAction move;
-    private InputAction interact;
-
-
-    private void Awake()
-    {
-        playerControls = new PlayerInputActions();
-    }
-
-    private void OnEnable()
-    {
-        move = playerControls.Player.Move;
-        move.Enable();
-    }
-
-    private void OnDisable()
-    {
-        move.Disable();
-    }
-    */
+   
     public override void ToggleUI(bool isActive)
     {
         isUIActive = isActive;
