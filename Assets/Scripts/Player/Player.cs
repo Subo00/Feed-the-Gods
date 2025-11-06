@@ -70,6 +70,24 @@ public class Player : ThirdPersonMovement
         playerUIManager.CraftingUI.SetPlayer(this);
 
 
+        if (playerInput.currentControlScheme == "WASD")
+        {
+            string s = Keyboard.current.ToString();
+            if(s.Contains("WASD")) //one player is WASD
+            {
+                playerUIManager.ChangePrompt(InputPrompt.WASD);
+            }
+            else //another is IJKL 
+            {
+                playerUIManager.ChangePrompt(InputPrompt.IJKL);
+            }
+        }
+        else
+        {
+            playerUIManager.ChangePrompt(InputPrompt.XBOX);
+        }
+
+
         ClearInteract();
         base.Start();
     }
