@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-public class PlayerUIManager : MonoBehaviour
+public class PlayerUIManager : MonoBehaviour, UIPrompt
 {
     public PlayerHUD PlayerHUD => playerHUD;
     public MinigameUI MinigameUI => minigameUI;
@@ -181,5 +181,11 @@ public class PlayerUIManager : MonoBehaviour
         {
             CloseOtherUIs(UIType.None);
         }
+    }
+
+    public void ChangePrompt(InputPrompt input)
+    {
+        PlayerHUD.ChangePrompt(input);
+        CraftingUI.ChangePrompt(input);
     }
 }
