@@ -34,23 +34,23 @@ public class MinigameHeadHit : Minigame
         switch(temp)
         {
             case <= 10:
-                //manager.EndMinigame(1f);
+                manager.EndMinigame(1f);
                 Debug.Log("1f");
                 break;
             case <= 20:
                 Debug.Log("0.7f");
 
-                //manager.EndMinigame(0.7f);
+                manager.EndMinigame(0.7f);
                 break;
             case <= 30:
                 Debug.Log("0.5f");
 
-                //manager.EndMinigame(0.5f);
+                manager.EndMinigame(0.5f);
                 break;
             default:
                 Debug.Log("-1f");
 
-                //manager.EndMinigame(-1f);
+                manager.EndMinigame(-1f);
                 break;
         }
         //manager.EndMinigame(-1f);
