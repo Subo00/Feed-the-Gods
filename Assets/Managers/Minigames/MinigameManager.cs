@@ -42,7 +42,7 @@ public class MinigameManager : MonoBehaviour
 
     public void StartMinigame(MinigameType minigameType,  uint valueUint = 1)
     {
-        minigameCanvas.Toggle(true);
+        //minigameCanvas.Toggle(true);
         switch (minigameType)
         {
             case MinigameType.Stomping:
@@ -61,6 +61,8 @@ public class MinigameManager : MonoBehaviour
         {
             currentMinigame = currentMinigamePrefab.GetComponent<Minigame>();
             //uiManagerChild.ToggleMinigame();
+            player.PlayerUI.ToggleMinigame();
+
             currentMinigame.StartMinigame(valueUint, this);
         }
     }
@@ -69,6 +71,8 @@ public class MinigameManager : MonoBehaviour
     {
         currentMinigame.EndMinigame();
         //uiManagerChild.ToggleMinigame();
+        player.PlayerUI.ToggleMinigame();
+
         currentMinigame = null;
 
         Destroy(currentMinigamePrefab);
@@ -98,6 +102,7 @@ public class MinigameManager : MonoBehaviour
         recipe = null;
         minigameCanvas.Toggle(false);
         player.ClearInteract();
+        player.SetLastInteract();
     }
 
     public void SetRecipeSpawner(RecipeSpawner spawner)
