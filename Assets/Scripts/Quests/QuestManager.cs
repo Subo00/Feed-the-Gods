@@ -44,6 +44,8 @@ public class QuestManager : MonoBehaviour
 
     public void AddToCompleted(Quest quest) 
     {
+        if(quest.reward != Reward.NONE) { HandleReward(quest.reward, quest.rewardID); }
+            
         activeQuests.Remove(quest);
         completedQuests.Add(quest);
         quest.onQuestChanged -= HandleQuestProgressChanged;
@@ -61,6 +63,16 @@ public class QuestManager : MonoBehaviour
         if(quest.name == currentQuest.name)
         {
             questUI.SetCurrentQuest(quest);
+        }
+    }
+
+    private void HandleReward(Reward reward, int id)
+    {
+        switch(reward)
+        {
+            case Reward.RECIPE:
+                ProgressManager.Instance.AddToDiscoveredRecipes(id);
+                return;
         }
     }
 }

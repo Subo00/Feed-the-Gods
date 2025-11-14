@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78bc40cb88fa3204ba782533b28c25ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  discoveredRecipes: 00000000010000000200000003000000
+  discoveredRecipes: 
 --- !u!4 &157257599
 Transform:
   m_ObjectHideFlags: 0

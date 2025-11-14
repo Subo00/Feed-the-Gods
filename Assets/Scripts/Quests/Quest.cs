@@ -21,6 +21,9 @@ public class SubQuest
     }
 }
 
+
+public enum Reward { RECIPE, NONE}
+
 [CreateAssetMenu(fileName = "New Item", menuName = "Quest/Create Quest")]
 public class Quest : ScriptableObject
 {
@@ -28,6 +31,8 @@ public class Quest : ScriptableObject
     public string questGiver;
     public string description;
     public SubQuest[] subQuests;
+    public Reward reward = Reward.NONE;
+    public int rewardID = 0;
 
     public event System.Action<Quest> onQuestChanged;
     public System.Action onQuestComplete;
