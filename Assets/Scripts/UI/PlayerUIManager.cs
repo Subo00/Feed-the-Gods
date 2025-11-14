@@ -24,11 +24,11 @@ public class PlayerUIManager : MonoBehaviour, UIPrompt
     private bool isDialogOpen = false;
     private bool interactionActive = true; //used for DialogManager
     private bool isCraftingOpen = false;
+    private bool isMinigameOpen = false;
 
     private enum UIType { None, Inventory, Crafting, Minigame, Menu, Dialog, Tutorial };
     UIType currentType = UIType.None;
     UIType previousType = UIType.None;
-
 
     void Start()
     {
@@ -51,6 +51,9 @@ public class PlayerUIManager : MonoBehaviour, UIPrompt
     }
     public void ToggleInventory()
     {
+        if (IsImportatnTypeOpen())
+            return;
+
         isInventoryOpen = !isInventoryOpen;
         inventoryUI.Toggle(isInventoryOpen);
         player.ToggleUI(isInventoryOpen);
@@ -119,6 +122,12 @@ public class PlayerUIManager : MonoBehaviour, UIPrompt
             craftingUI.Toggle(isCraftingOpen);
         }
 
+        if (currentUI != UIType.Minigame)
+        {
+            isMinigameOpen = false;
+            minigameUI.Toggle(isMinigameOpen);
+        }
+
         if (currentUI == UIType.None)
         {
             player.ToggleUI(false);
@@ -166,8 +175,31 @@ public class PlayerUIManager : MonoBehaviour, UIPrompt
         interactionActive = show;
     }
 
+    public void ToggleCraftingNone()
+    {
+        if (IsImportatnTypeOpen())
+            return;
+        craftingUI.UpdateRecipeList(BuildingType.None);
+        player.CraftingManager.SetRecipeSpawner(player);
+        ToggleCrafting();
+    }
+
+    private bool IsImportatnTypeOpen()
+    {
+        switch (currentType)
+        {
+            case UIType.Menu:
+            case UIType.Minigame:
+            case UIType.Dialog:
+                return true;
+            default:
+                return false;
+        }
+    }
     public void ToggleCrafting()
     {
+        
+
         isCraftingOpen = !isCraftingOpen;
 
         if (isCraftingOpen)
@@ -176,6 +208,24 @@ public class PlayerUIManager : MonoBehaviour, UIPrompt
             craftingUI.Toggle(isCraftingOpen);
             SetCurrentUIType(UIType.Crafting);
             eventSystem.SetSelectedGameObject(craftingUI.GetFirstButton());
+        }
+        else
+        {
+            CloseOtherUIs(UIType.None);
+        }
+    }
+
+    public void ToggleMinigame()
+    {
+        isMinigameOpen = !isMinigameOpen;
+
+        if (isMinigameOpen)
+        {
+            CloseOtherUIs(UIType.Minigame);
+
+
+            minigameUI.Toggle(isMinigameOpen);
+            SetCurrentUIType(UIType.Minigame);
         }
         else
         {
