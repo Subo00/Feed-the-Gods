@@ -1,8 +1,9 @@
+using SmallHedge.SoundManager;
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Player : ThirdPersonMovement
+public class Player : ThirdPersonMovement, RecipeSpawner
 {
     //Managers - getters
     public InventoryManager Inventory => inventory;
@@ -24,6 +25,7 @@ public class Player : ThirdPersonMovement
     //Interacting - variables
     private PlayerInput playerInput;
     private Action<Player> interactActionPlayer;
+    private Action<Player> interactActionPlayerLast;
     private Action interactAction;
     private Action delayedAction; 
     private Action cancleAction;
@@ -32,7 +34,7 @@ public class Player : ThirdPersonMovement
 
     //Interacting - functions
     public bool IsInteracting => isInteracting;
-    public void SetInteract(Action<Player> action) { interactActionPlayer = action;  }
+    public void SetInteract(Action<Player> action) { interactActionPlayer = action; interactActionPlayerLast = action;  }
     public void SetInteract(Action action) { interactAction = action;  }
     public void SetDelayedInteract(Action action) {  delayedAction = action; }
     public void SetCancle(Action action) { cancleAction = action; }
@@ -45,7 +47,7 @@ public class Player : ThirdPersonMovement
         cancleAction = null;
         moveAction = null;
     }
-
+    public void SetLastInteract() { interactActionPlayer = interactActionPlayerLast;   }
    
     public override void ToggleUI(bool isActive)
     {
@@ -171,4 +173,27 @@ public class Player : ThirdPersonMovement
             playerUIManager.CraftingUI.CancleCrafting();
         }
     }
+
+    public void SpawnRecipe(CraftingRecipe recipe, uint numOfSpawnes)
+    {
+        uint itemID = recipe.craftingResult.item.id;
+        uint quantity = recipe.craftingResult.quantity * numOfSpawnes;
+
+        //Dropt it from object's position 
+        Vector3 objectPos = transform.position + transform.forward * 3; //magic number 3
+        Quaternion objectRot = transform.rotation;
+
+        while (quantity > 0)
+        {
+            //TODO: CHANGE THIS A BIT 
+            //Add Instantiate 
+            GameObject itemToDrop = itemManager.GetGameObject(itemID);
+            GameObject drop = Instantiate(itemToDrop, objectPos, objectRot);
+            drop.GetComponent<ItemPickUp>().LaunchInDirection(transform.forward + transform.up, 5f); //magic number 5
+            SoundManager.PlaySound(SoundType.ItemSpawned);
+
+            quantity--;
+        }
+    }
+
 }
