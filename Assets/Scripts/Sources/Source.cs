@@ -13,4 +13,14 @@ public class Source : SourceBase
         interactingPlayer.MinigameManager.StartMinigame(minigameType);
         inUse = true;
     }
+
+    public void BeforDestroy()
+    {
+        UpdateManager.Instance.RemoveUpdatable(this);
+
+        foreach (Player player in playersInCollider)
+        {
+            player.PlayerUI.PlayerHUD.HideInteraction();
+        }
+    }
 }
