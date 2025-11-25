@@ -11,11 +11,11 @@
 /[Uu]ser[Ss]ettings/
 /Assets/Toolkit/
 /Assets/TextMeshPro/
-/Assets/Art/
-/Assets/Plugins
-#Specific for this project only 
-/Assets/BOKI
-/Assets/FRee Food Pack/
+#/Assets/Art/
+#/Assets/Plugins
+##Specific for this project only 
+#/Assets/BOKI
+#/Assets/FRee Food Pack/
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
