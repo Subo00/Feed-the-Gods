@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 352e99f4640360b4297c19371aaddb7e, type: 3}
-  m_Name: New Item 1
+  m_Name: New Item 2
   m_EditorClassIdentifier: Assembly-CSharp::Quest
-  questName: Wine some more
+  questName: Oranges
   questGiver: Goldilocks
-  description: sssss
+  description: WHATEVER
   subQuests:
-  - collectData: {fileID: 11400000, guid: 1cb9b833b44b32747a698f4f7cc20ac5, type: 2}
-    requiredValue: 2
+  - collectData: {fileID: 11400000, guid: 951e044c20a47404c9834e761805d158, type: 2}
+    requiredValue: 20
     currentValue: 0
   reward: 0
-  rewardID: 2
+  rewardID: 1
   isCompleted: 0

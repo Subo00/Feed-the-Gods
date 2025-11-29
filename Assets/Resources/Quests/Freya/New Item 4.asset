@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 352e99f4640360b4297c19371aaddb7e, type: 3}
-  m_Name: New Item 1
+  m_Name: New Item 4
   m_EditorClassIdentifier: Assembly-CSharp::Quest
-  questName: Wine some more
+  questName: Juice it Up!
   questGiver: Goldilocks
   description: sssss
   subQuests:
-  - collectData: {fileID: 11400000, guid: 1cb9b833b44b32747a698f4f7cc20ac5, type: 2}
-    requiredValue: 2
+  - collectData: {fileID: 11400000, guid: a1c5fe321c180dc44861f7c92e4f4b96, type: 2}
+    requiredValue: 3
     currentValue: 0
-  reward: 0
-  rewardID: 2
+  reward: 1
+  rewardID: 0
   isCompleted: 0
