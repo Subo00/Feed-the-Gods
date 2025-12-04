@@ -19,4 +19,6 @@ MonoBehaviour:
   - collectData: {fileID: 11400000, guid: 1cb9b833b44b32747a698f4f7cc20ac5, type: 2}
     requiredValue: 2
     currentValue: 0
+  reward: 0
+  rewardID: 2
   isCompleted: 0

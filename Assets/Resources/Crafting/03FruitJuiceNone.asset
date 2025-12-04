@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   craftingResult:
     item: {fileID: 11400000, guid: a1c5fe321c180dc44861f7c92e4f4b96, type: 2}
-    quantity: 1
+    quantity: 2
   ingredients:
-  - item: {fileID: 11400000, guid: 390692bc279518944ae1966aa6c77344, type: 2}
+  - item: {fileID: 11400000, guid: 98641f63aa5b30a4bbef4ba3a98e3b59, type: 2}
     quantity: 1
   - item: {fileID: 11400000, guid: 1cb9b833b44b32747a698f4f7cc20ac5, type: 2}
     quantity: 1

@@ -17,5 +17,8 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/OneHour.unity
     guid: e07fd50a88c9d4840ab2acf49b6363b4
+  - enabled: 1
+    path: Assets/Scenes/SplitScreenScene.unity
+    guid: 658541612c1783d438c8a237f51492b0
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 752b7ef2b4e06ad47b2806a58c62faed, type: 2}

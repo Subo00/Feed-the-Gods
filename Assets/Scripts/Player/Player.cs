@@ -71,6 +71,7 @@ public class Player : ThirdPersonMovement, RecipeSpawner
 
         playerUIManager.CraftingUI.SetPlayer(this);
 
+        itemManager = ItemManager.Instance;
 
         if (playerInput.currentControlScheme == "WASD")
         {
@@ -122,6 +123,7 @@ public class Player : ThirdPersonMovement, RecipeSpawner
 
     public void Throw()
     {
+        if (inventory.equippedItemStack == null) return;
         uint itemToThrow = inventory.equippedItemStack.getItemData().id;
         DropItemFromPlayerPos(itemToThrow);
         inventory.RemoveFromEquippedStack();
@@ -170,7 +172,7 @@ public class Player : ThirdPersonMovement, RecipeSpawner
         }
         else
         {
-            playerUIManager.CraftingUI.CancleCrafting();
+            Throw();
         }
     }
 

@@ -17,7 +17,7 @@ public class SourceTree : Source
 
         foreach (var resource in resourceDrops)
         {
-            if (resource.dropChance < dummy) continue;
+            if (resource.dropChance > dummy) continue;
             GameObject itemToDrop = itemManager.GetGameObject(resource.item.id);
 
             for (uint i = 0; i < resource.value; i++)

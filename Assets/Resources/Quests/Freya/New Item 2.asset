@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 352e99f4640360b4297c19371aaddb7e, type: 3}
+  m_Name: New Item 2
+  m_EditorClassIdentifier: Assembly-CSharp::Quest
+  questName: Oranges
+  questGiver: Goldilocks
+  description: WHATEVER
+  subQuests:
+  - collectData: {fileID: 11400000, guid: 951e044c20a47404c9834e761805d158, type: 2}
+    requiredValue: 20
+    currentValue: 0
+  reward: 0
+  rewardID: 1
+  isCompleted: 0
