@@ -1,8 +1,8 @@
+using System;
 using UnityEngine;
 
 public class MinigameManager : MonoBehaviour
 {
-
     public Player Player => player;
 
     private Minigame currentMinigame;
@@ -15,6 +15,7 @@ public class MinigameManager : MonoBehaviour
     private CraftingRecipe recipe = null;
     private RecipeSpawner recipeSpawner = null;
     private bool? isSource = null;
+    private Action onEndMinigame = null;
 
 
     public void SetPlayer(Player player) 
@@ -29,11 +30,8 @@ public class MinigameManager : MonoBehaviour
         isSource = true;
     }
 
-    public void SetOnFailMinigame(System.Action action)
-    {
-        onFailMinigameSource = action;
-    }
-
+    public void SetOnFailMinigame(System.Action action){ onFailMinigameSource = action; }
+    public void SetOnEndAction(Action action) { onEndMinigame = action; }
     public void SetOnFinishMinigame(CraftingRecipe recipe)
     {
         this.recipe = recipe;
@@ -70,10 +68,11 @@ public class MinigameManager : MonoBehaviour
     public void EndMinigame(float success)
     {
         currentMinigame.EndMinigame();
-        //uiManagerChild.ToggleMinigame();
         player.PlayerUI.ToggleMinigame();
-
+        onEndMinigame?.Invoke();
+        
         currentMinigame = null;
+        onEndMinigame = null;
 
         Destroy(currentMinigamePrefab);
         currentMinigamePrefab = null;
