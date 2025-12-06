@@ -4,6 +4,9 @@ using UnityEngine;
 public class BuildingBase : Interactable, RecipeSpawner
 {
     [SerializeField] private BuildingType buildingType;
+    [SerializeField] private GameObject interactingObject;
+    [SerializeField] private Vector3 interactingOffset;
+
     protected ItemManager itemManager;
 
     public override void OnInteract(Player player)
@@ -12,22 +15,28 @@ public class BuildingBase : Interactable, RecipeSpawner
         inUse = true;
 
         interactingPlayer = player;
-        player.MinigameManager.SetRecipeSpawner(this);
-        player.CraftingManager.SetRecipeSpawner(this);
+        interactingPlayer.MinigameManager.SetRecipeSpawner(this);
+        interactingPlayer.MinigameManager.SetOnFailMinigame(ResetInUse);
+        interactingPlayer.MinigameManager.SetOnEndAction(ResetInUse);
+        interactingPlayer.CraftingManager.SetRecipeSpawner(this);
 
-        player.ClearInteract();
-        player.SetDelayedInteract(OnInteracted);
+        interactingPlayer.ClearInteract();
+        interactingPlayer.SetDelayedInteract(OnInteracted);
+        interactingObject.transform.SetParent(interactingPlayer.transform);
+        interactingObject.transform.localPosition = interactingOffset;
+        interactingObject.SetActive(true);
         //change all of this
         //CraftingUI.Instance.UpdateRecipeList(buildingType);
-       //uiManagerChild.ToggleCrafting();
+        //uiManagerChild.ToggleCrafting();
         //MinigameManager.Instance.SetRecipeSpawner(this);
     }
 
     public void OnInteracted()
     {
+        interactingPlayer.ClearInteract();
         interactingPlayer.PlayerUI.CraftingUI.UpdateRecipeList(buildingType);
         interactingPlayer.PlayerUI.ToggleCrafting();
-        interactingPlayer.ClearInteract();
+        interactingPlayer.AddOnCancle(ResetInUse);
     }
     protected override void OnUpdate()
     {
@@ -35,6 +44,14 @@ public class BuildingBase : Interactable, RecipeSpawner
 
 
         CommonLogic();
+    }
+
+    public void ResetInUse()
+    {
+        interactingPlayer.SetInteract(OnInteract);
+        interactingObject.transform.SetParent(this.transform);
+        interactingObject.SetActive(false);
+        inUse = false;
     }
 
     protected override void Start()
