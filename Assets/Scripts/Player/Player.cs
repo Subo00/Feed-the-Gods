@@ -1,5 +1,6 @@
 using SmallHedge.SoundManager;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -28,7 +29,7 @@ public class Player : ThirdPersonMovement, RecipeSpawner
     private Action<Player> interactActionPlayerLast;
     private Action interactAction;
     private Action delayedAction; 
-    private Action cancleAction;
+    private List<Action> cancleActions;
     private Action<Vector2> moveAction;
     private bool isInteracting = false;
 
@@ -37,14 +38,14 @@ public class Player : ThirdPersonMovement, RecipeSpawner
     public void SetInteract(Action<Player> action) { interactActionPlayer = action; interactActionPlayerLast = action;  }
     public void SetInteract(Action action) { interactAction = action;  }
     public void SetDelayedInteract(Action action) {  delayedAction = action; }
-    public void SetCancle(Action action) { cancleAction = action; }
+    public void AddOnCancle(Action action) { if(action != null) cancleActions.Add(action); }
     public void SetOnMove(Action<Vector2> action) { moveAction = action; }
     public void ClearInteract()
     {
         interactActionPlayer = null;
         interactAction = null;
         delayedAction = null;
-        cancleAction = null;
+        cancleActions.Clear();
         moveAction = null;
     }
     public void SetLastInteract() { interactActionPlayer = interactActionPlayerLast;   }
@@ -90,6 +91,7 @@ public class Player : ThirdPersonMovement, RecipeSpawner
             playerUIManager.ChangePrompt(InputPrompt.XBOX);
         }
 
+        cancleActions = new List<Action>();
 
         ClearInteract();
         base.Start();
@@ -166,9 +168,10 @@ public class Player : ThirdPersonMovement, RecipeSpawner
     public void OnCancle(InputAction.CallbackContext context)
     {
         if (!context.started) return;
-        if(cancleAction != null)
+        if(cancleActions.Count != 0)
         {
-            cancleAction.Invoke();
+            foreach(var action in cancleActions)
+                action.Invoke();
         }
         else
         {

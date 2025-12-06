@@ -18,7 +18,7 @@ public class MinigameHeadHit : Minigame
 
         manager.Player.ClearInteract();
         manager.Player.SetInteract(OnInteract);
-        manager.Player.SetCancle(() => manager.EndMinigame(-1f));
+        manager.Player.AddOnCancle(() => manager.EndMinigame(-1f));
         manager.Player.Animator.PlayAllLayers(Animations.IDLE);
        // manager.Player.Animator.Play(Animations.STOMP, 2, false, false);
     }
