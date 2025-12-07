@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7340403648686410872}
   - component: {fileID: 4271911272867738582}
   - component: {fileID: 6655263679071204465}
-  - component: {fileID: 7613550472604686129}
+  - component: {fileID: 8528617570611901413}
   m_Layer: 0
   m_Name: Strawberry
   m_TagString: Untagged
@@ -134,7 +134,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.00053348124
   m_Center: {x: -0.000010127996, y: 0.000012327206, z: -0.00007702115}
---- !u!114 &7613550472604686129
+--- !u!114 &8528617570611901413
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,7 +143,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8757810570806623666}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39f85ed41f0413445a795dec970f9ffb, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a46400723497024bad358dbe600d121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 5eacf16088e407747bf56f81b9ffcbed, type: 2}
+  plant: {fileID: 11400000, guid: 9326098a4513f2546a497301897ecb45, type: 2}
