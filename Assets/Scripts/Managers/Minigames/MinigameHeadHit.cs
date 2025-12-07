@@ -17,7 +17,7 @@ public class MinigameHeadHit : Minigame
         base.StartMinigame(valueUint, minigameManager);
 
         manager.Player.ClearInteract();
-        manager.Player.SetInteract(OnInteract);
+        //manager.Player.SetInteract(OnInteract);
         manager.Player.AddOnCancle(() => manager.EndMinigame(-1f));
         manager.Player.Animator.PlayAllLayers(Animations.IDLE);
        // manager.Player.Animator.Play(Animations.STOMP, 2, false, false);
@@ -58,6 +58,18 @@ public class MinigameHeadHit : Minigame
     }
 
     protected override void OnUpdate()
+    {
+        if(manager.Player.IsInteracting)
+        {
+            Move();
+        }else
+        {
+            OnInteract();
+        }
+        
+    }
+
+    private void Move()
     {
         //MOVING
         if (goingDown)
