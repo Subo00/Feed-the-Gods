@@ -5,4 +5,5 @@ using UnityEngine;
 public interface Collector
 {
     public void ReportBool(bool value);
+    public void SetPlant(PlantData plant);
 }

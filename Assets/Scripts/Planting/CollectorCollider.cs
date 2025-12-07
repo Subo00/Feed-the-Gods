@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class CollectorCollider : MonoBehaviour
 {
-    private List<ItemStack> neededItems = new List<ItemStack>();
+    //private List<ItemStack> neededItems = new List<ItemStack>();
     private Collector collector = null;
+    private bool isFull = false;
 
     private void Start()
     {
@@ -20,37 +21,39 @@ public class CollectorCollider : MonoBehaviour
     //GameObject need to have a collider attached to it 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.GetComponent<ItemPickUp>())
-        {
+        if (!other.GetComponent<PlantPickUp>() || isFull)
             return;
-        }
-        ItemData item = other.GetComponent<ItemPickUp>().item;
-        if (neededItems.Count == 0 || item == null)
-        {
-            return;
-        }
+        
+        PlantData plant = other.GetComponent<PlantPickUp>().plant;
+        collector.SetPlant(plant);
+        Destroy(other.gameObject);
+        isFull = true;
+        /* if (neededItems.Count == 0 || item == null)
+         {
+             return;
+         }
 
-        foreach (ItemStack itemStack in neededItems)
-        {
-            if (item == itemStack.getItemData())
-            {
-                if (itemStack.RemoveFromStack() == true)
-                {
-                    //if the stack is at 0 remove from list
-                    neededItems.Remove(itemStack);
-                }
-                collector.ReportBool(neededItems.Count == 0);
-                //SoundManager.PlaySound(SoundType.Absorb);
-                Destroy(other.gameObject);
-                break;
-            }
-        }
+         foreach (ItemStack itemStack in neededItems)
+         {
+             if (item == itemStack.getItemData())
+             {
+                 if (itemStack.RemoveFromStack() == true)
+                 {
+                     //if the stack is at 0 remove from list
+                     neededItems.Remove(itemStack);
+                 }
+                 collector.ReportBool(neededItems.Count == 0);
+                 //SoundManager.PlaySound(SoundType.Absorb);
+                 Destroy(other.gameObject);
+                 break;
+             }
+         }*/
     }
 
     public void SetNeededItems(List<ItemStack> items)
     {
-        neededItems.Clear();
-        neededItems = new List<ItemStack>(items);
+        //neededItems.Clear();
+        //neededItems = new List<ItemStack>(items);
     }
 
 }
