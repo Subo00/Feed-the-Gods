@@ -3,11 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Field : Interactable, Collector
+public class Plot : Interactable, Collector, ISeasonListener
 {
     CollectorCollider collector;
-    public ItemData appleData;
-    public ItemData waterData;
+    private PlantData currentPlant;
     public uint neededNumber = 3;
     public uint fibonachi = 2;
     private uint currentNumber = 0;
@@ -26,7 +25,6 @@ public class Field : Interactable, Collector
         {
             Debug.LogError("Collector not properly set up");
         }
-        collector.SetNeededItems(new List<ItemStack> { new ItemStack(appleData, neededNumber) });
         plantPrefabGetter = PlantPrefabGetter.Instance;
 
         inUse = true;
@@ -36,7 +34,7 @@ public class Field : Interactable, Collector
 
     public void ReportBool(bool value)
     {
-        currentNumber++;
+        /*currentNumber++;
         if (value)
         {
             currentLevel++;
@@ -66,12 +64,12 @@ public class Field : Interactable, Collector
 
             plantGO = Instantiate(plantPrefabGetter.getPlant(currentLevel), colliderPosition, playerRot);
 
-            /*if (currentLevel != 1)
+            if (currentLevel != 1)
             {
                 colliderPosition.x += Random.Range(-radious, radious);
                 colliderPosition.z += Random.Range(-radious, radious);
                 GameObject grassGO = Instantiate(plantPrefabGetter.getGrass(Random.Range(0f, 1f)), colliderPosition, playerRot);
-            }*/
+            }
             uint tmp = neededNumber;
             neededNumber += fibonachi;
             fibonachi = tmp;
@@ -82,7 +80,7 @@ public class Field : Interactable, Collector
                 collector.SetNeededItems(new List<ItemStack> { new ItemStack(waterData, neededNumber) });
             }
 
-        }
+        }*/
     }
 
     protected override void OnUpdate()
@@ -96,6 +94,17 @@ public class Field : Interactable, Collector
     }
 
     public override void OnInteract(Player player)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void SetPlant(PlantData plant)
+    {
+        currentPlant = plant;
+        Debug.Log(plant.name);
+    }
+
+    public void OnSeasonChanged(Season currentSeason)
     {
         throw new System.NotImplementedException();
     }
