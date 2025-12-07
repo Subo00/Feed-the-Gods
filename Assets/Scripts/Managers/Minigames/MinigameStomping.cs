@@ -25,7 +25,7 @@ public class MinigameStomping :  Minigame
         Debug.Log("endGoal: " + endGoal);
 
         manager.Player.SetOnMove(MoveAction);
-        manager.Player.SetCancle(() => manager.EndMinigame(-1f) );
+        manager.Player.AddOnCancle(() => manager.EndMinigame(-1f) );
         manager.Player.Animator.PlayAllLayers(Animations.IDLE);
         manager.Player.Animator.Play(Animations.STOMP, 2, false, false);
     }

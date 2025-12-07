@@ -51,6 +51,7 @@ MonoBehaviour:
   progressBar: {fileID: 144625353216092954}
   left: {fileID: 6861899547444856612}
   right: {fileID: 7830520493123912050}
+  barrelObject: {fileID: 0}
 --- !u!1001 &1535093346485121934
 PrefabInstance:
   m_ObjectHideFlags: 0
