@@ -15,5 +15,5 @@ MonoBehaviour:
   lines:
   - line: Okay, final test
   - line: You have the two liquids, now it is time to combine them
-  - line: And bring the product to me
+  - line: And bring the product to me.
   responses: []
