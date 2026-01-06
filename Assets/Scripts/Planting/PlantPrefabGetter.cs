@@ -6,6 +6,7 @@ public class PlantPrefabGetter : MonoBehaviour
 {
     public static PlantPrefabGetter Instance;
 
+    public GameObject[][] platns;
     public GameObject Level1Prefab;
     public GameObject Level2Prefab;
     public GameObject Level3Prefab;

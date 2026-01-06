@@ -9,6 +9,11 @@ public class CollectorCollider : MonoBehaviour
     private Collector collector = null;
     private bool isFull = false;
 
+    public void SetIsFull(bool full = false)
+    {
+        isFull = full;
+    }
+
     private void Start()
     {
         collector = GetComponentInParent<Collector>();
@@ -25,35 +30,8 @@ public class CollectorCollider : MonoBehaviour
             return;
         
         PlantData plant = other.GetComponent<PlantPickUp>().plant;
-        collector.SetPlant(plant);
+        collector.SetPlantData(plant);
         Destroy(other.gameObject);
         isFull = true;
-        /* if (neededItems.Count == 0 || item == null)
-         {
-             return;
-         }
-
-         foreach (ItemStack itemStack in neededItems)
-         {
-             if (item == itemStack.getItemData())
-             {
-                 if (itemStack.RemoveFromStack() == true)
-                 {
-                     //if the stack is at 0 remove from list
-                     neededItems.Remove(itemStack);
-                 }
-                 collector.ReportBool(neededItems.Count == 0);
-                 //SoundManager.PlaySound(SoundType.Absorb);
-                 Destroy(other.gameObject);
-                 break;
-             }
-         }*/
     }
-
-    public void SetNeededItems(List<ItemStack> items)
-    {
-        //neededItems.Clear();
-        //neededItems = new List<ItemStack>(items);
-    }
-
 }

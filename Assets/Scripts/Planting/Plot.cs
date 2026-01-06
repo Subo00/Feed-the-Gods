@@ -6,17 +6,17 @@ using UnityEngine;
 public class Plot : Interactable, Collector, ISeasonListener
 {
     CollectorCollider collector;
-    private PlantData currentPlant;
-    public uint neededNumber = 3;
-    public uint fibonachi = 2;
     private uint currentNumber = 0;
 
-    PlantPrefabGetter plantPrefabGetter;
     GameObject plantGO = null;
 
-    private int currentLevel = 0;
+    //Plant spesific data
+    private PlantData currentPlant;
 
-    private const float radious = 2.5f;
+    private int currentLevel = 0;
+    private int numOfSeasons = 0;
+    private bool isPlanted = false;
+    private int step = 0;
 
     protected override void Start()
     {
@@ -25,7 +25,6 @@ public class Plot : Interactable, Collector, ISeasonListener
         {
             Debug.LogError("Collector not properly set up");
         }
-        plantPrefabGetter = PlantPrefabGetter.Instance;
 
         inUse = true;
 
@@ -85,11 +84,6 @@ public class Plot : Interactable, Collector, ISeasonListener
 
     protected override void OnUpdate()
     {
-        if (currentNumber < neededNumber)
-        {
-            //if (currentLevel != 4) 
-            //uiManager.ShowProgressOnObjedct(dropPoint, (int)currentNumber, (int)neededNumber, currentLevel == 0 ? appleData.name : waterData.name);
-        }
         CommonLogic();
     }
 
@@ -98,15 +92,67 @@ public class Plot : Interactable, Collector, ISeasonListener
         throw new System.NotImplementedException();
     }
 
-    public void SetPlant(PlantData plant)
+    public void SetPlantData(PlantData plant)
     {
         currentPlant = plant;
-        Debug.Log(plant.name);
+        isPlanted = true;
+        step = GetStep();
+        SetPlant();
     }
 
+    private void SetPlant()
+    {
+        Vector3 colliderPosition = collector.transform.position;
+        colliderPosition.y = -1f;
+        Quaternion plotRot = transform.rotation;
+
+        plantGO = Instantiate(currentPlant.growthStagePrefabs[currentLevel], colliderPosition, plotRot);
+        SeasonManager.Instance.AddSeasonListener(this);
+    }
+
+    private void KillPlant()
+    {
+        Destroy(plantGO);
+        plantGO = null;
+        collector.SetIsFull();
+        SeasonManager.Instance.RemoveSeasonListener(this);
+    }
     public void OnSeasonChanged(Season currentSeason)
     {
-        throw new System.NotImplementedException();
+        if (plantGO == null) return;
+
+        if(currentSeason != currentPlant.plantingSeason + 1 && isPlanted)
+        {
+            KillPlant();
+            isPlanted = false;
+
+            return;
+        }
+
+        isPlanted = false;
+        numOfSeasons++;
+        if(numOfSeasons% step == 0 && currentLevel != currentPlant.growthStagePrefabs.Length - 2)
+        {
+            KillPlant();
+            currentLevel++;
+            SetPlant();
+            collector.SetIsFull(true);
+        }
+        if(numOfSeasons == currentPlant.lifespan)
+        {
+            KillPlant();
+            currentLevel = currentPlant.growthStagePrefabs.Length - 1;
+            SetPlant();
+            SeasonManager.Instance.RemoveSeasonListener(this);
+            return;
+        }
+    }
+
+    private int GetStep()
+    {
+        float step = currentPlant.growthStagePrefabs.Length - 2 / currentPlant.seasonsToGrow;
+        Debug.Log("step:" + step);
+        return (int)step;
     }
 }
 
