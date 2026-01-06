@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6f80fb487b47eb4d85f469d3cd50560, type: 3}
   m_Name: OrangeTree
   m_EditorClassIdentifier: 
-  id: 1
-  yearsToGrow: 2
-  lifespan: 20
+  growthStagePrefabs:
+  - {fileID: 190654, guid: f80320821301293469fd7263b5c778a3, type: 3}
+  - {fileID: 6695003846789727565, guid: bae468b3a6b9ea141967f3cfbe601352, type: 3}
+  - {fileID: 1473676933748722291, guid: f28696abfa650884abeda811eec91176, type: 3}
+  - {fileID: 102184, guid: d49634e20277dae4bb3439bfd5262bb7, type: 3}
+  seasonsToGrow: 12
+  lifespan: 80
+  plantingSeason: 0

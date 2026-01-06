@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6f80fb487b47eb4d85f469d3cd50560, type: 3}
   m_Name: StrawberryBush
   m_EditorClassIdentifier: 
-  id: 0
-  yearsToGrow: 0
-  lifespan: 4
+  growthStagePrefabs:
+  - {fileID: 2906742830765859135, guid: 78da2ace1ab76ce478600ebe37fa10fe, type: 3}
+  - {fileID: 8534508153597116693, guid: 9b5abad0cdb212b498495c419d25527e, type: 3}
+  - {fileID: 146036, guid: 85d0dccb426028947bcac0bf4729cb6c, type: 3}
+  seasonsToGrow: 1
+  lifespan: 16
+  plantingSeason: 0
