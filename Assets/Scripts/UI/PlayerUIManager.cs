@@ -196,10 +196,9 @@ public class PlayerUIManager : MonoBehaviour, UIPrompt
                 return false;
         }
     }
+
     public void ToggleCrafting()
     {
-        
-
         isCraftingOpen = !isCraftingOpen;
 
         if (isCraftingOpen)

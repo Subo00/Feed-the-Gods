@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 public class UIManagerChild : PlayerHUD //delete this script 
 {
-    public static UIManagerChild Instance;
+    //public static UIManagerChild Instance;
 
     private InventoryUI inventoryUI;
     private CraftingUI craftingUI;
@@ -32,12 +32,12 @@ public class UIManagerChild : PlayerHUD //delete this script
 
     private void Awake()
     {
-        if (Instance != null)
+        /*if (Instance != null)
         {
             Destroy(gameObject);
             return;
         }
-        Instance = this;
+        Instance = this;*/
 
         controls = new UIControls();
 

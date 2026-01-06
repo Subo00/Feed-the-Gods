@@ -19,8 +19,8 @@ public class SeasonManager : MonoBehaviour
 
     private List<ISeasonListener> seasonListeners = new List<ISeasonListener> ();
 
-    public void AddSeason(ISeasonListener season) => seasonListeners.Add(season);
-    public void RemoveSeason(ISeasonListener season) => seasonListeners.Remove(season);
+    public void AddSeasonListener(ISeasonListener season) => seasonListeners.Add(season);
+    public void RemoveSeasonListener(ISeasonListener season) => seasonListeners.Remove(season);
 
     public void ChangeSeason()
     {

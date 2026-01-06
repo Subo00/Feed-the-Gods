@@ -10294,7 +10294,7 @@ PrefabInstance:
     - target: {fileID: 2056110169714612495, guid: 59f93721add8cf0429a57d18a090951b, type: 3}
       propertyPath: inventory
       value: 
-      objectReference: {fileID: 6322675814974297198}
+      objectReference: {fileID: 5840080879713188980}
     - target: {fileID: 2056110169714612495, guid: 59f93721add8cf0429a57d18a090951b, type: 3}
       propertyPath: dialogManager
       value: 
@@ -10357,7 +10357,7 @@ PrefabInstance:
       objectReference: {fileID: 1347918265794930661}
     - target: {fileID: 4263392765631826794, guid: 59f93721add8cf0429a57d18a090951b, type: 3}
       propertyPath: m_ActionEvents.Array.size
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4263392765631826794, guid: 59f93721add8cf0429a57d18a090951b, type: 3}
       propertyPath: m_ActionEvents.Array.data[1].m_ActionId
@@ -10385,7 +10385,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4263392765631826794, guid: 59f93721add8cf0429a57d18a090951b, type: 3}
       propertyPath: m_ActionEvents.Array.data[7].m_ActionId
-      value: 632b6c1f-0159-49c8-b89c-8179ce4aaa05
+      value: 1787b5b2-3981-428b-bc9f-399ebbf14618
       objectReference: {fileID: 0}
     - target: {fileID: 4263392765631826794, guid: 59f93721add8cf0429a57d18a090951b, type: 3}
       propertyPath: m_ActionEvents.Array.data[8].m_ActionId
@@ -10441,7 +10441,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4263392765631826794, guid: 59f93721add8cf0429a57d18a090951b, type: 3}
       propertyPath: m_ActionEvents.Array.data[7].m_ActionName
-      value: UI/CraftingToggle[/Keyboard/2]
+      value: Player/UseItem[/Keyboard/f]
       objectReference: {fileID: 0}
     - target: {fileID: 4263392765631826794, guid: 59f93721add8cf0429a57d18a090951b, type: 3}
       propertyPath: m_ActionEvents.Array.data[8].m_ActionName
@@ -10759,17 +10759,13 @@ PrefabInstance:
       propertyPath: panelTransform
       value: 
       objectReference: {fileID: 6821095088617052226}
-    m_RemovedComponents:
-    - {fileID: 318181249260564451, guid: 59f93721add8cf0429a57d18a090951b, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2166478355169847055, guid: 59f93721add8cf0429a57d18a090951b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4878691605358733362}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1369699660276624435, guid: 59f93721add8cf0429a57d18a090951b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6322675814974297198}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59f93721add8cf0429a57d18a090951b, type: 3}
 --- !u!114 &2236698662368862576 stripped
 MonoBehaviour:
@@ -10782,18 +10778,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b637e93b07d493d4ba708bbfc97b626b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &8501568331353468643 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1369699660276624435, guid: 59f93721add8cf0429a57d18a090951b, type: 3}
+--- !u!114 &5840080879713188980 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4032313008201973412, guid: 59f93721add8cf0429a57d18a090951b, type: 3}
   m_PrefabInstance: {fileID: 7420108985909002960}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6322675814974297198
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8501568331353468643}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e60067208b8fcc24ab50363cfe2ca143, type: 3}

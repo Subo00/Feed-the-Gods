@@ -138,6 +138,7 @@ GameObject:
   - component: {fileID: 7020325308974539728}
   - component: {fileID: 8483688603753047775}
   - component: {fileID: 2592524517603822300}
+  - component: {fileID: 18720550674827123}
   m_Layer: 0
   m_Name: PlayerInteractable
   m_TagString: PlayerInteraction
@@ -208,6 +209,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &18720550674827123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 739954956834977043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c542d2af72d39374896591e51979aed3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &757649614742697438
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,7 +546,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4722648351904809209}
-  - component: {fileID: 318181249260564451}
+  - component: {fileID: 4032313008201973412}
   m_Layer: 0
   m_Name: Inventory
   m_TagString: Untagged
@@ -556,7 +569,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2166478355169847055}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &318181249260564451
+--- !u!114 &4032313008201973412
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -565,7 +578,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1369699660276624435}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54a6258b255cc224f94023804cef2619, type: 3}
+  m_Script: {fileID: 11500000, guid: e60067208b8fcc24ab50363cfe2ca143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1476546017797405619
@@ -1778,10 +1791,11 @@ MonoBehaviour:
   speed: 6
   turnSmoothTime: 0.1
   playerSpawnItemPoint: {fileID: 8919143412061959299}
-  inventory: {fileID: 318181249260564451}
+  inventory: {fileID: 0}
   minigameManager: {fileID: 734743787096512874}
   playerUIManager: {fileID: 0}
   dialogManager: {fileID: 0}
+  craftingManager: {fileID: 0}
 --- !u!114 &5203842045307950816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1840,46 +1854,6 @@ MonoBehaviour:
     m_ActionId: 9239fb16-2347-463b-8490-089c9940fd81
     m_ActionName: Player/Fire
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 6bb3d954-8ee3-4fb4-ab06-d399cf0c0f0a
-    m_ActionName: UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: bba449da-e432-4e2d-931c-1689570fc0f7
-    m_ActionName: UI/Submit[/Keyboard/enter]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: c7a1bb3d-449f-4e8a-b5ed-3b191f7957e7
-    m_ActionName: UI/Cancel[/Keyboard/escape]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 2973da57-cfab-48d8-b59b-49d038c57342
-    m_ActionName: UI/Point
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 8672a3cc-110b-4bd4-a834-219262c8928e
-    m_ActionName: UI/Click
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: c336f36e-1b02-4149-87aa-81810a9382d6
-    m_ActionName: UI/ScrollWheel
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: ee61c119-44e9-43ef-8e8e-32d94887a22a
-    m_ActionName: UI/MiddleClick
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: b7b86911-2aee-40ea-b062-bb279f5c3e12
-    m_ActionName: UI/RightClick
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 90a5ab45-1191-4696-a0b5-4959a76e7a8a
-    m_ActionName: UI/TrackedDevicePosition
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 74de28eb-cdcb-41c5-a627-85f49eafdec4
-    m_ActionName: UI/TrackedDeviceOrientation
-  - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2056110169714612495}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
@@ -1899,6 +1873,18 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 38d457f9-bf11-499a-80c8-47a3c416671a
     m_ActionName: Player/Join[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0ca39348-9f0b-4d45-baff-b70d5ef0f91a
+    m_ActionName: Player/InventoryToggle[/Keyboard/1]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 525e8385-4c0f-49a1-a4b2-65edddaf99a3
+    m_ActionName: Player/CraftingToggle[/Keyboard/2]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 68e0a07f-f35e-4047-8c16-5e881429cb1f
+    m_ActionName: Player/CancleAction[/Keyboard/q]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -2184,7 +2170,7 @@ Transform:
   m_GameObject: {fileID: 6558959607062095966}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.869, y: 1.31, z: 1.077}
+  m_LocalPosition: {x: 0.869, y: -0.14, z: 1.077}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

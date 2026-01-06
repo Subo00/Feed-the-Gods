@@ -178,8 +178,8 @@ GameObject:
   - component: {fileID: 6611252163946666009}
   - component: {fileID: 7672738027321879535}
   - component: {fileID: 6461310839031817925}
-  - component: {fileID: 5603291613841393613}
   - component: {fileID: 6008559262966684043}
+  - component: {fileID: -474397456729106146}
   m_Layer: 0
   m_Name: Orange
   m_TagString: Untagged
@@ -275,19 +275,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.0006849407
   m_Center: {x: -7.403811e-11, y: -7.40381e-11, z: -0.0000065314935}
---- !u!114 &5603291613841393613
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5294716216621445081}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39f85ed41f0413445a795dec970f9ffb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 951e044c20a47404c9834e761805d158, type: 2}
 --- !u!54 &6008559262966684043
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -315,3 +302,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-474397456729106146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5294716216621445081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a46400723497024bad358dbe600d121, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 951e044c20a47404c9834e761805d158, type: 2}
+  plant: {fileID: 11400000, guid: b1bfd8d2be54ff543aa93b2a80743cf3, type: 2}
