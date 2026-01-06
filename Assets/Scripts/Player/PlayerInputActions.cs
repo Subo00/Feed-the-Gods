@@ -89,6 +89,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""UseItem"",
+                    ""type"": ""Button"",
+                    ""id"": ""1787b5b2-3981-428b-bc9f-399ebbf14618"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -300,6 +309,28 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""CancleAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""25b65f0f-fb98-4d5b-bcb2-4e043991d351"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""WASD"",
+                    ""action"": ""UseItem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b10377d2-a01d-4dd5-80a6-6895b934741d"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""UseItem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -338,6 +369,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_InventoryToggle = m_Player.FindAction("InventoryToggle", throwIfNotFound: true);
         m_Player_CraftingToggle = m_Player.FindAction("CraftingToggle", throwIfNotFound: true);
         m_Player_CancleAction = m_Player.FindAction("CancleAction", throwIfNotFound: true);
+        m_Player_UseItem = m_Player.FindAction("UseItem", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -406,6 +438,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_InventoryToggle;
     private readonly InputAction m_Player_CraftingToggle;
     private readonly InputAction m_Player_CancleAction;
+    private readonly InputAction m_Player_UseItem;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -417,6 +450,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @InventoryToggle => m_Wrapper.m_Player_InventoryToggle;
         public InputAction @CraftingToggle => m_Wrapper.m_Player_CraftingToggle;
         public InputAction @CancleAction => m_Wrapper.m_Player_CancleAction;
+        public InputAction @UseItem => m_Wrapper.m_Player_UseItem;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -447,6 +481,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @CancleAction.started += instance.OnCancleAction;
             @CancleAction.performed += instance.OnCancleAction;
             @CancleAction.canceled += instance.OnCancleAction;
+            @UseItem.started += instance.OnUseItem;
+            @UseItem.performed += instance.OnUseItem;
+            @UseItem.canceled += instance.OnUseItem;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -472,6 +509,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @CancleAction.started -= instance.OnCancleAction;
             @CancleAction.performed -= instance.OnCancleAction;
             @CancleAction.canceled -= instance.OnCancleAction;
+            @UseItem.started -= instance.OnUseItem;
+            @UseItem.performed -= instance.OnUseItem;
+            @UseItem.canceled -= instance.OnUseItem;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -516,5 +556,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnInventoryToggle(InputAction.CallbackContext context);
         void OnCraftingToggle(InputAction.CallbackContext context);
         void OnCancleAction(InputAction.CallbackContext context);
+        void OnUseItem(InputAction.CallbackContext context);
     }
 }
