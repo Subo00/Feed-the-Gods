@@ -55,7 +55,7 @@ MonoBehaviour:
     value: 2
     dropChance: 0.7
   - item: {fileID: 11400000, guid: 951e044c20a47404c9834e761805d158, type: 2}
-    value: 3
+    value: 1
     dropChance: 1
   interactionCooldown: 6
   id: 

@@ -80,7 +80,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resourceDrops:
   - item: {fileID: 11400000, guid: 5eacf16088e407747bf56f81b9ffcbed, type: 2}
-    value: 1
+    value: 3
     dropChance: 1
   - item: {fileID: 11400000, guid: 5eacf16088e407747bf56f81b9ffcbed, type: 2}
     value: 1
