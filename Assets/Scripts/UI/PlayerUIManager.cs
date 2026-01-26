@@ -9,6 +9,7 @@ public class PlayerUIManager : MonoBehaviour, UIPrompt
     public EquippedItemUI EquippedItemUI => equippedItemUI;
     public CraftingUI CraftingUI => craftingUI; 
     public DialogUI DialogUI => dialogUI;
+    public MenuUI MenuUI => menuUI;
 
     [SerializeField] private InventoryUI inventoryUI;
     [SerializeField] private CraftingUI craftingUI;
@@ -16,6 +17,8 @@ public class PlayerUIManager : MonoBehaviour, UIPrompt
     [SerializeField] private DialogUI dialogUI;
     [SerializeField] private PlayerHUD playerHUD;
     [SerializeField] private EquippedItemUI equippedItemUI;
+    [SerializeField] private MenuUI menuUI;
+
     [SerializeField] private EventSystem eventSystem;
     [SerializeField] private Camera cam;
 
@@ -25,6 +28,9 @@ public class PlayerUIManager : MonoBehaviour, UIPrompt
     private bool interactionActive = true; //used for DialogManager
     private bool isCraftingOpen = false;
     private bool isMinigameOpen = false;
+    private bool isMenuOpen = false;
+
+    private GameObject previousButton = null;
 
     private enum UIType { None, Inventory, Crafting, Minigame, Menu, Dialog, Tutorial };
     UIType currentType = UIType.None;
@@ -36,6 +42,10 @@ public class PlayerUIManager : MonoBehaviour, UIPrompt
         minigameUI.Toggle(false);
         dialogUI.Toggle(false);
         inventoryUI.Toggle(false);
+        menuUI.Initialize();
+        menuUI.SetResumeButton(ToggleMenu);
+        menuUI.Toggle(false);
+
         cam = GetComponentInParent<Camera>();
     }
 
@@ -51,6 +61,11 @@ public class PlayerUIManager : MonoBehaviour, UIPrompt
     }
 
     public void SetControlsEnable(bool enabled) { eventSystem.enabled = enabled; }
+
+    public void ToggleMenuTrigger(InputAction.CallbackContext context)
+    {
+        if (context.performed) ToggleMenu();
+    }
 
     public void ToggleInventory()
     {
@@ -129,6 +144,12 @@ public class PlayerUIManager : MonoBehaviour, UIPrompt
         {
             isMinigameOpen = false;
             minigameUI.Toggle(isMinigameOpen);
+        }
+
+        if (currentUI != UIType.Menu)
+        {
+            isMenuOpen = false;
+            menuUI.Toggle(isMenuOpen);
         }
 
         if (currentUI == UIType.None)
@@ -234,6 +255,30 @@ public class PlayerUIManager : MonoBehaviour, UIPrompt
             CloseOtherUIs(UIType.None);
         }
     }
+
+    public void ToggleMenu()
+    {
+        isMenuOpen = !isMenuOpen;
+
+        if (isMenuOpen)
+        {
+            menuUI.Toggle(isMenuOpen);
+            SetCurrentUIType(UIType.Menu);
+            previousButton = eventSystem.currentSelectedGameObject;
+            eventSystem.SetSelectedGameObject(menuUI.GetFirstButton());
+            Time.timeScale = 0; //pause the game
+            PlayersHandler.Instance.DisablePlayers(player);
+        }
+        else
+        {
+            menuUI.Toggle(isMenuOpen);
+            SetCurrentUIType(previousType);
+            eventSystem.SetSelectedGameObject(previousButton);
+            Time.timeScale = 1f;
+            PlayersHandler.Instance.EnablePlayers();
+        }
+    }
+
 
     public void ChangePrompt(InputPrompt input)
     {
