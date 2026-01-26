@@ -49,6 +49,9 @@ public class PlayerUIManager : MonoBehaviour, UIPrompt
     {
         if (context.performed) ToggleInventory();
     }
+
+    public void SetControlsEnable(bool enabled) { eventSystem.enabled = enabled; }
+
     public void ToggleInventory()
     {
         if (IsImportatnTypeOpen())

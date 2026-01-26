@@ -33,6 +33,7 @@ public class Player : ThirdPersonMovement, RecipeSpawner
     private List<Action> cancleActions;
     private Action<Vector2> moveAction;
     private bool isInteracting = false;
+    private bool controlEnabled = true;
 
     //Interacting - functions
     public bool IsInteracting => isInteracting;
@@ -51,6 +52,11 @@ public class Player : ThirdPersonMovement, RecipeSpawner
         moveAction = null;
     }
     public void SetLastInteract() { interactActionPlayer = interactActionPlayerLast;   }
+    public void SetControlEnable(bool enabled) 
+    { 
+        controlEnabled = enabled;
+        playerUIManager.SetControlsEnable(enabled);
+    }
    
     public override void ToggleUI(bool isActive)
     {
@@ -101,14 +107,9 @@ public class Player : ThirdPersonMovement, RecipeSpawner
 
     protected override void Update()
     {
+        if (!controlEnabled) return;
         base.Update();
 
-        /*if (Input.GetButtonDown("Fire1") && inventory.equippedItemStack != null && !isUIActive)
-        {
-            
-            animationController.Play(Animations.THROW, 1, true, false, 0.16f);
-            animationController.Play(Animations.NONE, 2, false, false, 0.16f);
-        }*/
     }
 
     public void DropItemFromPlayerPos(uint itemID)
@@ -127,6 +128,8 @@ public class Player : ThirdPersonMovement, RecipeSpawner
 
     public void Throw()
     {
+        if (!controlEnabled) return;
+
         if (inventory.equippedItemStack == null) return;
         uint itemToThrow = inventory.equippedItemStack.getItemData().id;
         DropItemFromPlayerPos(itemToThrow);
@@ -135,6 +138,8 @@ public class Player : ThirdPersonMovement, RecipeSpawner
 
     public void OnMove(InputAction.CallbackContext context) 
     {
+        if (!controlEnabled) return;
+
         if (moveAction != null)
         {
             moveAction(context.ReadValue<Vector2>());
@@ -145,6 +150,8 @@ public class Player : ThirdPersonMovement, RecipeSpawner
 
     public void OnInteract(InputAction.CallbackContext context) 
     {
+        if (!controlEnabled) return;
+
         if (context.started)
         {
             isInteracting = true;
@@ -164,6 +171,8 @@ public class Player : ThirdPersonMovement, RecipeSpawner
 
     public void OnCancle(InputAction.CallbackContext context)
     {
+        if (!controlEnabled) return;
+
         if (!context.started) return;
         if(cancleActions.Count != 0)
         {
@@ -178,6 +187,8 @@ public class Player : ThirdPersonMovement, RecipeSpawner
 
     public void OnUseItem()
     {
+        if (!controlEnabled) return;
+
         itemAction?.Invoke();
     }
 
