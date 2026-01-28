@@ -15,4 +15,4 @@ MonoBehaviour:
   id: 0
   description: Small and Sweet
   sprite: {fileID: 21300000, guid: 0a9315f1f6594d243a25dc0e734702b2, type: 3}
-  maxStack: 100
+  maxStack: 99
