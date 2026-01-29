@@ -30,25 +30,21 @@ public class MinigameHeadHit : Minigame
 
         //add animation
         Debug.Log("temp: " + temp + "\nindicatorPos: " + indicator.anchoredPosition.y);
-
+        manager.Player.Animator.PlayAllLayers(Animations.IDLE);
+        manager.Player.Animator.Play(Animations.HEADBUTT, 3, false, false);
+        manager.Player.Animator.Play(Animations.HEADBUTT, 2, false, false);
         switch(temp)
         {
             case <= 10:
-                Debug.Log("1f");
                 manager.EndMinigame(1f);
                 break;
             case <= 20:
-                Debug.Log("0.7f");
-
                 manager.EndMinigame(0.7f);
                 break;
             case <= 30:
-                Debug.Log("0.5f");
-
                 manager.EndMinigame(0.5f);
                 break;
             default:
-                Debug.Log("-1f");
 
                 manager.EndMinigame(-1f);
                 break;
