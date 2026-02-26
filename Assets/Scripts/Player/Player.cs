@@ -177,6 +177,7 @@ public class Player : ThirdPersonMovement, RecipeSpawner
         {
             foreach(var action in cancleActions)
                 action.Invoke();
+            ClearInteract();
         }
         else
         {
