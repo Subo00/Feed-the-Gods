@@ -53,8 +53,9 @@ public class PlayerUIManager : MonoBehaviour, UIPrompt
     { 
         this.player = player; 
         inventoryUI.Bind(player);
+        craftingUI.Bind(player);
     }
-
+    
     public void ToggleInventoryTrigger(InputAction.CallbackContext context)
     {
         if (context.performed) ToggleInventory();
@@ -75,18 +76,19 @@ public class PlayerUIManager : MonoBehaviour, UIPrompt
         isInventoryOpen = !isInventoryOpen;
         inventoryUI.Toggle(isInventoryOpen);
         player.ToggleUI(isInventoryOpen);
-        
+
         if (isInventoryOpen)
-         {
-             CloseOtherUIs(UIType.Inventory);
-             inventoryUI.Toggle(isInventoryOpen);
-             SetCurrentUIType(UIType.Inventory);
-             eventSystem.SetSelectedGameObject(inventoryUI.GetFirstButton());
-         }
-         else
-         {
-             CloseOtherUIs(UIType.None);
-         }
+        {
+            CloseOtherUIs(UIType.Inventory);
+            inventoryUI.Toggle(isInventoryOpen);
+            SetCurrentUIType(UIType.Inventory);
+            eventSystem.SetSelectedGameObject(inventoryUI.GetFirstButton());
+            player.AddOnCancle(ToggleInventory);
+        }
+        else
+        {
+            CloseOtherUIs(UIType.None);
+        }
     }
 
 
@@ -225,12 +227,14 @@ public class PlayerUIManager : MonoBehaviour, UIPrompt
     {
         isCraftingOpen = !isCraftingOpen;
 
+
         if (isCraftingOpen)
         {
             CloseOtherUIs(UIType.Crafting);
             craftingUI.Toggle(isCraftingOpen);
             SetCurrentUIType(UIType.Crafting);
             eventSystem.SetSelectedGameObject(craftingUI.GetFirstButton());
+            player.AddOnCancle(ToggleCrafting);
         }
         else
         {
