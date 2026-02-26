@@ -75,10 +75,9 @@ public class Player : ThirdPersonMovement, RecipeSpawner
         inventory.SetEquippedItemUI(PlayerUI.EquippedItemUI);
 
         minigameManager.SetPlayer(this);
-        dialogManager.SetPlayer(playerUIManager);
+        dialogManager.SetPlayerUIManager(playerUIManager);
         craftingManager.SetPlayer(this);
 
-        playerUIManager.CraftingUI.SetPlayer(this);
 
         itemManager = ItemManager.Instance;
 

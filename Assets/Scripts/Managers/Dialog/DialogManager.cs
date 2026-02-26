@@ -31,7 +31,7 @@ public class DialogManager : MonoBehaviour
     private int constraintsCount = 4;
     public Queue<DialogResponse> responses;
 
-    public void SetPlayer(PlayerUIManager playerUI)
+    public void SetPlayerUIManager(PlayerUIManager playerUI)
     {
         uiManager = playerUI;
     }
