@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class QuestUI : BaseUI<QuestUI>
+public class QuestUI : BaseUI
 {
     public bool questEmpty = true;
     public static QuestUI Instance;
