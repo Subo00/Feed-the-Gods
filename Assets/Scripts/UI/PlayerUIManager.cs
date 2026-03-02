@@ -37,6 +37,18 @@ public class PlayerUIManager : MonoBehaviour, UIPrompt
     UIType currentType = UIType.None;
     UIType previousType = UIType.None;
 
+
+    void Awake()
+    {
+        PlayersHandler.Instance.OnPlayerCountChange += UpdateUIElements;
+        UpdateUIElements(PlayersHandler.Instance.GetPlayerCount());
+    }
+
+    void OnDestroy()
+    {
+        PlayersHandler.Instance.OnPlayerCountChange -= UpdateUIElements;
+    }
+
     void Start()
     {
         craftingUI.Toggle(false);
