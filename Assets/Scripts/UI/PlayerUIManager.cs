@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+
 public class PlayerUIManager : MonoBehaviour, UIPrompt
 {
     public PlayerHUD PlayerHUD => playerHUD;
@@ -288,5 +289,10 @@ public class PlayerUIManager : MonoBehaviour, UIPrompt
     {
         PlayerHUD.ChangePrompt(input);
         CraftingUI.ChangePrompt(input);
+    }
+
+    public void UpdateUIElements(int numOfPlayers)
+    {
+        EquippedItemUI.ChangeTransform(numOfPlayers);
     }
 }
