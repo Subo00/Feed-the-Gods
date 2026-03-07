@@ -27,7 +27,6 @@ public class Player : ThirdPersonMovement, RecipeSpawner
     private PlayerInput playerInput;
     private Action<Player> interactActionPlayer;
     private Action<Player> interactActionPlayerLast;
-    private Action interactAction;
     private Action itemAction;
     private Action delayedAction; 
     private List<Action> cancleActions;
@@ -38,7 +37,6 @@ public class Player : ThirdPersonMovement, RecipeSpawner
     //Interacting - functions
     public bool IsInteracting => isInteracting;
     public void SetInteract(Action<Player> action) { interactActionPlayer = action; interactActionPlayerLast = action;  }
-    public void SetInteract(Action action) { interactAction = action;  }
     public void SetItemAction(Action action) {  itemAction = action; }
     public void SetDelayedInteract(Action action) {  delayedAction = action; }
     public void AddOnCancle(Action action) { if(action != null) cancleActions.Add(action); }
@@ -46,7 +44,6 @@ public class Player : ThirdPersonMovement, RecipeSpawner
     public void ClearInteract()
     {
         interactActionPlayer = null;
-        interactAction = null;
         delayedAction = null;
         cancleActions.Clear();
         moveAction = null;
@@ -158,8 +155,6 @@ public class Player : ThirdPersonMovement, RecipeSpawner
             //if (!context.started) return;
             if (interactActionPlayer != null)
                 interactActionPlayer.Invoke(this);
-            else if (interactAction != null)
-                interactAction.Invoke();
         }
         else if (context.canceled)
         {
