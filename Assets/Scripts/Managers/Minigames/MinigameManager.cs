@@ -38,22 +38,11 @@ public class MinigameManager : MonoBehaviour
         isSource = false;
     }
 
-    public void StartMinigame(MinigameType minigameType,  uint valueUint = 1)
+    public void StartMinigame(MinigameType minigameType, uint valueUint = 1)
     {
         //minigameCanvas.Toggle(true);
-        switch (minigameType)
-        {
-            case MinigameType.Stomping:
-                currentMinigamePrefab = Instantiate(MinigamePrefabHolder.Instance.GetStomping() , minigameCanvas.transformObject.transform);
-                break;
-            case MinigameType.Gathering:
-                currentMinigamePrefab = Instantiate(MinigamePrefabHolder.Instance.GetGathering() , minigameCanvas.transformObject.transform);
-                break;
-            case MinigameType.HeadHit:
-                currentMinigamePrefab = Instantiate(MinigamePrefabHolder.Instance.GetHeadHit() , minigameCanvas.transformObject.transform);
-                break;
-                // Add other minigame types here
-        }
+
+        currentMinigamePrefab = Instantiate(MinigamePrefabHolder.Instance.GetMinigame(minigameType), minigameCanvas.transformObject.transform);
 
         if (currentMinigamePrefab != null)
         {

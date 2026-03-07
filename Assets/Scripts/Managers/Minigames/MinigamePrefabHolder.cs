@@ -16,8 +16,21 @@ public class MinigamePrefabHolder : MonoBehaviour
         else { Destroy(this.gameObject); }
     }
 
-    public GameObject GetStomping() {  return minigameStompingPrefab;}
-    public GameObject GetGathering() {  return minigameGatheringPrefab;}
-    public GameObject GetHeadHit() {  return minigameHeadHitPrefab;}
+    public GameObject GetMinigame(MinigameType minigame)
+    {
+        switch (minigame)
+        {
+            case MinigameType.Stomping:
+                return minigameStompingPrefab;
+            case MinigameType.Gathering:
+                return minigameGatheringPrefab;
+            case MinigameType.HeadHit:
+                return minigameHeadHitPrefab;
+            default:
+                Debug.LogError("couldn't find minigame: " + minigame);
+                return null;
+        }
+
+    }
 
 }
