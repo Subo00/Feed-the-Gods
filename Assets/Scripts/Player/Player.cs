@@ -13,6 +13,7 @@ public class Player : ThirdPersonMovement, RecipeSpawner
     public DialogManager DialogManager => dialogManager;
     public CraftingManager CraftingManager => craftingManager;
     public PlayerAnimationController Animator => animationController;
+    public PlayerInputHandler InputHandler => inputHandler;
 
     //Managers - variables
     [SerializeField] private Transform playerSpawnItemPoint;
@@ -22,9 +23,9 @@ public class Player : ThirdPersonMovement, RecipeSpawner
     [SerializeField] private DialogManager dialogManager;
     [SerializeField] private CraftingManager craftingManager;
     private ItemManager itemManager;
+    private PlayerInputHandler inputHandler;
 
     //Interacting - variables
-    private PlayerInput playerInput;
     private Action<Player> interactActionPlayer;
     private Action<Player> interactActionPlayerLast;
     private Action itemAction;
@@ -61,27 +62,17 @@ public class Player : ThirdPersonMovement, RecipeSpawner
     }
     protected override void Start()
     {
-        playerInput = GetComponent<PlayerInput>();
+        PlayerInput playerInput = GetComponent<PlayerInput>();
         if(playerInput == null)
         {
             Debug.LogError("no player input on player");
+            return;
         }
-
-        playerUIManager.SetPlayer(this);
-        inventory.SetInevntoryUI(PlayerUI.InventoryUI);
-        inventory.SetEquippedItemUI(PlayerUI.EquippedItemUI);
-
-        minigameManager.SetPlayer(this);
-        dialogManager.SetPlayerUIManager(playerUIManager);
-        craftingManager.SetPlayer(this);
-
-
-        itemManager = ItemManager.Instance;
 
         if (playerInput.currentControlScheme == "WASD")
         {
             string s = Keyboard.current.ToString();
-            if(s.Contains("WASD")) //one player is WASD
+            if (s.Contains("WASD")) //one player is WASD
             {
                 playerUIManager.ChangePrompt(InputPrompt.WASD);
             }
@@ -95,6 +86,16 @@ public class Player : ThirdPersonMovement, RecipeSpawner
             playerUIManager.ChangePrompt(InputPrompt.XBOX);
         }
 
+        playerUIManager.SetPlayer(this);
+        inventory.SetInevntoryUI(PlayerUI.InventoryUI);
+        inventory.SetEquippedItemUI(PlayerUI.EquippedItemUI);
+
+        minigameManager.SetPlayer(this);
+        dialogManager.SetPlayerUIManager(playerUIManager);
+        craftingManager.SetPlayer(this);
+
+        inputHandler = GetComponent<PlayerInputHandler>();  
+        itemManager = ItemManager.Instance;
         cancleActions = new List<Action>();
 
         ClearInteract();
@@ -153,8 +154,7 @@ public class Player : ThirdPersonMovement, RecipeSpawner
             isInteracting = true;
 
             //if (!context.started) return;
-            if (interactActionPlayer != null)
-                interactActionPlayer.Invoke(this);
+            interactActionPlayer?.Invoke(this);
         }
         else if (context.canceled)
         {
