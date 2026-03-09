@@ -47,6 +47,12 @@ MonoBehaviour:
   newDict:
     items:
     - id: 0
-      itemGameObject: {fileID: 3494101568239455851, guid: 40619b718bf2b8e43a2da98df1c5e9d0, type: 3}
+      itemGameObject: {fileID: 8757810570806623666, guid: 40619b718bf2b8e43a2da98df1c5e9d0, type: 3}
     - id: 1
-      itemGameObject: {fileID: 1071804139202542624, guid: cd075d42679465444b85e887f7e07c2b, type: 3}
+      itemGameObject: {fileID: 5065390574797582237, guid: f624f798f1c8e5144b583fdbb2225555, type: 3}
+    - id: 2
+      itemGameObject: {fileID: 5294716216621445081, guid: 4be2bb37b2f63fd489688184782fdd0e, type: 3}
+    - id: 3
+      itemGameObject: {fileID: 8225173486382145944, guid: aee7aeabcffc13543a41d59f8cda481b, type: 3}
+    - id: 4
+      itemGameObject: {fileID: 8069930366037128939, guid: 357651a64ce666d49b55b1c43ca3033f, type: 3}
