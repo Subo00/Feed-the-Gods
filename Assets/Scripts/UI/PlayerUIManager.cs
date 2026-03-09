@@ -58,8 +58,6 @@ public class PlayerUIManager : MonoBehaviour, UIPrompt
         menuUI.Initialize();
         menuUI.SetResumeButton(ToggleMenu);
         menuUI.Toggle(false);
-
-        cam = GetComponentInParent<Camera>();
     }
 
     public void SetPlayer(Player player) 
@@ -318,5 +316,16 @@ public class PlayerUIManager : MonoBehaviour, UIPrompt
     public void UpdateUIElements(int numOfPlayers)
     {
         EquippedItemUI.ChangeTransform(numOfPlayers);
+
+
+        switch(numOfPlayers)
+        {
+            case 1:
+                cam.fieldOfView = 65f; break;
+            case 2:
+                cam.fieldOfView = 60f; break;
+            case 3:
+                cam.fieldOfView = 50f; break;
+        }
     }
 }
