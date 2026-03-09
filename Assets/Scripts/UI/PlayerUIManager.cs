@@ -223,12 +223,14 @@ public class PlayerUIManager : MonoBehaviour, UIPrompt
         interactionActive = show;
     }
 
-    public void ToggleCraftingNone()
+    public void ToggleCraftingNone(InputAction.CallbackContext context)
     {
-        if (IsImportatnTypeOpen())
-            return;
+        if (!context.performed) return;
+        if (IsImportatnTypeOpen()) return;
+
         craftingUI.UpdateRecipeList(BuildingType.None);
         player.CraftingManager.SetRecipeSpawner(player);
+        player.InputHandler.ClearInteract();
         ToggleCrafting();
     }
 
