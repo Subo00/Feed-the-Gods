@@ -17,7 +17,6 @@ public class MinigameGather :  Minigame
         manager.Player.ToggleUI(true);
         SoundManager.PlaySound(SoundType.Rustle);
     }
-    public override void DisruptMinigame() { }
     public override void EndMinigame()
     {
         base.EndMinigame();

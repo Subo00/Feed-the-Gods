@@ -36,13 +36,10 @@ public class BuildingBase : Interactable, RecipeSpawner
         interactingPlayer.ClearInteract();
         interactingPlayer.PlayerUI.CraftingUI.UpdateRecipeList(buildingType);
         interactingPlayer.PlayerUI.ToggleCrafting();
-        interactingPlayer.AddOnCancle(ResetInUse);
+        interactingPlayer.InputHandler.AddOnCancle(ResetInUse);
     }
     protected override void OnUpdate()
     {
-        //inUse = uiManagerChild.isCraftingOpen || uiManagerChild.isMinigameOpen;
-
-
         CommonLogic();
     }
 
@@ -52,6 +49,7 @@ public class BuildingBase : Interactable, RecipeSpawner
         interactingObject.transform.SetParent(this.transform);
         interactingObject.SetActive(false);
         inUse = false;
+        //interactingPlayer.InputHandler.ClearInteract();
     }
 
     protected override void Start()

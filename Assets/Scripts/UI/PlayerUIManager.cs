@@ -71,8 +71,14 @@ public class PlayerUIManager : MonoBehaviour, UIPrompt
     
     public void ToggleInventoryTrigger(InputAction.CallbackContext context)
     {
-        if (context.performed) ToggleInventory();
+        if (context.performed)
+        {
+            player.InputHandler.ClearInteract();
+            ToggleInventory();
+        }
     }
+
+   
 
     public void SetControlsEnable(bool enabled) { eventSystem.enabled = enabled; }
 
@@ -88,7 +94,6 @@ public class PlayerUIManager : MonoBehaviour, UIPrompt
 
         isInventoryOpen = !isInventoryOpen;
         inventoryUI.Toggle(isInventoryOpen);
-        player.ToggleUI(isInventoryOpen);
 
         if (isInventoryOpen)
         {
@@ -96,7 +101,8 @@ public class PlayerUIManager : MonoBehaviour, UIPrompt
             inventoryUI.Toggle(isInventoryOpen);
             SetCurrentUIType(UIType.Inventory);
             eventSystem.SetSelectedGameObject(inventoryUI.GetFirstButton());
-            player.AddOnCancle(ToggleInventory);
+            player.InputHandler.AddOnCancle(ToggleInventory);
+            player.InputHandler.ChangeActionMap(ActionMap.UI);
         }
         else
         {
@@ -116,10 +122,13 @@ public class PlayerUIManager : MonoBehaviour, UIPrompt
             dialogUI.Toggle(isDialogOpen);
             SetCurrentUIType(UIType.Dialog);
             interactionActive = false;
+            player.InputHandler.ChangeActionMap(ActionMap.UI);
         }
         else
         {
             CloseOtherUIs(UIType.None);
+            player.InputHandler.ChangeActionMap(ActionMap.Player);
+            player.InputHandler.ClearInteract();
             interactionActive = true;
         }
     }
@@ -169,14 +178,14 @@ public class PlayerUIManager : MonoBehaviour, UIPrompt
 
         if (currentUI == UIType.None)
         {
-            player.ToggleUI(false);
+            player.InputHandler.ChangeActionMap(ActionMap.Player);
             equippedItemUI.Toggle(true);
             SetCurrentUIType(UIType.None);
             eventSystem.SetSelectedGameObject(null);
         }
         else
         {
-            player.ToggleUI(true);
+            //player.InputHandler.ChangeActionMap(ActionMap.UI);
             //equippedItemUI.Toggle(false);
         }
     }
@@ -247,7 +256,8 @@ public class PlayerUIManager : MonoBehaviour, UIPrompt
             craftingUI.Toggle(isCraftingOpen);
             SetCurrentUIType(UIType.Crafting);
             eventSystem.SetSelectedGameObject(craftingUI.GetFirstButton());
-            player.AddOnCancle(ToggleCrafting);
+            player.InputHandler.AddOnCancle(ToggleCrafting);
+            player.InputHandler.ChangeActionMap(ActionMap.UI);
         }
         else
         {

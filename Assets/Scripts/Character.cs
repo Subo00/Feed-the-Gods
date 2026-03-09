@@ -29,8 +29,9 @@ public class Character : Interactable, DialogUser, IDataPersistence
         interactingPlayer = player;
         dialogManager = interactingPlayer.DialogManager;
         interactingPlayer.ClearInteract();
-        interactingPlayer.SetDelayedInteract(OnInteracted);
-        //OnInteracted();
+        interactingPlayer.InputHandler.AddOnUISubmit(OnInteracted);
+        interactingPlayer.InputHandler.ChangeActionMap(ActionMap.UI);
+        OnInteracted();
     }
 
     private void OnInteracted()
@@ -143,7 +144,9 @@ public class Character : Interactable, DialogUser, IDataPersistence
     {
         if (otherIndex == 0)
         {
+            interactingPlayer.InputHandler.ClearInteract();
             dialogManager.EndDialog();
+            interactingPlayer.SetInteract(OnInteract);
             inUse = false;
             lastInteractionTime = Time.time;
 
