@@ -11,7 +11,7 @@ public class PlayerInputHandler : MonoBehaviour
     private List<Action> cancleActions;
     private Action uiSubmitAction;
     
-    public void AddOnCancle(Action action) { if (action != null) cancleActions.Add(action); Debug.Log("Cancle lol"); }
+    public void AddOnCancle(Action action) { if (action != null) cancleActions.Add(action);  }
     public void AddOnUISubmit(Action action) { if (action != null) uiSubmitAction = action; }
 
     public void ChangeActionMap(ActionMap map)
@@ -35,7 +35,6 @@ public class PlayerInputHandler : MonoBehaviour
             foreach (var action in cancleActions)
             {
                 action.Invoke();
-                Debug.Log("ACTION" +  action.ToString());   
             }
             ClearInteract();
         }
