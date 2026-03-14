@@ -1721,6 +1721,7 @@ GameObject:
   - component: {fileID: 2056110169714612495}
   - component: {fileID: 5203842045307950816}
   - component: {fileID: 4263392765631826794}
+  - component: {fileID: 162840905828112954}
   m_Layer: 0
   m_Name: Player
   m_TagString: PlayerController
@@ -1748,6 +1749,7 @@ Transform:
   - {fileID: 4722648351904809209}
   - {fileID: 438440340830898517}
   - {fileID: 2522608111623725899}
+  - {fileID: 7371969560378531099}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &8453326188650531123
@@ -1791,11 +1793,11 @@ MonoBehaviour:
   speed: 6
   turnSmoothTime: 0.1
   playerSpawnItemPoint: {fileID: 8919143412061959299}
-  inventory: {fileID: 0}
+  inventory: {fileID: 4032313008201973412}
   minigameManager: {fileID: 734743787096512874}
   playerUIManager: {fileID: 0}
-  dialogManager: {fileID: 0}
-  craftingManager: {fileID: 0}
+  dialogManager: {fileID: 8787609577368331168}
+  craftingManager: {fileID: 3905002410319716206}
 --- !u!114 &5203842045307950816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1850,10 +1852,6 @@ MonoBehaviour:
     m_ActionId: 0b3e4635-685e-4272-bfc9-ea448ec2c1a9
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 9239fb16-2347-463b-8490-089c9940fd81
-    m_ActionName: Player/Fire
-  - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2056110169714612495}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
@@ -1870,26 +1868,270 @@ MonoBehaviour:
     m_ActionId: 32fd58b1-b6ab-446b-bd99-dddbf030b4ec
     m_ActionName: Player/Interact[/Keyboard/e]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PlayerUIManager, Assembly-CSharp
+        m_MethodName: ToggleMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 38d457f9-bf11-499a-80c8-47a3c416671a
     m_ActionName: Player/Join[/Keyboard/space]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PlayerUIManager, Assembly-CSharp
+        m_MethodName: ToggleInventoryTrigger
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 0ca39348-9f0b-4d45-baff-b70d5ef0f91a
     m_ActionName: Player/InventoryToggle[/Keyboard/1]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PlayerUIManager, Assembly-CSharp
+        m_MethodName: ToggleCraftingNone
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 525e8385-4c0f-49a1-a4b2-65edddaf99a3
     m_ActionName: Player/CraftingToggle[/Keyboard/2]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2056110169714612495}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: OnCancle
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 68e0a07f-f35e-4047-8c16-5e881429cb1f
     m_ActionName: Player/CancleAction[/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1787b5b2-3981-428b-bc9f-399ebbf14618
+    m_ActionName: Player/UseItem[/Keyboard/f]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: CraftingUI, Assembly-CSharp
+        m_MethodName: OnMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f78fdbe7-02cd-4b1c-8ead-a4c1feda29fe
+    m_ActionName: UI/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 162840905828112954}
+        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+        m_MethodName: OnUISubmit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 508ac49b-4b74-4e04-9fb8-c7f593dff5d2
+    m_ActionName: UI/Submit[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 162840905828112954}
+        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+        m_MethodName: OnCancle
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: af9ca9bc-6045-49bf-b6c5-505032b5792e
+    m_ActionName: UI/Cancle[/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 734743787096512874}
+        m_TargetAssemblyTypeName: MinigameManager, Assembly-CSharp
+        m_MethodName: OnUp
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 02b492d7-6ae1-4f4b-94b4-58ab9262191b
+    m_ActionName: Minigame/New action
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4cf4be47-453a-4710-80a3-238adcd32753
+    m_ActionName: Menu/New action
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PlayerUIManager, Assembly-CSharp
+        m_MethodName: ToggleCraftingNone
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 1b698f10-fe5b-45c1-a40b-791234286b78
+    m_ActionName: UI/CraftingToggle[/Keyboard/2]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PlayerUIManager, Assembly-CSharp
+        m_MethodName: ToggleInventoryTrigger
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: fddbbbcc-ebe2-48e6-b45c-dd111b256f6a
+    m_ActionName: UI/InventoryToggle[/Keyboard/1]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 734743787096512874}
+        m_TargetAssemblyTypeName: MinigameManager, Assembly-CSharp
+        m_MethodName: OnDown
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 8080495e-af15-43de-bd47-a09bd6cdf81c
+    m_ActionName: Minigame/Down[/Keyboard/s]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 734743787096512874}
+        m_TargetAssemblyTypeName: MinigameManager, Assembly-CSharp
+        m_MethodName: OnLeft
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6d86c913-8f81-4864-a419-c8e9b20016a8
+    m_ActionName: Minigame/Left[/Keyboard/a]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 734743787096512874}
+        m_TargetAssemblyTypeName: MinigameManager, Assembly-CSharp
+        m_MethodName: OnRight
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9c790bff-3687-491e-9d4e-8e8ebf550d7f
+    m_ActionName: Minigame/Right[/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 734743787096512874}
+        m_TargetAssemblyTypeName: MinigameManager, Assembly-CSharp
+        m_MethodName: OnInteract
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 0707fe18-545b-4d37-bbb1-0be0450c1bab
+    m_ActionName: Minigame/Interact[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 734743787096512874}
+        m_TargetAssemblyTypeName: MinigameManager, Assembly-CSharp
+        m_MethodName: OnCancle
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f54e6608-ee11-40bd-9653-414604b21e62
+    m_ActionName: Minigame/Cancle[/Keyboard/q]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &162840905828112954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5375983476062168437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4215c332939b7d428f7fca75244e01f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5999286370262016565
 GameObject:
   m_ObjectHideFlags: 0
@@ -2708,6 +2950,79 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7612234104833875032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1910404282838594819
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2166478355169847055}
+    m_Modifications:
+    - target: {fileID: 3861364628651353894, guid: 24921938f5e65a240b84e2f88ae19634, type: 3}
+      propertyPath: m_Name
+      value: CraftingManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 8992951591717857304, guid: 24921938f5e65a240b84e2f88ae19634, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8992951591717857304, guid: 24921938f5e65a240b84e2f88ae19634, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8992951591717857304, guid: 24921938f5e65a240b84e2f88ae19634, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8992951591717857304, guid: 24921938f5e65a240b84e2f88ae19634, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8992951591717857304, guid: 24921938f5e65a240b84e2f88ae19634, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8992951591717857304, guid: 24921938f5e65a240b84e2f88ae19634, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8992951591717857304, guid: 24921938f5e65a240b84e2f88ae19634, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8992951591717857304, guid: 24921938f5e65a240b84e2f88ae19634, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8992951591717857304, guid: 24921938f5e65a240b84e2f88ae19634, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8992951591717857304, guid: 24921938f5e65a240b84e2f88ae19634, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 24921938f5e65a240b84e2f88ae19634, type: 3}
+--- !u!114 &3905002410319716206 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3220713178599795309, guid: 24921938f5e65a240b84e2f88ae19634, type: 3}
+  m_PrefabInstance: {fileID: 1910404282838594819}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b64ad89406edc847b769f58270e9f0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &7371969560378531099 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8992951591717857304, guid: 24921938f5e65a240b84e2f88ae19634, type: 3}
+  m_PrefabInstance: {fileID: 1910404282838594819}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3642770056978906886
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2814,3 +3129,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1265408860008602701, guid: 2317da1f3e8f6e646bb4a621fa2620e6, type: 3}
   m_PrefabInstance: {fileID: 3642770056978906886}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8787609577368331168 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5439895673723165862, guid: 2317da1f3e8f6e646bb4a621fa2620e6, type: 3}
+  m_PrefabInstance: {fileID: 3642770056978906886}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b637e93b07d493d4ba708bbfc97b626b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
