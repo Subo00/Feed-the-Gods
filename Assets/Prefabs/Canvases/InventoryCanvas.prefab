@@ -27,7 +27,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3679904629799626895}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -45,8 +45,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 404, y: 195}
-  m_SizeDelta: {x: 750, y: 325}
+  m_AnchoredPosition: {x: 105, y: 307}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7093798545371967776
 CanvasRenderer:
@@ -123,7 +123,6 @@ GameObject:
   - component: {fileID: 6218904428834064319}
   - component: {fileID: 7056431687857934059}
   - component: {fileID: 6303593714153941572}
-  - component: {fileID: 8166002920654155522}
   - component: {fileID: 5394398808814585891}
   m_Layer: 6
   m_Name: InventoryCanvas
@@ -141,7 +140,7 @@ RectTransform:
   m_GameObject: {fileID: 6522426908506868947}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2139309016830162385}
@@ -223,30 +222,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6522426908506868947}
   m_CullTransparentMesh: 1
---- !u!114 &8166002920654155522
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6522426908506868947}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 40
-    m_Right: 5
-    m_Top: 350
-    m_Bottom: 5
-  m_ChildAlignment: 0
-  m_StartCorner: 0
-  m_StartAxis: 0
-  m_CellSize: {x: 100, y: 100}
-  m_Spacing: {x: 30, y: 35}
-  m_Constraint: 1
-  m_ConstraintCount: 5
 --- !u!114 &5394398808814585891
 MonoBehaviour:
   m_ObjectHideFlags: 0

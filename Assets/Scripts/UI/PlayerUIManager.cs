@@ -315,8 +315,8 @@ public class PlayerUIManager : MonoBehaviour, UIPrompt
 
     public void UpdateUIElements(int numOfPlayers)
     {
-        EquippedItemUI.ChangeTransform(numOfPlayers);
-
+        equippedItemUI.ChangeTransform(numOfPlayers);
+        inventoryUI.ChangeTransform(numOfPlayers);
 
         switch(numOfPlayers)
         {
