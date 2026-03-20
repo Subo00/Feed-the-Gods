@@ -19,8 +19,8 @@ public class MinigameStomping :  Minigame
         base.StartMinigame(valueUint, minigameManager);
         numToSpawn = valueUint;
 
-        endGoal = calculateFloat(valueUint);
-        threshold = calculateFloat(counter);
+        endGoal = CalculateFloat(valueUint);
+        threshold = CalculateFloat(counter);
         //Debug.Log("endGoal: " + endGoal);
 
         manager.Player.InputHandler.ChangeActionMap(ActionMap.Minigame);
@@ -64,7 +64,7 @@ public class MinigameStomping :  Minigame
         {
             manager.SpawnFromSpawner();
             counter++;
-            threshold = calculateFloat(counter);
+            threshold = CalculateFloat(counter);
         }
 
         //blinks the buttons on screen
@@ -72,7 +72,7 @@ public class MinigameStomping :  Minigame
         right.CallUpdate();
     }
 
-    private float calculateFloat(uint value)
+    private float CalculateFloat(uint value)
     {
         return (value * (1 - value / 20f));
     }
