@@ -22,6 +22,7 @@ public class BuildingBase : Interactable, RecipeSpawner
 
         interactingPlayer.ClearInteract();
         interactingPlayer.SetDelayedInteract(OnInteracted);
+        if (interactingObject == null) return;
         interactingObject.transform.SetParent(interactingPlayer.transform);
         interactingObject.transform.localPosition = interactingOffset;
         interactingObject.SetActive(true);
@@ -46,9 +47,10 @@ public class BuildingBase : Interactable, RecipeSpawner
     public void ResetInUse()
     {
         interactingPlayer.SetInteract(OnInteract);
+        inUse = false;
+        if (interactingObject == null) return;
         interactingObject.transform.SetParent(this.transform);
         interactingObject.SetActive(false);
-        inUse = false;
         //interactingPlayer.InputHandler.ClearInteract();
     }
 
@@ -61,7 +63,7 @@ public class BuildingBase : Interactable, RecipeSpawner
     public void SpawnRecipe(CraftingRecipe recipe, uint numOfSpawnes)
     {
         uint itemID = recipe.craftingResult.item.id;
-        uint quantity = recipe.craftingResult.quantity * numOfSpawnes;
+        uint quantity = /*recipe.craftingResult.quantity */ numOfSpawnes;
 
         //Dropt it from object's position 
         Vector3 objectPos = transform.position + transform.forward * 3; //magic number 3
