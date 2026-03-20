@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum MinigameType { None, Stomping, Gathering, HeadHit };
+public enum MinigameType { None, Stomping, Gathering, HeadHit, Mixing };
 
 public class MinigamePrefabHolder : MonoBehaviour
 {
@@ -9,6 +9,7 @@ public class MinigamePrefabHolder : MonoBehaviour
     [SerializeField] private GameObject minigameStompingPrefab;
     [SerializeField] private GameObject minigameGatheringPrefab;
     [SerializeField] private GameObject minigameHeadHitPrefab;
+    [SerializeField] private GameObject minigameMixingPrefab;
 
     private void Awake()
     {
@@ -26,6 +27,8 @@ public class MinigamePrefabHolder : MonoBehaviour
                 return minigameGatheringPrefab;
             case MinigameType.HeadHit:
                 return minigameHeadHitPrefab;
+            case MinigameType.Mixing:
+                return minigameMixingPrefab;
             default:
                 Debug.LogError("couldn't find minigame: " + minigame);
                 return null;
