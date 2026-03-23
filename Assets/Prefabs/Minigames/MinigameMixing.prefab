@@ -201,12 +201,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8eb7d1c743f8124ab3ab71adcef97f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  step: 3
-  arrowSpeed: 0.1
+  step: 2.75
+  arrowSpeed: 0.3
   greenLine: 30
   redLine: 75
-  minDuration: 3
-  maxDuration: 4
+  minDuration: 5
+  maxDuration: 7
   progressBar: {fileID: 5816820361053558479}
   arrow: {fileID: 8522087422746910700}
 --- !u!1 &3132775463921943861

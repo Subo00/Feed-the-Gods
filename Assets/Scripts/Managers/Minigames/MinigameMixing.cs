@@ -131,6 +131,6 @@ public class MinigameMixing : Minigame
 
     private float CalculateFloat(uint value)
     {
-        return value * 7.53f;
+        return value * 4.2f;
     }
 }
