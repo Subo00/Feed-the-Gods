@@ -665,13 +665,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 113675479895516772, guid: 6c1eaf88430019f4c96943022b6aa68a, type: 3}
       propertyPath: m_text
-      value: 'OPTIONS
-
-'
+      value: DISCONNECT
       objectReference: {fileID: 0}
     - target: {fileID: 2850430835454632537, guid: 6c1eaf88430019f4c96943022b6aa68a, type: 3}
       propertyPath: m_Name
-      value: OptionsButton
+      value: DisconnectButton
       objectReference: {fileID: 0}
     - target: {fileID: 3490333501305455729, guid: 6c1eaf88430019f4c96943022b6aa68a, type: 3}
       propertyPath: m_Navigation.m_Mode
