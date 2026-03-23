@@ -1640,6 +1640,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1347918265794930661}
     - target: {fileID: 4263392765631826794, guid: 59f93721add8cf0429a57d18a090951b, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4263392765631826794, guid: 59f93721add8cf0429a57d18a090951b, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_ActionId
+      value: 0879edde-592d-433e-9d70-52a122dff3df
+      objectReference: {fileID: 0}
+    - target: {fileID: 4263392765631826794, guid: 59f93721add8cf0429a57d18a090951b, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_ActionName
+      value: UI/MenuToggle[/Keyboard/space]
+      objectReference: {fileID: 0}
+    - target: {fileID: 4263392765631826794, guid: 59f93721add8cf0429a57d18a090951b, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4263392765631826794, guid: 59f93721add8cf0429a57d18a090951b, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4263392765631826794, guid: 59f93721add8cf0429a57d18a090951b, type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5122018768002906180}
@@ -1663,6 +1683,26 @@ PrefabInstance:
       propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5122018768002906180}
+    - target: {fileID: 4263392765631826794, guid: 59f93721add8cf0429a57d18a090951b, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5122018768002906180}
+    - target: {fileID: 4263392765631826794, guid: 59f93721add8cf0429a57d18a090951b, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4263392765631826794, guid: 59f93721add8cf0429a57d18a090951b, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleMenuTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 4263392765631826794, guid: 59f93721add8cf0429a57d18a090951b, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerUIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4263392765631826794, guid: 59f93721add8cf0429a57d18a090951b, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5375983476062168437, guid: 59f93721add8cf0429a57d18a090951b, type: 3}
       propertyPath: m_Name
       value: Player

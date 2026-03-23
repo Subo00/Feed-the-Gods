@@ -1719,9 +1719,9 @@ GameObject:
   - component: {fileID: 2166478355169847055}
   - component: {fileID: 8453326188650531123}
   - component: {fileID: 2056110169714612495}
-  - component: {fileID: 5203842045307950816}
   - component: {fileID: 4263392765631826794}
   - component: {fileID: 162840905828112954}
+  - component: {fileID: 5203842045307950816}
   m_Layer: 0
   m_Name: Player
   m_TagString: PlayerController
@@ -1798,18 +1798,6 @@ MonoBehaviour:
   playerUIManager: {fileID: 0}
   dialogManager: {fileID: 8787609577368331168}
   craftingManager: {fileID: 3905002410319716206}
---- !u!114 &5203842045307950816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5375983476062168437}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dacd4d6aedfd56649997d2bb61844ac7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4263392765631826794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2115,6 +2103,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: f54e6608-ee11-40bd-9653-414604b21e62
     m_ActionName: Minigame/Cancle[/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0879edde-592d-433e-9d70-52a122dff3df
+    m_ActionName: UI/MenuToggle[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -2130,6 +2122,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e4215c332939b7d428f7fca75244e01f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5203842045307950816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5375983476062168437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dacd4d6aedfd56649997d2bb61844ac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5999286370262016565
