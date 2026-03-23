@@ -62,6 +62,8 @@ public class Player : ThirdPersonMovement, RecipeSpawner
     }
     protected override void Start()
     {
+        base.Start();
+
         PlayerInput playerInput = GetComponent<PlayerInput>();
         if(playerInput == null)
         {
@@ -99,7 +101,6 @@ public class Player : ThirdPersonMovement, RecipeSpawner
         cancleActions = new List<Action>();
 
         ClearInteract();
-        base.Start();
     }
 
     protected override void Update()
