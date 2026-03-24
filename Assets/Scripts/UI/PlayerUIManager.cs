@@ -58,6 +58,7 @@ public class PlayerUIManager : MonoBehaviour, UIPrompt
         menuUI.Initialize();
         menuUI.SetResumeButton(ToggleMenu);
         menuUI.Toggle(false);
+        menuUI.SetDisconnectButton(player);
     }
 
     public void SetPlayer(Player player) 
@@ -295,6 +296,7 @@ public class PlayerUIManager : MonoBehaviour, UIPrompt
             eventSystem.SetSelectedGameObject(menuUI.GetFirstButton());
             Time.timeScale = 0; //pause the game
             PlayersHandler.Instance.DisablePlayers(player);
+            player.InputHandler.ChangeActionMap(ActionMap.UI);
         }
         else
         {
@@ -303,6 +305,7 @@ public class PlayerUIManager : MonoBehaviour, UIPrompt
             eventSystem.SetSelectedGameObject(previousButton);
             Time.timeScale = 1f;
             PlayersHandler.Instance.EnablePlayers();
+            player.InputHandler.ChangeActionMap(ActionMap.Player);
         }
     }
 
