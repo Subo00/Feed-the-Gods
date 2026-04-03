@@ -14,6 +14,7 @@ public class Player : ThirdPersonMovement, RecipeSpawner
     public CraftingManager CraftingManager => craftingManager;
     public PlayerAnimationController Animator => animationController;
     public PlayerInputHandler InputHandler => inputHandler;
+    public int PlayerIndex => playerIndex;
 
     //Managers - variables
     [SerializeField] private Transform playerSpawnItemPoint;
@@ -24,6 +25,13 @@ public class Player : ThirdPersonMovement, RecipeSpawner
     [SerializeField] private CraftingManager craftingManager;
     private ItemManager itemManager;
     private PlayerInputHandler inputHandler;
+    private int playerIndex = -1;
+
+    public void SetPlayerIndex(int index)
+    {
+        playerIndex = index;
+        inventory.SetPlayerIndex(index);
+    }
 
     //Interacting - variables
     private Action<Player> interactActionPlayer;
@@ -88,15 +96,15 @@ public class Player : ThirdPersonMovement, RecipeSpawner
             playerUIManager.ChangePrompt(InputPrompt.XBOX);
         }
 
+        inputHandler = GetComponent<PlayerInputHandler>();
+
         playerUIManager.SetPlayer(this);
         inventory.SetInevntoryUI(PlayerUI.InventoryUI);
         inventory.SetEquippedItemUI(PlayerUI.EquippedItemUI);
 
         minigameManager.SetPlayer(this);
         dialogManager.SetPlayerUIManager(playerUIManager);
-        craftingManager.SetPlayer(this);
-
-        inputHandler = GetComponent<PlayerInputHandler>();  
+        craftingManager.SetPlayer(this);  
         itemManager = ItemManager.Instance;
         cancleActions = new List<Action>();
 
