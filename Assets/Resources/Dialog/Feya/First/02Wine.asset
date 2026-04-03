@@ -10,14 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1727d619c4f9f3244b5fcda2ca8c566b, type: 3}
-  m_Name: 01Berries
+  m_Name: 02Wine
   m_EditorClassIdentifier: 
   lines:
-  - line: Oh hi there, you must be new!
-  - line: 'My name is Freya
-
-'
-  - line: Let's see if your functionalities are online
-  - line: 'See the bushes in front of me? '
-  - line: 'Do you mind grabing 25 berries form them and giving them to me? '
+  - line: Okay, now let's mix things up
+  - line: 'You see that building over there in the corner? '
+  - line: Go make me 2 bottles of strawberrie juice
   responses: []

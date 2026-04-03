@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 352e99f4640360b4297c19371aaddb7e, type: 3}
   m_Name: New Item 2
   m_EditorClassIdentifier: Assembly-CSharp::Quest
-  questName: Oranges
+  questName: Orange you glad..
   questGiver: Goldilocks
   description: WHATEVER
   subQuests:

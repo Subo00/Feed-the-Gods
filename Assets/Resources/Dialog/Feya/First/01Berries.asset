@@ -10,11 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1727d619c4f9f3244b5fcda2ca8c566b, type: 3}
-  m_Name: 02 Wine
+  m_Name: 01Berries
   m_EditorClassIdentifier: 
   lines:
-  - line: 2 bottles of wine
-  - line: 'Interact with the bulding with E  '
-  - line: 'Choose which wine and how much of it to craft  '
-  - line: 'Then craft it and bring it here '
+  - line: Oh hi there, you must be new!
+  - line: 'My name is Feya
+
+'
+  - line: Let's see if your functionalities are online
+  - line: 'See the bushes in front of me? '
+  - line: 'Do you mind grabing 25 berries form them and giving them to me? '
   responses: []
