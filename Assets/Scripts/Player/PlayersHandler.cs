@@ -28,16 +28,14 @@ public class PlayersHandler : MonoBehaviour, IDataPersistence
     {
         int index = playerCount;
 
-        if (savedPlayerData.TryGetValue(index, out PlayerData saved))
+        /*if (savedPlayerData.TryGetValue(index, out PlayerData saved))
         {
             playerInput.transform.position = saved.position;
             playerInput.transform.rotation = Quaternion.Euler(saved.rotation);
             playerInput.GetComponent<Player>().Inventory.LoadPlayerData(saved);
         }
-        else
-        {
-            playerInput.transform.position = SpawnPoints[index].transform.position;
-        }
+        else*/
+        playerInput.transform.position = SpawnPoints[index].transform.position;
 
         playerCount++;
         Player player = playerInput.GetComponent<Player>();
@@ -75,10 +73,7 @@ public class PlayersHandler : MonoBehaviour, IDataPersistence
         OnPlayerCountChange?.Invoke(playerCount);
     }
 
-    /// <summary>
-    /// Caches saved PlayerData entries so OnPlayerJoined can restore each
-    /// player's position when they connect.
-    /// </summary>
+   
     public void LoadData(GameData data)
     {
         savedPlayerData.Clear();
@@ -86,10 +81,6 @@ public class PlayersHandler : MonoBehaviour, IDataPersistence
             savedPlayerData[kvp.Key] = kvp.Value;
     }
 
-    /// <summary>
-    /// Writes position and rotation for each connected player into GameData.
-    /// Inventory is written separately by each player's InventoryManager.
-    /// </summary>
     public void SaveData(ref GameData data)
     {
         for (int i = 0; i < players.Count; i++)
