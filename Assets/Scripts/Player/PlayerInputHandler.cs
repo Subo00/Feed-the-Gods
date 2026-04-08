@@ -24,7 +24,7 @@ public class PlayerInputHandler : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         cancleActions = new List<Action>();
         ChangeActionMap(ActionMap.Player);
-        //playerInput.actions.FindActionMap("UI").Disable();
+        playerInput.actions.FindActionMap("UI").Disable();
     }
 
     public void OnCancle(InputAction.CallbackContext context)

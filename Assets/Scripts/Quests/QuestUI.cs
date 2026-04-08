@@ -21,7 +21,7 @@ public class QuestUI : BaseUI
         else
         {
             Instance = this;
-            DontDestroyOnLoad(this.gameObject);
+            //DontDestroyOnLoad(this.gameObject);
         }
     }
     private void Start()
