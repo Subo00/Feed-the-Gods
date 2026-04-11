@@ -310,10 +310,10 @@ public class PlayerUIManager : MonoBehaviour, UIPrompt
     }
 
 
-    public void ChangePrompt(InputPrompt input)
+    public void SetPrompt(InputPrompt input)
     {
-        PlayerHUD.ChangePrompt(input);
-        CraftingUI.ChangePrompt(input);
+        PlayerHUD.SetPrompt(input);
+        CraftingUI.SetPrompt(input);
     }
 
     public void UpdateUIElements(int numOfPlayers)
