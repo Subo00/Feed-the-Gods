@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Character : Interactable, DialogUser, IDataPersistence
+public class CharacterGod : Interactable, DialogUser, IDataPersistence
 {
     [SerializeField] private DialogSettings dialogSettings;
     private string characterName;
