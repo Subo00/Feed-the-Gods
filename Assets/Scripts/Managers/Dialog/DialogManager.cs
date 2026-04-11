@@ -23,18 +23,24 @@ public class DialogManager : MonoBehaviour
     [SerializeField] private GameObject responsePanel;
     [SerializeField] private ScrollRect scrollRect;
 
+    public Queue<DialogResponse> responses;
+
+    private InputPrompt prompt;
     private Queue<DialogLine> lines;
     private PlayerUIManager uiManager;
     private bool endOfLine = true;
     private DialogLine currentLine;
     private DialogUser currentUser;
     private int constraintsCount = 4;
-    public Queue<DialogResponse> responses;
-
+    private System.Action onEndDialog;
     public void SetPlayerUIManager(PlayerUIManager playerUI)
     {
         uiManager = playerUI;
     }
+
+    public void SetPrompt(InputPrompt prompt) { this.prompt = prompt; }
+
+    public void SetOnEndDialog(System.Action callback) => onEndDialog = callback;
 
     private void Start()
     {
@@ -104,12 +110,45 @@ public class DialogManager : MonoBehaviour
     IEnumerator TypeSentence()
     {
         dialogArea.text = "";
-        foreach (char letter in currentLine.line.ToCharArray())
+        string line = currentLine.line;
+        int i = 0;
+
+        while (i < line.Length)
         {
+            char letter = line[i];
+
+            if (letter == '[')
+            {
+                int close = line.IndexOf(']', i);
+                if (close > i)
+                {
+                    string token = line.Substring(i + 1, close - i - 1);
+                    dialogArea.text += ResolveToken(token);
+                    i = close + 1;
+                    continue;
+                }
+            }
+
             dialogArea.text += letter;
             yield return new WaitForSeconds(textSpeed);
+            i++;
         }
+
         endOfLine = true;
+    }
+
+    private string ResolveToken(string token)
+    {
+        if (System.Enum.TryParse(token, ignoreCase: true, out DialogToken dialogToken))
+        {
+            return dialogToken switch
+            {
+                DialogToken.ACTION => prompt.GetInteractLabel(),
+                DialogToken.CANCLE => prompt.GetCancleLabel(),
+                _ => $"[{token}]"
+            };
+        }
+        return $"[{token}]";
     }
 
     public void EndDialog()
@@ -118,6 +157,8 @@ public class DialogManager : MonoBehaviour
         if (responses.Count == 0 || responses == null)
         {
             uiManager.ToggleDialog();
+            onEndDialog?.Invoke();
+            onEndDialog = null;
         }
         else
         {

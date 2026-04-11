@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum DialogToken { ACTION, CANCLE }
 
 [System.Serializable]
 public struct DialogLine
