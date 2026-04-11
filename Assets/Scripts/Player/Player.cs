@@ -79,21 +79,22 @@ public class Player : ThirdPersonMovement, RecipeSpawner
             return;
         }
 
+        InputPrompt prompt = InputPrompt.WASD;
         if (playerInput.currentControlScheme == "WASD")
         {
             string s = Keyboard.current.ToString();
             if (s.Contains("WASD")) //one player is WASD
             {
-                playerUIManager.ChangePrompt(InputPrompt.WASD);
+                prompt = InputPrompt.WASD;
             }
             else //another is IJKL 
             {
-                playerUIManager.ChangePrompt(InputPrompt.IJKL);
+                prompt = InputPrompt.IJKL;
             }
         }
         else
         {
-            playerUIManager.ChangePrompt(InputPrompt.XBOX);
+            prompt = InputPrompt.XBOX;
         }
 
         inputHandler = GetComponent<PlayerInputHandler>();
@@ -104,6 +105,8 @@ public class Player : ThirdPersonMovement, RecipeSpawner
 
         minigameManager.SetPlayer(this);
         dialogManager.SetPlayerUIManager(playerUIManager);
+        dialogManager.SetPrompt(prompt);
+        playerUIManager.SetPrompt(prompt);
         craftingManager.SetPlayer(this);  
         itemManager = ItemManager.Instance;
         cancleActions = new List<Action>();
