@@ -7,6 +7,8 @@ public enum DialogToken { ACTION, CANCLE }
 [System.Serializable]
 public struct DialogLine
 {
+    public string key;
+
     [TextArea(3, 10)]
     public string line;
 }
