@@ -57,7 +57,7 @@ MonoBehaviour:
   - item: {fileID: 11400000, guid: 951e044c20a47404c9834e761805d158, type: 2}
     value: 1
     dropChance: 1
-  interactionCooldown: 6
+  interactionCooldown: 360
   id: 
   minigameType: 3
 --- !u!136 &8496603627060353032
