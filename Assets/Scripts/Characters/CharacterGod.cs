@@ -3,13 +3,11 @@ using UnityEngine;
 public class CharacterGod : Interactable, DialogUser, IDataPersistence
 {
     [SerializeField] private DialogSettings dialogSettings;
+    [SerializeField] private string[] dialogKeys;
+    [SerializeField] private DialogData dialogMenu;
+   
     private string characterName;
-
     private DialogManager dialogManager;
-    private DialogData[] dialogFirst;
-    private DialogData[] dialogSecond;
-    private DialogData[] dialogOther;
-
     private QuestManager questManager;
     private Quest[] quests;
     private Quest currentQuest;
@@ -55,9 +53,6 @@ public class CharacterGod : Interactable, DialogUser, IDataPersistence
 
         base.Start();
 
-        dialogFirst = Resources.LoadAll<DialogData>("Dialog/" + characterName + "/First");
-        dialogSecond = Resources.LoadAll<DialogData>("Dialog/" + characterName + "/Second");
-        dialogOther = Resources.LoadAll<DialogData>("Dialog/" + characterName + "/Other");
 
         quests = Resources.LoadAll<Quest>("Quests/" + characterName);
     }
@@ -88,14 +83,14 @@ public class CharacterGod : Interactable, DialogUser, IDataPersistence
 
         if (currentQuest.isCompleted)
         {
-            tmpDialogLine.line = "Thank you";
+            tmpDialogLine.line = "Thank you"; //add a way to change language here
             checkQuestDialog.lines.Add(tmpDialogLine);
             otherIndex = 0;
         }
         else
         {
             //Create new Dialog from the current index as dialogSecond[i]
-            tmpDialogLine.line = "I still need...";
+            tmpDialogLine.line = "I still need..."; //add a way to change language here
             checkQuestDialog.lines.Add(tmpDialogLine);
 
             //Modify it for every SubQuest 
@@ -154,7 +149,7 @@ public class CharacterGod : Interactable, DialogUser, IDataPersistence
         }
 
         otherIndex = 0;
-        dialogManager.LoadDialog(dialogOther[otherIndex]);
+        dialogManager.LoadDialog(dialogMenu);
     }
 
     public void OnName(string name)
@@ -229,20 +224,24 @@ public class CharacterGod : Interactable, DialogUser, IDataPersistence
         dialogManager.ChangeDialogSettings(dialogSettings, characterName);
         dialogManager.SetCurrentUser(this);
 
+        string fullKey = characterName.ToUpper() + "_" + dialogKeys[questIndex];
+
         //Starts dialog
         if (isFirstTime)
         {
             isFirstTime = false;
-            dialogManager.StartDialog(dialogFirst[questIndex]);
-            dialogManager.LoadDialog(dialogOther[otherIndex]);
+            dialogManager.StartDialog(fullKey);
+            //dialogManager.LoadDialog(dialogKeyOther[otherIndex]);
+            dialogManager.LoadDialog(dialogMenu);
             currentQuest = Instantiate(quests[questIndex]);
             currentQuest.onQuestComplete = IncrementIndex;
             questManager.AddToActive(currentQuest);
         }
         else
         {
-            dialogManager.StartDialog(dialogSecond[questIndex]);
-            dialogManager.LoadDialog(dialogOther[otherIndex]);
+            dialogManager.StartDialog(fullKey + "_SECOND");
+
+            dialogManager.LoadDialog(dialogMenu);
         }
     }
 }

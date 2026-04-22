@@ -1,16 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterHuman : Interactable
 {
     [SerializeField] private DialogSettings dialogSettings;
+    [SerializeField] private string dialogKey;
+   
     private string characterName;
     private DialogManager dialogManager;
-    [SerializeField] private DialogData dialog;
 
     private float interactionCooldown = 0.5f;
     private float lastInteractionTime = 0f;
+
+    protected override void Start()
+    {
+        characterName = gameObject.name;    
+        base.Start();
+    }
 
     public override void OnInteract(Player player)
     {
@@ -32,7 +37,7 @@ public class CharacterHuman : Interactable
         {
             inUse = true;
             dialogManager.ChangeDialogSettings(dialogSettings, characterName);
-            dialogManager.StartDialog(dialog);
+            dialogManager.StartDialog(dialogKey);
         }
         else
         {
