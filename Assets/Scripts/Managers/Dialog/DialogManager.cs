@@ -67,10 +67,49 @@ public class DialogManager : MonoBehaviour
         LoadDialog(dialog);
     }
 
+    public void StartDialog(string key)
+    {
+        if (LocalizationManager.Instance == null)
+        {
+            Debug.LogError("[DialogManager] LocalizationManager not found.");
+            return;
+        }
+
+        List<string> resolvedLines = LocalizationManager.Instance.GetLines(key);
+
+        if (resolvedLines.Count == 0)
+        {
+            Debug.LogWarning($"[DialogManager] No lines found for key prefix: {key}");
+            return;
+        }
+
+        uiManager.ToggleDialog();
+
+        Clear();
+
+        foreach (string text in resolvedLines)
+            lines.Enqueue(new DialogLine { line = text });
+
+        DisplayNextDialogueLine();
+    }
+
     public void LoadDialog(DialogData dialog)
     {
         foreach (DialogLine dialogLine in dialog.lines)
         {
+            if (!string.IsNullOrEmpty(dialogLine.key) && LocalizationManager.Instance != null)
+            {
+                List<string> resolvedLines = LocalizationManager.Instance.GetLines(dialogLine.key);
+
+                if (resolvedLines.Count > 0)
+                {
+                    foreach (string text in resolvedLines)
+                        lines.Enqueue(new DialogLine { line = text });
+
+                    continue;
+                }
+            }
+
             lines.Enqueue(dialogLine);
         }
 
@@ -93,6 +132,7 @@ public class DialogManager : MonoBehaviour
         if(endOfLine)
         {
             currentLine = lines.Dequeue();
+            currentLine.line = ReplaceTokens(currentLine.line);
 
             StopAllCoroutines();
             StartCoroutine(TypeSentence());
@@ -111,30 +151,41 @@ public class DialogManager : MonoBehaviour
     {
         dialogArea.text = "";
         string line = currentLine.line;
+
+        foreach (char letter in line)
+        {
+            dialogArea.text += letter;
+            yield return new WaitForSeconds(textSpeed);
+        }
+
+        endOfLine = true;
+    }
+
+    
+    private string ReplaceTokens(string line)
+    {
+        System.Text.StringBuilder result = new System.Text.StringBuilder();
         int i = 0;
 
         while (i < line.Length)
         {
-            char letter = line[i];
-
-            if (letter == '[')
+            if (line[i] == '[')
             {
                 int close = line.IndexOf(']', i);
                 if (close > i)
                 {
                     string token = line.Substring(i + 1, close - i - 1);
-                    dialogArea.text += ResolveToken(token);
+                    result.Append(ResolveToken(token));
                     i = close + 1;
                     continue;
                 }
             }
 
-            dialogArea.text += letter;
-            yield return new WaitForSeconds(textSpeed);
+            result.Append(line[i]);
             i++;
         }
 
-        endOfLine = true;
+        return result.ToString();
     }
 
     private string ResolveToken(string token)
