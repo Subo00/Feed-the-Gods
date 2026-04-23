@@ -247,17 +247,17 @@ public class DialogManager : MonoBehaviour
 
 
         switch (response.choice) {
-            case DialogChoice.CheckQuest:
+            case DialogChoice.CHECK_QUEST:
                 currentUser.OnCheckQuest(); break;
-            case DialogChoice.AskInfo:
+            case DialogChoice.ASK_INFO:
                 currentUser.OnAskInfo(); break;
-            case DialogChoice.Back:
+            case DialogChoice.BACK:
                 currentUser.OnBack(); break;
-            case DialogChoice.ChangeQuest:
+            case DialogChoice.CHANGE_QUEST:
                 currentUser.OnChangeQuest(); break;
-            case DialogChoice.Name:
+            case DialogChoice.NAME:
                 currentUser.OnName(response.responseText); break;
-            case DialogChoice.SubQuest:
+            case DialogChoice.SUB_QUEST:
                 currentUser.OnSubQuest(response.responseText); break;
         }
     }
