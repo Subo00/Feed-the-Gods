@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum DialogToken { ACTION, CANCLE }
+public enum DialogChoice { CHECK_QUEST, ASK_INFO, CHANGE_QUEST, BACK, NAME, SUB_QUEST };
 
 [System.Serializable]
 public struct DialogLine
@@ -20,7 +21,6 @@ public class DialogData : ScriptableObject
     public List<DialogResponse> responses = new List<DialogResponse>();
 }
 
-public enum DialogChoice { CheckQuest, AskInfo, ChangeQuest, Back, Name, SubQuest };
 [System.Serializable]
 public struct DialogResponse 
 {
