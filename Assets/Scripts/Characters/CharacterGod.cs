@@ -16,6 +16,9 @@ public class CharacterGod : Interactable, DialogUser, IDataPersistence
     private bool isFirstTime = true;
     private bool choicesOpen = false;
     private string prefix = "Offer ";
+    private string thanks = "Thank you";
+    private string need = "Need";
+    private string back = "BBBBB";
     private uint otherIndex = 0; //used when traversing dialog menus 
 
     private float interactionCooldown = 0.5f;
@@ -52,7 +55,7 @@ public class CharacterGod : Interactable, DialogUser, IDataPersistence
         characterName = gameObject.name;
 
         base.Start();
-
+        SetUpResponses();
 
         quests = Resources.LoadAll<Quest>("Quests/" + characterName);
     }
@@ -83,14 +86,14 @@ public class CharacterGod : Interactable, DialogUser, IDataPersistence
 
         if (currentQuest.isCompleted)
         {
-            tmpDialogLine.line = "Thank you"; //add a way to change language here
+            tmpDialogLine.line = thanks; 
             checkQuestDialog.lines.Add(tmpDialogLine);
             otherIndex = 0;
         }
         else
         {
             //Create new Dialog from the current index as dialogSecond[i]
-            tmpDialogLine.line = "I still need..."; //add a way to change language here
+            tmpDialogLine.line = need; 
             checkQuestDialog.lines.Add(tmpDialogLine);
 
             //Modify it for every SubQuest 
@@ -101,8 +104,8 @@ public class CharacterGod : Interactable, DialogUser, IDataPersistence
                     tmpDialogLine.line = subQuest.requiredValue - subQuest.currentValue + " " + subQuest.collectData.name;
                     checkQuestDialog.lines.Add(tmpDialogLine);
                     //Create a response for every subQuest
-                    tmpResponse.responseText = prefix + subQuest.collectData.name;
-                    tmpResponse.choice = DialogChoice.SubQuest;
+                    tmpResponse.responseText = prefix + " " + subQuest.collectData.name;
+                    tmpResponse.choice = DialogChoice.SUB_QUEST;
                     checkQuestDialog.responses.Add(tmpResponse);
                 }
             }
@@ -110,8 +113,8 @@ public class CharacterGod : Interactable, DialogUser, IDataPersistence
         }
 
         //Add a back responses
-        tmpResponse.responseText = "Back";
-        tmpResponse.choice = DialogChoice.Back;
+        tmpResponse.responseText = back;
+        tmpResponse.choice = DialogChoice.BACK;
         checkQuestDialog.responses.Add(tmpResponse);
 
         //load the dialog into dialogManager
@@ -243,5 +246,15 @@ public class CharacterGod : Interactable, DialogUser, IDataPersistence
 
             dialogManager.LoadDialog(dialogMenu);
         }
+    }
+
+    private void SetUpResponses()
+    {
+        LocalizationManager locManager = LocalizationManager.Instance;
+
+        prefix = locManager.GetLine("RESPONSE_OFFER");
+        thanks = locManager.GetLine("RESPONSE_THANKS");
+        need = locManager.GetLine("RESPONSE_NEED");
+        back = locManager.GetLine("RESPONSE_BACK");
     }
 }
