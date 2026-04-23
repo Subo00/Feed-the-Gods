@@ -16,7 +16,9 @@ public class DialogButtonUI : ButtonUI
     {
         // Change the look
         this.response = response;
-        itemName.text = response.responseText;
+       
+        itemName.text = response.responseText == "" ? 
+            LocalizationManager.Instance.GetLine("CHOICE_" + response.choice.ToString()) : response.responseText;
 
         // Add functionality to the button 
         button.onClick.AddListener(() => { onClick(this.response); });
