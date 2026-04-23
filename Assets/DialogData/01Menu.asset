@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: 01Menu
   m_EditorClassIdentifier: 
   lines:
-  - line: 'Now, how can I help you? '
+  - key: 
+    line: 'Now, how can I help you? '
   responses:
-  - responseText: Quest check
+  - responseText: 
     choice: 0
-  - responseText: Back
+  - responseText: 
     choice: 3
