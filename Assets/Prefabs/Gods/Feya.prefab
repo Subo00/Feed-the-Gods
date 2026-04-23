@@ -106,6 +106,11 @@ MonoBehaviour:
     imageSprite: {fileID: 21300000, guid: 7b841bce83550b2408543cd5859d0bb9, type: 3}
     font: {fileID: 0}
     textSpeed: 0
+  dialogKeys:
+  - BERRIES
+  - STRAWBERRIE_JUICE
+  - ORANGES
+  dialogMenu: {fileID: 11400000, guid: 81b373e528590c0419bc0ce61da1f37f, type: 2}
 --- !u!136 &5277357483578014063
 CapsuleCollider:
   m_ObjectHideFlags: 0
