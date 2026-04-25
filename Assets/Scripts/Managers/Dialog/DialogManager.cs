@@ -26,10 +26,10 @@ public class DialogManager : MonoBehaviour
     public Queue<DialogResponse> responses;
 
     private InputPrompt prompt;
-    private Queue<DialogLine> lines;
+    private Queue<string> lines;
     private PlayerUIManager uiManager;
     private bool endOfLine = true;
-    private DialogLine currentLine;
+    private string currentLine;
     private DialogUser currentUser;
     private int constraintsCount = 4;
     private System.Action onEndDialog;
@@ -44,7 +44,7 @@ public class DialogManager : MonoBehaviour
 
     private void Start()
     {
-        lines = new Queue<DialogLine>();
+        lines = new Queue<string>();
         responses = new Queue<DialogResponse>();
         constraintsCount = panelTransform.GetComponent<GridLayoutGroup>().constraintCount;
     }
@@ -88,29 +88,29 @@ public class DialogManager : MonoBehaviour
         Clear();
 
         foreach (string text in resolvedLines)
-            lines.Enqueue(new DialogLine { line = text });
+            lines.Enqueue(text);
 
         DisplayNextDialogueLine();
     }
 
     public void LoadDialog(DialogData dialog)
     {
-        foreach (DialogLine dialogLine in dialog.lines)
+        foreach (string key in dialog.lines)
         {
-            if (!string.IsNullOrEmpty(dialogLine.key) && LocalizationManager.Instance != null)
+            if (!string.IsNullOrEmpty(key) && LocalizationManager.Instance != null)
             {
-                List<string> resolvedLines = LocalizationManager.Instance.GetLines(dialogLine.key);
+                List<string> resolvedLines = LocalizationManager.Instance.GetLines(key);
 
                 if (resolvedLines.Count > 0)
                 {
                     foreach (string text in resolvedLines)
-                        lines.Enqueue(new DialogLine { line = text });
+                        lines.Enqueue(text);
 
                     continue;
                 }
             }
 
-            lines.Enqueue(dialogLine);
+            //lines.Enqueue(key);
         }
 
         foreach(DialogResponse dialogResponse in dialog.responses)
@@ -132,7 +132,7 @@ public class DialogManager : MonoBehaviour
         if(endOfLine)
         {
             currentLine = lines.Dequeue();
-            currentLine.line = ReplaceTokens(currentLine.line);
+            currentLine = ReplaceTokens(currentLine);
 
             StopAllCoroutines();
             StartCoroutine(TypeSentence());
@@ -141,7 +141,7 @@ public class DialogManager : MonoBehaviour
         else
         {
             StopAllCoroutines();
-            dialogArea.text = currentLine.line;
+            dialogArea.text = currentLine;
             endOfLine = true;
         }
         
@@ -150,7 +150,7 @@ public class DialogManager : MonoBehaviour
     IEnumerator TypeSentence()
     {
         dialogArea.text = "";
-        string line = currentLine.line;
+        string line = currentLine;
 
         foreach (char letter in line)
         {
