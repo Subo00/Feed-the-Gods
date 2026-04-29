@@ -58,14 +58,6 @@ public class DialogManager : MonoBehaviour
     }
 
     public void SetCurrentUser(DialogUser user) { this.currentUser = user; }
-    public void StartDialog(DialogData dialog)
-    {
-        uiManager.ToggleDialog();
-
-        Clear();
-
-        LoadDialog(dialog);
-    }
 
     public void StartDialog(string key)
     {
@@ -95,30 +87,35 @@ public class DialogManager : MonoBehaviour
 
     public void LoadDialog(DialogData dialog)
     {
-        foreach (string key in dialog.lines)
+        LoadLines(dialog.keys);
+        LoadResponses(dialog.responses);
+    }
+    public void LoadLines(List<string> keys)
+    {
+        foreach (string key in keys)
         {
-            if (!string.IsNullOrEmpty(key) && LocalizationManager.Instance != null)
+            if (string.IsNullOrEmpty(key) || LocalizationManager.Instance == null) return;
+
+            List<string> resolvedLines = LocalizationManager.Instance.GetLines(key);
+
+            if (resolvedLines.Count > 0)
             {
-                List<string> resolvedLines = LocalizationManager.Instance.GetLines(key);
-
-                if (resolvedLines.Count > 0)
-                {
-                    foreach (string text in resolvedLines)
-                        lines.Enqueue(text);
-
-                    continue;
-                }
+                foreach (string text in resolvedLines)
+                    lines.Enqueue(text);
+            }else
+            {
+                lines.Enqueue(key);
             }
-
-            //lines.Enqueue(key);
         }
+        DisplayNextDialogueLine();
+    }
 
-        foreach(DialogResponse dialogResponse in dialog.responses)
+    public void LoadResponses(List<DialogResponse> dialogResponses)
+    {
+        foreach (DialogResponse dialogResponse in dialogResponses)
         {
             responses.Enqueue(dialogResponse);
         }
-
-        DisplayNextDialogueLine();
     }
 
     public void DisplayNextDialogueLine()
