@@ -6,10 +6,9 @@ public enum DialogToken { ACTION, CANCLE }
 public enum DialogChoice { CHECK_QUEST, ASK_INFO, CHANGE_QUEST, BACK, NAME, SUB_QUEST };
 
 
-[CreateAssetMenu(fileName = "New Item", menuName = "Dialog/Create DialogData")]
-public class DialogData : ScriptableObject
+public class DialogData 
 {
-    public List<string> lines = new List<string>();
+    public List<string> keys = new List<string>();
     public List<DialogResponse> responses = new List<DialogResponse>();
 }
 
