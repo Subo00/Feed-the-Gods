@@ -1,25 +1,31 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CharacterGod : Interactable, DialogUser, IDataPersistence
 {
     [SerializeField] private DialogSettings dialogSettings;
     [SerializeField] private string[] dialogKeys;
-    [SerializeField] private DialogData dialogMenu;
+    [SerializeField] private List<DialogResponse> menuResponses;
    
-    private string characterName;
     private DialogManager dialogManager;
     private QuestManager questManager;
     private Quest[] quests;
     private Quest currentQuest;
+    private DialogData menuData;
 
     private uint questIndex = 0;
+    private uint otherIndex = 0; //used when traversing dialog menus 
+
     private bool isFirstTime = true;
     private bool choicesOpen = false;
+    
+    private string characterName;
     private string prefix = "Offer ";
-    private string thanks = "Thank you";
-    private string need = "Need";
+    private string thanks = "RESPONSE_THANKS";
+    private string need = "RESPONSE_NEED";
     private string back = "BBBBB";
-    private uint otherIndex = 0; //used when traversing dialog menus 
+    private string quest = "quest";
 
     private float interactionCooldown = 0.5f;
     private float lastInteractionTime = 0f;
@@ -56,6 +62,7 @@ public class CharacterGod : Interactable, DialogUser, IDataPersistence
 
         base.Start();
         SetUpResponses();
+        SetUpMenu();
 
         quests = Resources.LoadAll<Quest>("Quests/" + characterName);
     }
@@ -79,30 +86,28 @@ public class CharacterGod : Interactable, DialogUser, IDataPersistence
     public void OnCheckQuest()
     {
         DialogData checkQuestDialog = new DialogData();
-        DialogLine tmpDialogLine = new DialogLine();
+        string tmpDialogLine = "";
         DialogResponse tmpResponse = new DialogResponse();
 
         currentQuest.CheckProgress();
 
         if (currentQuest.isCompleted)
         {
-            tmpDialogLine.line = thanks; 
-            checkQuestDialog.lines.Add(tmpDialogLine);
+            checkQuestDialog.keys.Add(thanks);
             otherIndex = 0;
         }
         else
         {
             //Create new Dialog from the current index as dialogSecond[i]
-            tmpDialogLine.line = need; 
-            checkQuestDialog.lines.Add(tmpDialogLine);
+            checkQuestDialog.keys.Add(need);
 
             //Modify it for every SubQuest 
             foreach (SubQuest subQuest in currentQuest.subQuests)
             {
                 if (!subQuest.IsCompleted())
                 {
-                    tmpDialogLine.line = subQuest.requiredValue - subQuest.currentValue + " " + subQuest.collectData.name;
-                    checkQuestDialog.lines.Add(tmpDialogLine);
+                    tmpDialogLine = subQuest.requiredValue - subQuest.currentValue + " " + subQuest.collectData.name;
+                    checkQuestDialog.keys.Add(tmpDialogLine);
                     //Create a response for every subQuest
                     tmpResponse.responseText = prefix + " " + subQuest.collectData.name;
                     tmpResponse.choice = DialogChoice.SUB_QUEST;
@@ -152,7 +157,7 @@ public class CharacterGod : Interactable, DialogUser, IDataPersistence
         }
 
         otherIndex = 0;
-        dialogManager.LoadDialog(dialogMenu);
+        dialogManager.LoadDialog(menuData);
     }
 
     public void OnName(string name)
@@ -228,14 +233,13 @@ public class CharacterGod : Interactable, DialogUser, IDataPersistence
         dialogManager.SetCurrentUser(this);
 
         string fullKey = characterName.ToUpper() + "_" + dialogKeys[questIndex];
+        
 
         //Starts dialog
         if (isFirstTime)
         {
             isFirstTime = false;
             dialogManager.StartDialog(fullKey);
-            //dialogManager.LoadDialog(dialogKeyOther[otherIndex]);
-            dialogManager.LoadDialog(dialogMenu);
             currentQuest = Instantiate(quests[questIndex]);
             currentQuest.onQuestComplete = IncrementIndex;
             questManager.AddToActive(currentQuest);
@@ -243,9 +247,9 @@ public class CharacterGod : Interactable, DialogUser, IDataPersistence
         else
         {
             dialogManager.StartDialog(fullKey + "_SECOND");
-
-            dialogManager.LoadDialog(dialogMenu);
         }
+
+        dialogManager.LoadDialog(menuData);
     }
 
     private void SetUpResponses()
@@ -253,8 +257,17 @@ public class CharacterGod : Interactable, DialogUser, IDataPersistence
         LocalizationManager locManager = LocalizationManager.Instance;
 
         prefix = locManager.GetLine("RESPONSE_OFFER");
-        thanks = locManager.GetLine("RESPONSE_THANKS");
-        need = locManager.GetLine("RESPONSE_NEED");
         back = locManager.GetLine("RESPONSE_BACK");
+        need = locManager.GetLine("RESPONSE_NEED");
+        thanks = locManager.GetLine("RESPONSE_THANKS");
+    }
+
+    private void SetUpMenu()
+    {
+        menuData = new DialogData();
+        string menu = characterName.ToUpper() + "_MENU";
+        Debug.Log("menu: " + menu);
+        menuData.keys.Add(menu);
+        menuData.responses = menuResponses;
     }
 }
