@@ -13,6 +13,7 @@ public class CharacterGod : Interactable, DialogUser, IDataPersistence
     private Quest[] quests;
     private Quest currentQuest;
     private DialogData menuData;
+    private LocalizationManager locManager;
 
     private uint questIndex = 0;
     private uint otherIndex = 0; //used when traversing dialog menus 
@@ -25,8 +26,7 @@ public class CharacterGod : Interactable, DialogUser, IDataPersistence
     private string thanks = "RESPONSE_THANKS";
     private string need = "RESPONSE_NEED";
     private string back = "BBBBB";
-    private string quest = "quest";
-
+       
     private float interactionCooldown = 0.5f;
     private float lastInteractionTime = 0f;
 
@@ -106,10 +106,12 @@ public class CharacterGod : Interactable, DialogUser, IDataPersistence
             {
                 if (!subQuest.IsCompleted())
                 {
-                    tmpDialogLine = subQuest.requiredValue - subQuest.currentValue + " " + subQuest.collectData.name;
+                    tmpDialogLine = subQuest.requiredValue - subQuest.currentValue + " ";
+                    tmpDialogLine += locManager.GetLine(subQuest.collectData.name);
                     checkQuestDialog.keys.Add(tmpDialogLine);
                     //Create a response for every subQuest
-                    tmpResponse.responseText = prefix + " " + subQuest.collectData.name;
+                    tmpResponse.responseText = prefix + " ";
+                    tmpResponse.responseText += locManager.GetLine(subQuest.collectData.name);
                     tmpResponse.choice = DialogChoice.SUB_QUEST;
                     checkQuestDialog.responses.Add(tmpResponse);
                 }
@@ -173,8 +175,8 @@ public class CharacterGod : Interactable, DialogUser, IDataPersistence
     public void OnSubQuest(string item)
     {
         //get itemData via name
-        item = item.Substring(prefix.Length);
-
+        item = item.Substring(prefix.Length + 1);
+        item = item.ToUpper();
         SubQuest currentSubQuest = new SubQuest();
         foreach (SubQuest subQuest in currentQuest.subQuests)
         {
@@ -254,7 +256,7 @@ public class CharacterGod : Interactable, DialogUser, IDataPersistence
 
     private void SetUpResponses()
     {
-        LocalizationManager locManager = LocalizationManager.Instance;
+        locManager = LocalizationManager.Instance;
 
         prefix = locManager.GetLine("RESPONSE_OFFER");
         back = locManager.GetLine("RESPONSE_BACK");
