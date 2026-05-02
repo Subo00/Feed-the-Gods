@@ -110,7 +110,11 @@ MonoBehaviour:
   - BERRIES
   - STRAWBERRIE_JUICE
   - ORANGES
-  dialogMenu: {fileID: 11400000, guid: 81b373e528590c0419bc0ce61da1f37f, type: 2}
+  menuResponses:
+  - responseText: 
+    choice: 0
+  - responseText: 
+    choice: 3
 --- !u!136 &5277357483578014063
 CapsuleCollider:
   m_ObjectHideFlags: 0
