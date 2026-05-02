@@ -176,7 +176,8 @@ public class CharacterGod : Interactable, DialogUser, IDataPersistence
     {
         //get itemData via name
         item = item.Substring(prefix.Length + 1);
-        item = item.ToUpper();
+        item = locManager.GetKey(item);
+
         SubQuest currentSubQuest = new SubQuest();
         foreach (SubQuest subQuest in currentQuest.subQuests)
         {
