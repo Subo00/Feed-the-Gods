@@ -29,10 +29,16 @@ FEYA_ORANGES_1,Oranges! I sure do love 'em ,
 FEYA_ORANGES_2,Mind bringing me a few?,
 FEYA_ORANGES_SECOND_0,"They are not in the garden, I know.",
 FEYA_ORANGES_SECOND_1,But I am sure you'll find a way.,
-FEYA_MENU,What can I do for you? ,
+FEYA_MENU_0,What can I do for you? ,
 CHOICE_BACK,Back,
 CHOICE_CHECK_QUEST,Check quest,
 CHOICE_ASK_INFO,Ask information,
 CHOICE_CHANGE_QUEST,Change quest,
 CHOICE_NAME,//not needed,
 CHOICE_SUB_QUEST,//not needed,
+,,
+STRAWBERRY,Strawberry,Erdberren
+STRAWBERRY_JUICE,Strawberry juice,Erdberrensaft 
+ORANGE,Orange,Orange
+ORANGE_JUICE,Orange juice,Orangensaft
+FRUIT_JUICE,Fruit juice,Obstsaft
