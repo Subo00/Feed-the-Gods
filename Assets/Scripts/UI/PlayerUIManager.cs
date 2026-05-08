@@ -83,7 +83,7 @@ public class PlayerUIManager : MonoBehaviour, UIPrompt
 
     public void ToggleMenuTrigger(InputAction.CallbackContext context)
     {
-        if (context.performed) ToggleMenu();
+        if (context.performed && !IsImportantTypeOpen()) ToggleMenu();
     }
 
     public void ToggleInventory()
@@ -215,6 +215,11 @@ public class PlayerUIManager : MonoBehaviour, UIPrompt
         }
 
     }*/
+
+    private bool IsImportantTypeOpen()
+    {
+        return isCraftingOpen || isDialogOpen || isMinigameOpen;
+    }
 
     public void ShowDialogResponse(bool show)
     {
