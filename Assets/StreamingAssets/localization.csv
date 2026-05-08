@@ -3,6 +3,26 @@ RESPONSE_OFFER,Offer ,Gib
 RESPONSE_THANKS,Thank you,Danke
 RESPONSE_NEED,I still need....,Ich brauche noch...
 RESPONSE_BACK,Back,Zurück
+PLAYER_1,Keyboard Player 1: \nSPACEBAR- Join game\nWASD - move\nE - interact\nQ - discard held item\n1 - invntory\n2 - crafting\n3 - tools\n,Tastatur 1:\nSPACEBAR- Spiel beitreten\nWASD - laufen\nE - interagieren\nQ - Gegenstand werfen\n1 - Inventar\n2 - Basteln\n3 - Werkzeuge\n
+PLAYER_2,Keyboard Player 2: \nENTER - Join game\nIJKL - move\nU - interact\nO - discard held item\n7 - invntory\n8 - crafting\n9 - tools\n,Tastatur 2:\nENTER - Spiel beitreten\nIJKL - laufen\nU - interagieren\nO - Gegenstand werfen\n7 - Inventar\n8 - Basteln\n9 - Werkzeuge\n
+CONTROLLER,Controller (XBOX):\nSTART - Join game\nLEFT STICK - move\nA - interact\nB - discard held item\nD-Pad left - invntory\nD-Pad right - crafting \nD-Pad up - tools\n,Kontroller (XBOX):\nSTART- Spiel beitreten\nLINKER STICK - laufen\nA - interagieren\nB - Gegenstand werfen\nD-Pad links - Inventar\nD-Pad rechts - Basteln\nD-Pad oben - Werkzeuge\n
+CONFIRM,CONFIRM,BESTÄTIGEN
+CANCLE,CANCLE,ABBRECHEN
+RESUME,RESUME,WEITERMACHEN
+DISCONNECT,DISCONNECT,TRENNEN
+MAIN_MENU,MAIN MENU,HAUPTMENÜ
+QUIT,QUIT,AUFHÖREN
+HOW_TO_PLAY,HOW TO PLAY,STEUERUNG
+START,START,STARTEN
+CHOICE_BACK,Back,Zurück
+CHOICE_CHECK_QUEST,Check quest,Quest prüfen
+CHOICE_ASK_INFO,Ask information,Information fragen
+CHOICE_CHANGE_QUEST,Change quest,Änderungsquest
+CHOICE_NAME,//not needed,
+CHOICE_SUB_QUEST,//not needed,
+HEAD_HIT_MINIGAME_0,"Hello, you want to collect the fruits from a tree?","Hallo, möchtest du die Früchte von einem Baum ernten?"
+HEAD_HIT_MINIGAME_1,"It's easy, just come near it, press and hold [ACTION]","Es ist einfach, komm naher, drück und halt [ACTION]"
+HEAD_HIT_MINIGAME_2,Then release it at the right time for more fruits,Dann lass es in die richtige Zeit für mehr Obst
 CANCLE_TO_THROW_0,"Hey, did you know, if you press [CANCLE], you can throw a held item",Hast du es gewusst? Druck [CANCLE] zu schmeißen
 CANCLE_TO_THROW_1,Try it! It's really fun.,Probiere es! Es ist sehr lüstig.
 ACTION_HOLD_TO_GATHER_0,If you want to gather strawberries. Feel free to take from the garden.,"Steht gegen den Busch, dann druck und halt [ACTION] zu sammeln  "
@@ -15,7 +35,7 @@ STOMPING_MINIGAME_1,You will have to squash the ingredients by moving left and r
 FEYA_BERRIES_0,"Oh hello there, you must be new!","Oh hallo, du bist neu hier! "
 FEYA_BERRIES_1,My name is Feya,Mein name ist Feya
 FEYA_BERRIES_2,Let's start you of with a simple task,Fangen wir mit einer einfachen Aufgabe an
-FEYA_BERRIES_3,See the bushes around me?,Sehen Sie die Büshe um mich herum?
+FEYA_BERRIES_3,See the bushes around me?,Shiest du die Büshe um mich herum?
 FEYA_BERRIES_4,Mind bringing me 25 strawberries?,Kannst du mir 25 Erdbeeren bringen?
 FEYA_BERRIES_SECOND_0,"25 strawberries, it shouldn't be that hard.","25 Erdbeeren, es sollte nicht kompliziert sein"
 FEYA_BERRIES_SECOND_1,They are all around me.,Sie sind uberall.
@@ -29,16 +49,14 @@ FEYA_ORANGES_1,Oranges! I sure do love 'em ,Orangen! I liebe sie!
 FEYA_ORANGES_2,Mind bringing me a few?,Kannst du mir ein paar bringen? 
 FEYA_ORANGES_SECOND_0,"They are not in the garden, I know.","Sie sind night in Garten, ich weiß."
 FEYA_ORANGES_SECOND_1,But I am sure you'll find a way.,"Aber, ich bin sicher, du könntest der Weg finden"
+FEYA_ORANGE_JUICE_0,"So, you know how you made Strawberry juice? ",Weißt du wie hast du Erdberrensaft gemacht? 
+FEYA_ORANGE_JUICE_1,"Well, now go make orange juice, it's really that simple.","Jetzt, mach die gleiche, aber mit Orangen. Es ist so einfach."
+FEYA_ORANGE_JUICE_2,"The process is the same, the ingredients are different.","Die Verarbait ist gleich, die Zutaten sind es nicht. "
+FEYA_ORANGE_JUICE_SECOND_0,"And, how's the progress going? ","Und, wie geht es bei dem Saft? "
+FEYA_FRUIT_JUICE_0,Okay now for the final task. Make fruit juice.,"Okay, und jetzt für die letzte Aufgabe. Mach Obstsaft."
+FEYA_FRUIT_JUICE_1,You can either make it from scratch or combine the two juices.,Du kannst es entweder von Grund auf selbst zubereiten oder die beiden Säfte mischen. 
+FEYA_FRUIT_JUICE_SECOND_0,"Like I said, it should be easy. ","Wie ich habe gesagt, es soll einfach sein. "
 FEYA_MENU_0,What can I do for you? ,Was kann ich für dich tun? 
-CHOICE_BACK,Back,Zurück
-CHOICE_CHECK_QUEST,Check quest,Quest prüfen
-CHOICE_ASK_INFO,Ask information,Information fragen
-CHOICE_CHANGE_QUEST,Change quest,Änderungsquest
-CHOICE_NAME,//not needed,
-CHOICE_SUB_QUEST,//not needed,
-QUIT,QUIT,BEENDEN
-HOW_TO_PLAY,HOW TO PLAY,WIE ZU SPIELEN 
-START,START,STARTEN
 ,,
 STRAWBERRY,Strawberry,Erdberren
 STRAWBERRY_JUICE,Strawberry juice,Erdberrensaft 

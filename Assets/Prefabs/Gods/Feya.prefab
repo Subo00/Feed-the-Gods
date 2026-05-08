@@ -110,6 +110,8 @@ MonoBehaviour:
   - BERRIES
   - STRAWBERRIE_JUICE
   - ORANGES
+  - ORANGE_JUICE
+  - FRUIT_JUICE
   menuResponses:
   - responseText: 
     choice: 0
