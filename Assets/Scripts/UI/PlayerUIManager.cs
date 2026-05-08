@@ -319,6 +319,7 @@ public class PlayerUIManager : MonoBehaviour, UIPrompt
     {
         PlayerHUD.SetPrompt(input);
         CraftingUI.SetPrompt(input);
+        DialogUI.SetPrompt(input);
     }
 
     public void UpdateUIElements(int numOfPlayers)
