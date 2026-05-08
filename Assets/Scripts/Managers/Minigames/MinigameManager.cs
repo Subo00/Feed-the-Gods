@@ -129,12 +129,15 @@ public class MinigameManager : MonoBehaviour
     public void OnCancle(InputAction.CallbackContext context) {  if(context.started){ actionCancle?.Invoke();  actionCancle = null; } }
 
 
-    private void ClearInteract()
+    public void ClearInteract()
     {
         actionUp = null;
         actionDown = null;
         actionLeft = null;
         actionRight = null;
         actionInteract = null;
+        onFailMinigameSource = null;
+        onEndMinigame = null;
+        onFinishMinigameSource = null;
     }
 }
