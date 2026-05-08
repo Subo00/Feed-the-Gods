@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogSettings:
-    imageSprite: {fileID: 21300000, guid: 7b841bce83550b2408543cd5859d0bb9, type: 3}
+    imageSprite: {fileID: 21300000, guid: 39e339821c0d82c4c9b8dcf0a68404f7, type: 3}
     font: {fileID: 0}
     textSpeed: 0
   dialogKeys:
