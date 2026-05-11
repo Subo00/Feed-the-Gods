@@ -9,10 +9,10 @@ public static class InputPromptExtension
     private const string XboxInteractLabel = "A";
     private const string PsInteractLabel = "X";
 
-    private const string WasdCancleLabel = "Q";
-    private const string IjklCancleLabel = "U";
-    private const string XboxCancleLabel = "B";
-    private const string PsCancleLabel = "\u25CB";
+    private const string WasdCancelLabel = "Q";
+    private const string IjklCancelLabel = "U";
+    private const string XboxCancelLabel = "B";
+    private const string PsCancelLabel = "\u25CB";
 
     public static string GetInteractLabel(this InputPrompt prompt)
     {
@@ -30,10 +30,10 @@ public static class InputPromptExtension
     {
         return prompt switch
         {
-            InputPrompt.WASD => WasdCancleLabel,
-            InputPrompt.IJKL => IjklCancleLabel,
-            InputPrompt.XBOX => XboxCancleLabel,
-            InputPrompt.PLAYSTATION => PsCancleLabel,
+            InputPrompt.WASD => WasdCancelLabel,
+            InputPrompt.IJKL => IjklCancelLabel,
+            InputPrompt.XBOX => XboxCancelLabel,
+            InputPrompt.PLAYSTATION => PsCancelLabel,
             _ => "?"
         };
     }

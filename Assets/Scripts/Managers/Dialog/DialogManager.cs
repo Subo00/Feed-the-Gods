@@ -192,7 +192,7 @@ public class DialogManager : MonoBehaviour
             return dialogToken switch
             {
                 DialogToken.ACTION => prompt.GetInteractLabel(),
-                DialogToken.CANCLE => prompt.GetCancleLabel(),
+                DialogToken.CANCEL => prompt.GetCancleLabel(),
                 _ => $"[{token}]"
             };
         }

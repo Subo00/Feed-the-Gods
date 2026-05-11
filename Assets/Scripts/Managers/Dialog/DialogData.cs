@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum DialogToken { ACTION, CANCLE }
+public enum DialogToken { ACTION, CANCEL }
 public enum DialogChoice { CHECK_QUEST, ASK_INFO, CHANGE_QUEST, BACK, NAME, SUB_QUEST };
 
 

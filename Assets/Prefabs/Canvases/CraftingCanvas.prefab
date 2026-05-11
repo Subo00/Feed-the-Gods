@@ -1231,7 +1231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f132e6e01163f5749950285b16166a02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: CANCLE
+  key: CANCEL
 --- !u!1 &3684144853233203316
 GameObject:
   m_ObjectHideFlags: 0

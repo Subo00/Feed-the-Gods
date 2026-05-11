@@ -5,9 +5,10 @@ RESPONSE_NEED,I still need....,Ich brauche noch...
 RESPONSE_BACK,Back,Zurück
 PLAYER_1,Keyboard Player 1: \nSPACEBAR- Join game\nWASD - move\nE - interact\nQ - discard held item\n1 - invntory\n2 - crafting\n3 - tools\n,Tastatur 1:\nSPACEBAR- Spiel beitreten\nWASD - laufen\nE - interagieren\nQ - Gegenstand werfen\n1 - Inventar\n2 - Basteln\n3 - Werkzeuge\n
 PLAYER_2,Keyboard Player 2: \nENTER - Join game\nIJKL - move\nU - interact\nO - discard held item\n7 - invntory\n8 - crafting\n9 - tools\n,Tastatur 2:\nENTER - Spiel beitreten\nIJKL - laufen\nU - interagieren\nO - Gegenstand werfen\n7 - Inventar\n8 - Basteln\n9 - Werkzeuge\n
-CONTROLLER,Controller (XBOX):\nSTART - Join game\nLEFT STICK - move\nA - interact\nB - discard held item\nD-Pad left - invntory\nD-Pad right - crafting \nD-Pad up - tools\n,Kontroller (XBOX):\nSTART- Spiel beitreten\nLINKER STICK - laufen\nA - interagieren\nB - Gegenstand werfen\nD-Pad links - Inventar\nD-Pad rechts - Basteln\nD-Pad oben - Werkzeuge\n
-CONFIRM,CONFIRM,BESTÄTIGEN
-CANCLE,CANCLE,ABBRECHEN
+XBOX,Controller (XBOX):\nSTART - Join game\nLEFT STICK - move\nA - interact\nB - discard held item\nD-Pad left - invntory\nD-Pad right - crafting \nD-Pad up - tools\n,Kontroller (XBOX):\nSTART- Spiel beitreten\nLINKER STICK - laufen\nA - interagieren\nB - Gegenstand werfen\nD-Pad links - Inventar\nD-Pad rechts - Basteln\nD-Pad oben - Werkzeuge\n
+PLAYSTATION,BESTÄTIGEN,Kontroller (PLAYSTATION):\nSTART- Spiel beitreten\nLINKER STICK - laufen\nX - interagieren\n\u25CB - Gegenstand werfen\nD-Pad links - Inventar\nD-Pad rechts - Basteln\nD-Pad oben - Werkzeuge\n
+CONFIRM,CONFIRM,
+CANCEL,CANCEL,ABBRECHEN
 RESUME,RESUME,WEITERMACHEN
 DISCONNECT,DISCONNECT,TRENNEN
 MAIN_MENU,MAIN MENU,HAUPTMENÜ
@@ -23,8 +24,8 @@ CHOICE_SUB_QUEST,//not needed,
 HEAD_HIT_MINIGAME_0,"Hello, you want to collect the fruits from a tree?","Hallo, möchtest du die Früchte von einem Baum ernten?"
 HEAD_HIT_MINIGAME_1,"It's easy, just come near it, press and hold [ACTION]","Es ist einfach, komm naher, drück und halt [ACTION]"
 HEAD_HIT_MINIGAME_2,Then release it at the right time for more fruits,Dann lass es in die richtige Zeit für mehr Obst
-CANCLE_TO_THROW_0,"Hey, did you know, if you press [CANCLE], you can throw a held item",Hast du es gewusst? Druck [CANCLE] zu schmeißen
-CANCLE_TO_THROW_1,Try it! It's really fun.,Probiere es! Es ist sehr lüstig.
+CANCEL_TO_THROW_0,"Hey, did you know, if you press [CANCEL], you can throw a held item",Hast du es gewusst? Druck [CANCEL] zu schmeißen
+CANCEL_TO_THROW_1,Try it! It's really fun.,Probiere es! Es ist sehr lüstig.
 ACTION_HOLD_TO_GATHER_0,If you want to gather strawberries. Feel free to take from the garden.,"Steht gegen den Busch, dann druck und halt [ACTION] zu sammeln  "
 ACTION_HOLD_TO_GATHER_1,"Just face the bush, press and hold [ACTION]","Einfach dem Busch zugewandt, [ACTION] drücken und halten"
 PLAINS_LORE_0,Welcome to Feya's garden!,Willkommen in der Garten von Feya

@@ -9906,7 +9906,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8290168288894308426, guid: 89b7445a90be771439aad829e2a76a4f, type: 3}
       propertyPath: dialogKey
-      value: CANCLE_TO_THROW
+      value: CANCEL_TO_THROW
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
