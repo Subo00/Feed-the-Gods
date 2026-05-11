@@ -14,14 +14,14 @@ public class MinigameGather :  Minigame
     {
         base.StartMinigame(valueUint, minigameManager);
         manager.Player.Animator.PlayAllLayers(Animations.GATHER);
-        manager.Player.ToggleUI(true);
+        manager.Player.ToggleMovement(true);
         SoundManager.PlaySound(SoundType.Rustle);
     }
     public override void EndMinigame()
     {
         base.EndMinigame();
         manager.Player.Animator.PlayAllLayers(Animations.IDLE);
-        manager.Player.ToggleUI(false);
+        manager.Player.ToggleMovement(false);
     }
 
     protected override void OnUpdate()

@@ -67,9 +67,9 @@ public class Player : ThirdPersonMovement, RecipeSpawner
         playerUIManager.SetControlsEnable(enabled);
     }
    
-    public override void ToggleUI(bool isActive)
+    public override void ToggleMovement(bool canMove)
     {
-        isUIActive = isActive;
+        base.canMove = canMove;
     }
     protected override void Start()
     {
