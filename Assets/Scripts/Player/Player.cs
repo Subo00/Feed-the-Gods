@@ -3,6 +3,9 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.DualShock;
+using UnityEngine.InputSystem.XInput;
+
 
 public class Player : ThirdPersonMovement, RecipeSpawner
 {
@@ -94,7 +97,12 @@ public class Player : ThirdPersonMovement, RecipeSpawner
         }
         else
         {
-            prompt = InputPrompt.XBOX;
+            var device = playerInput.devices[0];
+
+            if (device is DualShockGamepad)
+                prompt = InputPrompt.PLAYSTATION;
+            else if (device is XInputController)
+                prompt = InputPrompt.XBOX;
         }
 
         inputHandler = GetComponent<PlayerInputHandler>();

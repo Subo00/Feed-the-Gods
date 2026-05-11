@@ -17,6 +17,9 @@ public class DialogUI : BaseUI, UIPrompt
             case InputPrompt.XBOX:
                 confirmButton.GetComponent<Image>().sprite = UIPromptManager.instance.ConfirmXBOX;
                 break;
+            case InputPrompt.PLAYSTATION:
+                confirmButton.GetComponent<Image>().sprite = UIPromptManager.instance.ConfirmPS;
+                break;
         }
     }
 }
