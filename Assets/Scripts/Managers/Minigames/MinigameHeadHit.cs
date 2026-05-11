@@ -19,7 +19,14 @@ public class MinigameHeadHit : Minigame
         manager.Player.ClearInteract();
         //manager.Player.SetInteract(OnInteract);
         manager.Player.Animator.PlayAllLayers(Animations.IDLE);
-       // manager.Player.Animator.Play(Animations.STOMP, 2, false, false);
+        // manager.Player.Animator.Play(Animations.STOMP, 2, false, false);
+        manager.Player.ToggleMovement(true);
+    }
+
+    public override void EndMinigame()
+    {
+        base.EndMinigame();
+        manager.Player.ToggleMovement(false);
     }
 
     public void OnInteract()
