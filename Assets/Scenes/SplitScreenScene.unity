@@ -2045,58 +2045,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1033902753}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1414559835
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1414559836}
-  - component: {fileID: 1414559837}
-  m_Layer: 0
-  m_Name: UIPromptManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1414559836
+--- !u!4 &1414559836 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 7360345782408196990, guid: 0ee7aca60584798409964453a58bcbdb, type: 3}
+  m_PrefabInstance: {fileID: 3167676530707714927}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1414559835}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1033902753}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1414559837
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1414559835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 118f8f261a971d647adefcd0b2e038a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ConfirmWASD: {fileID: 21300000, guid: c16c4e972ad0054468afdab488e0310e, type: 3}
-  ConfirmIJKL: {fileID: 21300000, guid: b08b252fd1eb69d4cb278495ded30615, type: 3}
-  ConfirmXBOX: {fileID: 21300000, guid: f3168930cf4bc2e42adacddeafb2dc81, type: 3}
-  ConfirmPS: {fileID: 21300000, guid: 216560e9aad3a2f469aa8b8479befe46, type: 3}
-  CancleWASD: {fileID: 21300000, guid: b96ba8f6cf4a06940aa7749938a9ef47, type: 3}
-  CancleIJKL: {fileID: 21300000, guid: aa629385b312ae24d891db3adce91a0b, type: 3}
-  CancleXBOX: {fileID: 21300000, guid: 43567f8e923357749ad03b9cb92fed7f, type: 3}
-  CanclePS: {fileID: 21300000, guid: 8d2a6cd198e73a143a4bae3acec33c92, type: 3}
 --- !u!1001 &1476038396
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2902,6 +2855,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c144eb8b44e9e047bf8cc844a20621e, type: 3}
+--- !u!1001 &3167676530707714927
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1033902753}
+    m_Modifications:
+    - target: {fileID: 722689845488378857, guid: 0ee7aca60584798409964453a58bcbdb, type: 3}
+      propertyPath: m_Name
+      value: UIPromptManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7360345782408196990, guid: 0ee7aca60584798409964453a58bcbdb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7360345782408196990, guid: 0ee7aca60584798409964453a58bcbdb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7360345782408196990, guid: 0ee7aca60584798409964453a58bcbdb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7360345782408196990, guid: 0ee7aca60584798409964453a58bcbdb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7360345782408196990, guid: 0ee7aca60584798409964453a58bcbdb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7360345782408196990, guid: 0ee7aca60584798409964453a58bcbdb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7360345782408196990, guid: 0ee7aca60584798409964453a58bcbdb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7360345782408196990, guid: 0ee7aca60584798409964453a58bcbdb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7360345782408196990, guid: 0ee7aca60584798409964453a58bcbdb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7360345782408196990, guid: 0ee7aca60584798409964453a58bcbdb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0ee7aca60584798409964453a58bcbdb, type: 3}
 --- !u!1001 &5160084616757494863
 PrefabInstance:
   m_ObjectHideFlags: 0
