@@ -48,7 +48,7 @@ MonoBehaviour:
   ConfirmIJKL: {fileID: 21300000, guid: b08b252fd1eb69d4cb278495ded30615, type: 3}
   ConfirmXBOX: {fileID: 21300000, guid: f3168930cf4bc2e42adacddeafb2dc81, type: 3}
   ConfirmPS: {fileID: 21300000, guid: 216560e9aad3a2f469aa8b8479befe46, type: 3}
-  CancleWASD: {fileID: 21300000, guid: b96ba8f6cf4a06940aa7749938a9ef47, type: 3}
-  CancleIJKL: {fileID: 21300000, guid: aa629385b312ae24d891db3adce91a0b, type: 3}
-  CancleXBOX: {fileID: 21300000, guid: 43567f8e923357749ad03b9cb92fed7f, type: 3}
-  CanclePS: {fileID: 21300000, guid: 8d2a6cd198e73a143a4bae3acec33c92, type: 3}
+  CancelWASD: {fileID: 21300000, guid: b96ba8f6cf4a06940aa7749938a9ef47, type: 3}
+  CancelIJKL: {fileID: 21300000, guid: aa629385b312ae24d891db3adce91a0b, type: 3}
+  CancelXBOX: {fileID: 21300000, guid: 43567f8e923357749ad03b9cb92fed7f, type: 3}
+  CancelPS: {fileID: 21300000, guid: 8d2a6cd198e73a143a4bae3acec33c92, type: 3}

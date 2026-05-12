@@ -22,10 +22,7 @@ public class BuildingBase : Interactable, RecipeSpawner
 
         interactingPlayer.ClearInteract();
         interactingPlayer.SetDelayedInteract(OnInteracted);
-        if (interactingObject == null) return;
-        interactingObject.transform.SetParent(interactingPlayer.transform);
-        interactingObject.transform.localPosition = interactingOffset;
-        interactingObject.SetActive(true);
+        
         //change all of this
         //CraftingUI.Instance.UpdateRecipeList(buildingType);
         //uiManagerChild.ToggleCrafting();
@@ -38,6 +35,11 @@ public class BuildingBase : Interactable, RecipeSpawner
         interactingPlayer.PlayerUI.CraftingUI.UpdateRecipeList(buildingType);
         interactingPlayer.PlayerUI.ToggleCrafting();
         interactingPlayer.InputHandler.AddOnCancel(ResetInUse);
+
+        if (interactingObject == null) return;
+        interactingObject.transform.SetParent(interactingPlayer.transform);
+        interactingObject.transform.localPosition = interactingOffset;
+        interactingObject.SetActive(true);
     }
     protected override void OnUpdate()
     {
