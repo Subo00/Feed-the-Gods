@@ -235,7 +235,7 @@ public class DialogManager : MonoBehaviour
         currentUser.DialogActive(true);
     }
 
-    private void OnResponseClick(DialogResponse response)
+    public void OnResponseClick(DialogResponse response)
     {
         Clear();
         responsePanel.SetActive(false);

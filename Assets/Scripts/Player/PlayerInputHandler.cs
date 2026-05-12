@@ -10,9 +10,11 @@ public class PlayerInputHandler : MonoBehaviour
     private PlayerInput playerInput;
     private List<Action> cancelActions;
     private Action uiSubmitAction;
-    
+    private Action uiCancelAction;
+
     public void AddOnCancel(Action action) { if (action != null) cancelActions.Add(action);  }
     public void AddOnUISubmit(Action action) { if (action != null) uiSubmitAction = action; }
+    public void AddOnUICancel(Action action) { if (action != null) uiCancelAction = action; }   
 
     public void ChangeActionMap(ActionMap map)
     {
@@ -37,6 +39,10 @@ public class PlayerInputHandler : MonoBehaviour
                 action.Invoke();
             }
             ClearInteract();
+        }
+        else
+        {
+            uiCancelAction?.Invoke();
         }
        
     }

@@ -14,6 +14,7 @@ public class CharacterGod : Interactable, DialogUser, IDataPersistence
     private Quest currentQuest;
     private DialogData menuData;
     private LocalizationManager locManager;
+    private DialogResponse backResponse;
 
     private uint questIndex = 0;
     private uint otherIndex = 0; //used when traversing dialog menus 
@@ -35,8 +36,11 @@ public class CharacterGod : Interactable, DialogUser, IDataPersistence
         if (inUse) return;
         interactingPlayer = player;
         dialogManager = interactingPlayer.DialogManager;
+
         interactingPlayer.ClearInteract();
         interactingPlayer.InputHandler.AddOnUISubmit(OnInteracted);
+        interactingPlayer.InputHandler.AddOnUICancel(OnCancel);
+
         interactingPlayer.InputHandler.ChangeActionMap(ActionMap.UI);
         OnInteracted();
     }
@@ -54,6 +58,17 @@ public class CharacterGod : Interactable, DialogUser, IDataPersistence
             if (!choicesOpen) dialogManager.DisplayNextDialogueLine();
         }
     }
+
+    private void OnCancel()
+    {
+        if (Time.time < lastInteractionTime + interactionCooldown) return;
+        if (!choicesOpen) { dialogManager.DisplayNextDialogueLine(); }
+        else
+        {
+            dialogManager.OnResponseClick(backResponse);
+        }
+    }
+
     protected override void Start()
     {
         questManager = QuestManager.Instance;
@@ -236,7 +251,8 @@ public class CharacterGod : Interactable, DialogUser, IDataPersistence
         dialogManager.SetCurrentUser(this);
 
         string fullKey = characterName.ToUpper() + "_" + dialogKeys[questIndex];
-        
+
+        backResponse.choice = DialogChoice.BACK;
 
         //Starts dialog
         if (isFirstTime)
