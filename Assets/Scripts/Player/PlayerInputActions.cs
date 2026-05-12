@@ -333,7 +333,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Cancle"",
+                    ""name"": ""Cancel"",
                     ""type"": ""Button"",
                     ""id"": ""af9ca9bc-6045-49bf-b6c5-505032b5792e"",
                     ""expectedControlType"": ""Button"",
@@ -447,7 +447,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""WASD"",
-                    ""action"": ""Cancle"",
+                    ""action"": ""Cancel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -458,7 +458,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Cancle"",
+                    ""action"": ""Cancel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -793,7 +793,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_UI_CraftingToggle = m_UI.FindAction("CraftingToggle", throwIfNotFound: true);
         m_UI_InventoryToggle = m_UI.FindAction("InventoryToggle", throwIfNotFound: true);
         m_UI_Submit = m_UI.FindAction("Submit", throwIfNotFound: true);
-        m_UI_Cancle = m_UI.FindAction("Cancle", throwIfNotFound: true);
+        m_UI_Cancel = m_UI.FindAction("Cancel", throwIfNotFound: true);
         m_UI_MenuToggle = m_UI.FindAction("MenuToggle", throwIfNotFound: true);
         // Minigame
         m_Minigame = asset.FindActionMap("Minigame", throwIfNotFound: true);
@@ -965,7 +965,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_CraftingToggle;
     private readonly InputAction m_UI_InventoryToggle;
     private readonly InputAction m_UI_Submit;
-    private readonly InputAction m_UI_Cancle;
+    private readonly InputAction m_UI_Cancel;
     private readonly InputAction m_UI_MenuToggle;
     public struct UIActions
     {
@@ -975,7 +975,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @CraftingToggle => m_Wrapper.m_UI_CraftingToggle;
         public InputAction @InventoryToggle => m_Wrapper.m_UI_InventoryToggle;
         public InputAction @Submit => m_Wrapper.m_UI_Submit;
-        public InputAction @Cancle => m_Wrapper.m_UI_Cancle;
+        public InputAction @Cancel => m_Wrapper.m_UI_Cancel;
         public InputAction @MenuToggle => m_Wrapper.m_UI_MenuToggle;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
@@ -998,9 +998,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Submit.started += instance.OnSubmit;
             @Submit.performed += instance.OnSubmit;
             @Submit.canceled += instance.OnSubmit;
-            @Cancle.started += instance.OnCancle;
-            @Cancle.performed += instance.OnCancle;
-            @Cancle.canceled += instance.OnCancle;
+            @Cancel.started += instance.OnCancel;
+            @Cancel.performed += instance.OnCancel;
+            @Cancel.canceled += instance.OnCancel;
             @MenuToggle.started += instance.OnMenuToggle;
             @MenuToggle.performed += instance.OnMenuToggle;
             @MenuToggle.canceled += instance.OnMenuToggle;
@@ -1020,9 +1020,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Submit.started -= instance.OnSubmit;
             @Submit.performed -= instance.OnSubmit;
             @Submit.canceled -= instance.OnSubmit;
-            @Cancle.started -= instance.OnCancle;
-            @Cancle.performed -= instance.OnCancle;
-            @Cancle.canceled -= instance.OnCancle;
+            @Cancel.started -= instance.OnCancel;
+            @Cancel.performed -= instance.OnCancel;
+            @Cancel.canceled -= instance.OnCancel;
             @MenuToggle.started -= instance.OnMenuToggle;
             @MenuToggle.performed -= instance.OnMenuToggle;
             @MenuToggle.canceled -= instance.OnMenuToggle;
@@ -1209,7 +1209,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnCraftingToggle(InputAction.CallbackContext context);
         void OnInventoryToggle(InputAction.CallbackContext context);
         void OnSubmit(InputAction.CallbackContext context);
-        void OnCancle(InputAction.CallbackContext context);
+        void OnCancel(InputAction.CallbackContext context);
         void OnMenuToggle(InputAction.CallbackContext context);
     }
     public interface IMinigameActions

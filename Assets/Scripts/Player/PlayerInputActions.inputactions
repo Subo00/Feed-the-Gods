@@ -311,7 +311,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Cancle",
+                    "name": "Cancel",
                     "type": "Button",
                     "id": "af9ca9bc-6045-49bf-b6c5-505032b5792e",
                     "expectedControlType": "Button",
@@ -425,7 +425,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "WASD",
-                    "action": "Cancle",
+                    "action": "Cancel",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -436,7 +436,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Cancle",
+                    "action": "Cancel",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

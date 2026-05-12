@@ -8,10 +8,10 @@ public enum ActionMap { Player, UI, Minigame, Menu }
 public class PlayerInputHandler : MonoBehaviour
 {
     private PlayerInput playerInput;
-    private List<Action> cancleActions;
+    private List<Action> cancelActions;
     private Action uiSubmitAction;
     
-    public void AddOnCancle(Action action) { if (action != null) cancleActions.Add(action);  }
+    public void AddOnCancel(Action action) { if (action != null) cancelActions.Add(action);  }
     public void AddOnUISubmit(Action action) { if (action != null) uiSubmitAction = action; }
 
     public void ChangeActionMap(ActionMap map)
@@ -22,17 +22,17 @@ public class PlayerInputHandler : MonoBehaviour
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
-        cancleActions = new List<Action>();
+        cancelActions = new List<Action>();
         ChangeActionMap(ActionMap.Player);
         playerInput.actions.FindActionMap("UI").Disable();
     }
 
-    public void OnCancle(InputAction.CallbackContext context)
+    public void OnCancel(InputAction.CallbackContext context)
     {
         if (!context.started) return;
-        if (cancleActions.Count != 0)
+        if (cancelActions.Count != 0)
         {
-            foreach (var action in cancleActions)
+            foreach (var action in cancelActions)
             {
                 action.Invoke();
             }
@@ -49,7 +49,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void ClearInteract()
     {
-        cancleActions.Clear();
+        cancelActions.Clear();
         uiSubmitAction = null;
     }
 }

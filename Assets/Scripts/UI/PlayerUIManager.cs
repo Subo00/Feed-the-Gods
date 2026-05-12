@@ -100,7 +100,7 @@ public class PlayerUIManager : MonoBehaviour, UIPrompt
             inventoryUI.Toggle(isInventoryOpen);
             SetCurrentUIType(UIType.Inventory);
             eventSystem.SetSelectedGameObject(inventoryUI.GetFirstButton());
-            player.InputHandler.AddOnCancle(ToggleInventory);
+            player.InputHandler.AddOnCancel(ToggleInventory);
             player.InputHandler.ChangeActionMap(ActionMap.UI);
         }
         else
@@ -262,7 +262,7 @@ public class PlayerUIManager : MonoBehaviour, UIPrompt
             craftingUI.Toggle(isCraftingOpen);
             SetCurrentUIType(UIType.Crafting);
             eventSystem.SetSelectedGameObject(craftingUI.GetFirstButton());
-            player.InputHandler.AddOnCancle(ToggleCrafting);
+            player.InputHandler.AddOnCancel(ToggleCrafting);
             player.InputHandler.ChangeActionMap(ActionMap.UI);
         }
         else

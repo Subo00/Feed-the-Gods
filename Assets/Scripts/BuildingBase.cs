@@ -37,7 +37,7 @@ public class BuildingBase : Interactable, RecipeSpawner
         interactingPlayer.ClearInteract();
         interactingPlayer.PlayerUI.CraftingUI.UpdateRecipeList(buildingType);
         interactingPlayer.PlayerUI.ToggleCrafting();
-        interactingPlayer.InputHandler.AddOnCancle(ResetInUse);
+        interactingPlayer.InputHandler.AddOnCancel(ResetInUse);
     }
     protected override void OnUpdate()
     {
