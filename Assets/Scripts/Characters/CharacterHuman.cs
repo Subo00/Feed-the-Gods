@@ -24,6 +24,7 @@ public class CharacterHuman : Interactable
         dialogManager = interactingPlayer.DialogManager;
         interactingPlayer.ClearInteract();
         interactingPlayer.InputHandler.AddOnUISubmit(OnInteracted);
+        interactingPlayer.InputHandler.AddOnUICancel(OnInteracted);
         interactingPlayer.InputHandler.ChangeActionMap(ActionMap.UI);
         dialogManager.SetOnEndDialog(Reset);
         OnInteracted();
@@ -53,6 +54,7 @@ public class CharacterHuman : Interactable
 
     private void Reset()
     {
+        interactingPlayer.InputHandler.ClearInteract();
         interactingPlayer.SetInteract(OnInteract);
         inUse = false;
         lastInteractionTime = Time.time;
