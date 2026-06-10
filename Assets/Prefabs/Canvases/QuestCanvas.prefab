@@ -119,7 +119,7 @@ MonoBehaviour:
   transformObject: {fileID: 0}
   questEmpty: 1
   progressBar: {fileID: 6317502697554838177}
-  tmpText: {fileID: 417462872902155970}
+  tmpText: {fileID: 1540860006645950094}
 --- !u!1 &6642288517092430320
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,6 +265,7 @@ GameObject:
   - component: {fileID: 1929629646817211909}
   - component: {fileID: 2305381201160890746}
   - component: {fileID: 5672151242506414669}
+  - component: {fileID: 1540860006645950094}
   m_Layer: 5
   m_Name: QuestTile
   m_TagString: Untagged
@@ -330,6 +331,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1540860006645950094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9041422136250397128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f132e6e01163f5749950285b16166a02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Q_TALK_TO_THE_STATUE
 --- !u!1001 &4279471688776552337
 PrefabInstance:
   m_ObjectHideFlags: 0

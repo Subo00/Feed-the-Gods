@@ -66,8 +66,8 @@ MonoBehaviour:
   numText: {fileID: 5881575440930677513}
   panelTransform: {fileID: 0}
   craftingButtonUI: {fileID: 6183520467318242068}
-  confirmButton: {fileID: 6560560721624425071}
-  cancleButton: {fileID: 3359107073244947972}
+  confirmButton: {fileID: 5131172613502168076}
+  cancleButton: {fileID: 504760331979622808}
 --- !u!223 &2340449960750348590
 Canvas:
   m_ObjectHideFlags: 0
