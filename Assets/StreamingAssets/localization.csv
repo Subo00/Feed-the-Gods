@@ -6,8 +6,8 @@ RESPONSE_BACK,Back,Zurück
 PLAYER_1,Keyboard Player 1: \nSPACEBAR- Join game\nWASD - move\nE - interact\nQ - discard held item\n1 - invntory\n2 - crafting\n3 - tools\n,Tastatur 1:\nSPACEBAR- Spiel beitreten\nWASD - laufen\nE - interagieren\nQ - Gegenstand werfen\n1 - Inventar\n2 - Basteln\n3 - Werkzeuge\n
 PLAYER_2,Keyboard Player 2: \nENTER - Join game\nIJKL - move\nU - interact\nO - discard held item\n7 - invntory\n8 - crafting\n9 - tools\n,Tastatur 2:\nENTER - Spiel beitreten\nIJKL - laufen\nU - interagieren\nO - Gegenstand werfen\n7 - Inventar\n8 - Basteln\n9 - Werkzeuge\n
 XBOX,Controller (XBOX):\nSTART - Join game\nLEFT STICK - move\nA - interact\nB - discard held item\nD-Pad left - invntory\nD-Pad right - crafting \nD-Pad up - tools\n,Kontroller (XBOX):\nSTART- Spiel beitreten\nLINKER STICK - laufen\nA - interagieren\nB - Gegenstand werfen\nD-Pad links - Inventar\nD-Pad rechts - Basteln\nD-Pad oben - Werkzeuge\n
-PLAYSTATION,BESTÄTIGEN,Kontroller (PLAYSTATION):\nSTART- Spiel beitreten\nLINKER STICK - laufen\nX - interagieren\n\u25CB - Gegenstand werfen\nD-Pad links - Inventar\nD-Pad rechts - Basteln\nD-Pad oben - Werkzeuge\n
-CONFIRM,CONFIRM,
+PLAYSTATION,Controller (PLAYSTATION):\nSTART - Join game\nLEFT STICK - move\nX - interact\n\u25CB - discard held item\nD-Pad left - invntory\nD-Pad right - crafting \nD-Pad up - tools\n,Kontroller (PLAYSTATION):\nSTART- Spiel beitreten\nLINKER STICK - laufen\nX - interagieren\n\u25CB - Gegenstand werfen\nD-Pad links - Inventar\nD-Pad rechts - Basteln\nD-Pad oben - Werkzeuge\n
+CONFIRM,CONFIRM,BESTÄTIGEN
 CANCEL,CANCEL,ABBRECHEN
 RESUME,RESUME,WEITERMACHEN
 DISCONNECT,DISCONNECT,TRENNEN
@@ -15,6 +15,7 @@ MAIN_MENU,MAIN MENU,HAUPTMENÜ
 QUIT,QUIT,AUFHÖREN
 HOW_TO_PLAY,HOW TO PLAY,STEUERUNG
 START,START,STARTEN
+HOLD,HOLD,HALTEN
 CHOICE_BACK,Back,Zurück
 CHOICE_CHECK_QUEST,Check quest,Quest prüfen
 CHOICE_ASK_INFO,Ask information,Information fragen
@@ -33,6 +34,7 @@ PLAINS_LORE_1,"She is the Godess of Love, War, Beauty and Magic. And we are her'
 PLAINS_LORE_2,"Feel free to ask for help, my sisters give good advice.","Bitten Sie gerne um Hilfe, meine Schwestern geben gute Ratschläge"
 STOMPING_MINIGAME_0,"Welcome to the Vinery. When interacting with it, choose a recipe and make it.","Willkommen im Weingut. Wenn Sie damit interagieren,  wählen Sie ein Rezept aus und machen Sie es. "
 STOMPING_MINIGAME_1,You will have to squash the ingredients by moving left and right.,"Sie müssen die Zutaten zerquetschen, indem Sie sich nach links und rechts bewegen."
+,,
 FEYA_BERRIES_0,"Oh hello there, you must be new!","Oh hallo, du bist neu hier! "
 FEYA_BERRIES_1,My name is Feya,Mein name ist Feya
 FEYA_BERRIES_2,Let's start you of with a simple task,Fangen wir mit einer einfachen Aufgabe an
@@ -52,7 +54,7 @@ FEYA_ORANGES_SECOND_0,"They are not in the garden, I know.","Sie sind night in G
 FEYA_ORANGES_SECOND_1,But I am sure you'll find a way.,"Aber, ich bin sicher, du könntest der Weg finden"
 FEYA_ORANGE_JUICE_0,"So, you know how you made Strawberry juice? ",Weißt du wie hast du Erdberrensaft gemacht? 
 FEYA_ORANGE_JUICE_1,"Well, now go make orange juice, it's really that simple.","Jetzt, mach die gleiche, aber mit Orangen. Es ist so einfach."
-FEYA_ORANGE_JUICE_2,"The process is the same, the ingredients are different.","Die Verarbait ist gleich, die Zutaten sind es nicht. "
+FEYA_ORANGE_JUICE_2,"The process is the same, the ingredients are different.","Die Verarbeitung ist gleich, die Zutaten sind es nicht. "
 FEYA_ORANGE_JUICE_SECOND_0,"And, how's the progress going? ","Und, wie geht es bei dem Saft? "
 FEYA_FRUIT_JUICE_0,Okay now for the final task. Make fruit juice.,"Okay, und jetzt für die letzte Aufgabe. Mach Obstsaft."
 FEYA_FRUIT_JUICE_1,You can either make it from scratch or combine the two juices.,Du kannst es entweder von Grund auf selbst zubereiten oder die beiden Säfte mischen. 
@@ -64,3 +66,11 @@ STRAWBERRY_JUICE,Strawberry juice,Erdberrensaft
 ORANGE,Orange,Orange
 ORANGE_JUICE,Orange juice,Orangensaft
 FRUIT_JUICE,Fruit juice,Obstsaft
+,,
+,,
+Q_BERRY_PICKER,Berry Picker,Beerenpflücker
+Q_TALK_TO_THE_STATUE,Talk to the Statue,Spricht mit der Statue
+Q_JUICE,Strawberry Juice,Erdbeerensaft
+Q_ORANGES,Oranges,Ornagen
+Q_ORANGE_JUICE,Orange Juice,Orangensaft
+Q_MORE_JUICE,More Juice,Noch mehr Saft

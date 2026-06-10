@@ -10,7 +10,7 @@ public class QuestUI : BaseUI
 
     //TODO: [SerializeField] private GameObject progressBarPrefab;
     [SerializeField] private ProgressBar progressBar;
-    [SerializeField] private TMP_Text tmpText;
+    [SerializeField] private LocalizedText tmpText;
 
     private void Awake()
     {
@@ -39,7 +39,7 @@ public class QuestUI : BaseUI
         }
 
         //set the name of the quest in the tmptext
-        tmpText.text = quest.questName;
+        tmpText.ChangeKey(quest.questName);
         //TODO Create ProgressBars depending on how much subQuests the quest has
 
         //progressBar.gameObject.SetActive(true);
