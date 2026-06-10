@@ -320,6 +320,7 @@ public class PlayerUIManager : MonoBehaviour, UIPrompt
         PlayerHUD.SetPrompt(input);
         CraftingUI.SetPrompt(input);
         DialogUI.SetPrompt(input);
+        EquippedItemUI.SetPrompt(input);
     }
 
     public void UpdateUIElements(int numOfPlayers)

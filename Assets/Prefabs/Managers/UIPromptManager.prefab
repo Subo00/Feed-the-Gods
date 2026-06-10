@@ -48,6 +48,10 @@ MonoBehaviour:
   ConfirmIJKL: {fileID: 21300000, guid: b08b252fd1eb69d4cb278495ded30615, type: 3}
   ConfirmXBOX: {fileID: 21300000, guid: f3168930cf4bc2e42adacddeafb2dc81, type: 3}
   ConfirmPS: {fileID: 21300000, guid: 216560e9aad3a2f469aa8b8479befe46, type: 3}
+  ConfirmHoldWASD: {fileID: 21300000, guid: 13de480c4c8de23438d54317050e5686, type: 3}
+  ConfirmHoldIJKL: {fileID: 21300000, guid: baa5ab1be4b203b4295dd7c0d3a6d5f9, type: 3}
+  ConfirmHoldXBOX: {fileID: 21300000, guid: 96c10e570c9a88242bb0973a29a3cc05, type: 3}
+  ConfirmHoldPS: {fileID: 21300000, guid: 3edbb2408051e584183862e7184295ee, type: 3}
   CancelWASD: {fileID: 21300000, guid: b96ba8f6cf4a06940aa7749938a9ef47, type: 3}
   CancelIJKL: {fileID: 21300000, guid: aa629385b312ae24d891db3adce91a0b, type: 3}
   CancelXBOX: {fileID: 21300000, guid: 43567f8e923357749ad03b9cb92fed7f, type: 3}
