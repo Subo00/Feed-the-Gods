@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc5ab469156fecb40b9d0024901cc6b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isHold: 1
   resourceDrops:
   - item: {fileID: 11400000, guid: 951e044c20a47404c9834e761805d158, type: 2}
     value: 1
