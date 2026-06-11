@@ -146,7 +146,8 @@ public class PlayerUIManager : MonoBehaviour, UIPrompt
             isInventoryOpen = false;
             inventoryUI.Toggle(isInventoryOpen);
         }
-        else
+        
+        if (currentUI != UIType.None && currentUI != UIType.Minigame)
         {
             equippedItemUI.Toggle(false);
         }
