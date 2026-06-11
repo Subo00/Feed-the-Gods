@@ -56,3 +56,11 @@ MonoBehaviour:
   CancelIJKL: {fileID: 21300000, guid: aa629385b312ae24d891db3adce91a0b, type: 3}
   CancelXBOX: {fileID: 21300000, guid: 43567f8e923357749ad03b9cb92fed7f, type: 3}
   CancelPS: {fileID: 21300000, guid: 8d2a6cd198e73a143a4bae3acec33c92, type: 3}
+  InventoryWASD: {fileID: 21300000, guid: 808afdf06584d1f4ea93d005ca38ca7b, type: 3}
+  InventoryIJKL: {fileID: 21300000, guid: 577d4e23a6c266240aee4637ef79cd3c, type: 3}
+  InventoryXBOX: {fileID: 21300000, guid: ce1e666d4183d6546b3d602b9811ea61, type: 3}
+  InventoryPS: {fileID: 21300000, guid: a2a3268ab0dead44a98814b930725186, type: 3}
+  CraftingWASD: {fileID: 21300000, guid: 95f4b56b5c69ba2429dd228abc7c26d7, type: 3}
+  CraftingIJKL: {fileID: 21300000, guid: ea6e9a08f3ef67c468692c9d9fc3b725, type: 3}
+  CraftingXBOX: {fileID: 21300000, guid: 144a6dc9a48917f4eb1c54747189b41a, type: 3}
+  CraftingPS: {fileID: 21300000, guid: 61a5d7b5cebfc3d48bcaf92fc8de392a, type: 3}
