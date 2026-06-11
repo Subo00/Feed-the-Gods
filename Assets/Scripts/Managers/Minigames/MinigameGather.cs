@@ -6,7 +6,7 @@ using UnityEngine;
 public class MinigameGather :  Minigame
 {
     private float progress = 0f;
-    [SerializeField] private float step = 0.01f;
+    [SerializeField] private float speed = 0.5f;
     [SerializeField] private ProgressBar progressBar;
 
 
@@ -28,7 +28,7 @@ public class MinigameGather :  Minigame
     {
         if(manager.Player.IsInteracting)
         {
-            progress += step;
+            progress += speed * Time.deltaTime;
             progressBar.SetFillAmount(progress);
 
             if (progress >= 1.0f)

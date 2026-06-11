@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c404a58717552b41a9fa0be0b0eed59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  step: 0.005
+  speed: 0.7
   progressBar: {fileID: 6651225457055868057}
 --- !u!1001 &3656613559593235746
 PrefabInstance:
