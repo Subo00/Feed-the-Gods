@@ -45,11 +45,17 @@ public class QuestManager : MonoBehaviour
     public void AddToCompleted(Quest quest) 
     {
         if(quest.reward != Reward.NONE) { HandleReward(quest.reward, quest.rewardID); }
-            
-        activeQuests.Remove(quest);
+
+        Quest toRemove = activeQuests.Find(q => q.questName == quest.questName);
+        if (toRemove != null)
+            activeQuests.Remove(toRemove);
+
         completedQuests.Add(quest);
         quest.onQuestChanged -= HandleQuestProgressChanged;
+
         currentQuest = null;
+        if (activeQuests.Count > 0)
+            SetCurrentQuest(activeQuests[0]);
     } 
 
     public void SetCurrentQuest(Quest quest)
