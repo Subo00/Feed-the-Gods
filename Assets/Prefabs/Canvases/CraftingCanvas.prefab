@@ -2988,7 +2988,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.26212585, g: 0.9339623, b: 0.2511125, a: 1}
+  m_Color: {r: 0.8773585, g: 0.79993147, b: 0.41798684, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3513,6 +3513,22 @@ PrefabInstance:
     - target: {fileID: 4615776852618280307, guid: 908e898fb56091b4b88c45db7106bd8e, type: 3}
       propertyPath: m_Name
       value: CraftingItemSlot
+      objectReference: {fileID: 0}
+    - target: {fileID: 6832121162920663049, guid: 908e898fb56091b4b88c45db7106bd8e, type: 3}
+      propertyPath: m_Color.a
+      value: 0.85882354
+      objectReference: {fileID: 0}
+    - target: {fileID: 6832121162920663049, guid: 908e898fb56091b4b88c45db7106bd8e, type: 3}
+      propertyPath: m_Color.b
+      value: 0.24110004
+      objectReference: {fileID: 0}
+    - target: {fileID: 6832121162920663049, guid: 908e898fb56091b4b88c45db7106bd8e, type: 3}
+      propertyPath: m_Color.g
+      value: 0.7969487
+      objectReference: {fileID: 0}
+    - target: {fileID: 6832121162920663049, guid: 908e898fb56091b4b88c45db7106bd8e, type: 3}
+      propertyPath: m_Color.r
+      value: 0.8113208
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
