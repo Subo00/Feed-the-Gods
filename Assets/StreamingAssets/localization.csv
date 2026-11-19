@@ -16,6 +16,7 @@ QUIT,QUIT,AUFHÖREN
 HOW_TO_PLAY,HOW TO PLAY,STEUERUNG
 START,START,STARTEN
 HOLD,HOLD,HALTEN
+BACK,BACK,ZURÜCK
 CHOICE_BACK,Back,Zurück
 CHOICE_CHECK_QUEST,Check quest,Quest prüfen
 CHOICE_ASK_INFO,Ask information,Information fragen
@@ -60,6 +61,13 @@ FEYA_FRUIT_JUICE_0,Okay now for the final task. Make fruit juice.,"Okay, und jet
 FEYA_FRUIT_JUICE_1,You can either make it from scratch or combine the two juices.,Du kannst es entweder von Grund auf selbst zubereiten oder die beiden Säfte mischen. 
 FEYA_FRUIT_JUICE_SECOND_0,"Like I said, it should be easy. ","Wie ich habe gesagt, es soll einfach sein. "
 FEYA_MENU_0,What can I do for you? ,Was kann ich für dich tun? 
+MONOLITH_MENU_0,...,...
+MONOLITH_TUTORIAL_0,"Welcome, I am ordered to check your functionalities",
+MONOLITH_TUTORIAL_1,"Let's start with the most basic task, gathering",
+MONOLITH_TUTORIAL_2,Just come near the bush press and hold [ACTION],
+MONOLITH_TUTORIAL_3,Then collect a berry and bring it to me.,
+MONOLITH_TUTORIAL_OTHER_0,Just one berry is enough,
+,,
 ,,
 STRAWBERRY,Strawberry,Erdberren
 STRAWBERRY_JUICE,Strawberry juice,Erdberrensaft 

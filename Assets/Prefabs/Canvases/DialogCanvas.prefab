@@ -179,7 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f132e6e01163f5749950285b16166a02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: RESPONSE_BACK
+  key: BACK
 --- !u!1 &2109064091589353323
 GameObject:
   m_ObjectHideFlags: 0
